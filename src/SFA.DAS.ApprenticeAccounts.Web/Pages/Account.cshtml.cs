@@ -1,4 +1,3 @@
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -7,9 +6,6 @@ using SFA.DAS.ApprenticeAccounts.Web.Exceptions;
 using SFA.DAS.ApprenticeAccounts.Web.Services;
 using SFA.DAS.ApprenticeAccounts.Web.Services.InnerApi;
 using SFA.DAS.ApprenticePortal.SharedUi.Menu;
-using AuthenticatedUser = SFA.DAS.ApprenticeAccounts.Authentication.AuthenticatedUser;
-
-#nullable enable
 
 namespace SFA.DAS.ApprenticeAccounts.Web.Pages
 {
@@ -113,43 +109,12 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
         private IActionResult RedirectAfterUpdate()
         {
             if (!TermsOfUseAccepted)
-                return RedirectToPage("/TermsOfUse");
+                return RedirectToPage("TermsOfUse");
             
             if (Request.Cookies.Keys.Contains("RegistrationCode"))
                 return Redirect(_urlHelper.Generate(NavigationSection.Registration));
             
             return Redirect(_urlHelper.Generate(NavigationSection.Home, "Home"));
-        }
-
-        private void AddErrors(DomainValidationException exception)
-        {
-            ModelState.ClearValidationState(nameof(DateOfBirth));
-            ModelState.ClearValidationState(nameof(LastName));
-            ModelState.ClearValidationState(nameof(FirstName));
-
-            foreach (var e in exception.Errors.Distinct(new ErrorItemComparePropertyName()))
-            {
-                var (p, m) = e.PropertyName switch
-                {
-                    nameof(FirstName) => (e.PropertyName, "Enter your first name"),
-                    nameof(LastName) => (e.PropertyName, "Enter your last name"),
-                    nameof(DateOfBirth) => (e.PropertyName, "Enter your date of birth"),
-                    "PersonalDetails" => ("PersonalDetails", "Details do not match any registered apprenticeship on our service. You can:"),
-                    _ => ("", "Something went wrong")
-                };
-
-                if (p?.Length == 0 && ModelState.Keys.Contains("")) continue;
-
-                if (p == "PersonalDetails")
-                {
-                    ModelState.AddModelError(p, "try again with the correct details");
-                    ModelState.AddModelError(p, "contact your employer or training provider to fix your details");
-                }
-                else
-                {
-                    ModelState.AddModelError(p, m);
-                }
-            }
         }
     }
 }
