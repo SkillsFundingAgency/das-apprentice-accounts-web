@@ -1,0 +1,5 @@
+﻿@using SFA.DAS.ApprenticeAccounts.Web.Services
+@if (Model is IHasBackLink backlink)
+{
+    <a href="@backlink.Backlink" title="Apprenticeship overview page" class="govuk-back-link">Back</a>
+}

@@ -1,0 +1,211 @@
+2021-11-30 09:31:07.2089 Info Message Template Auto Format enabled
+2021-11-30 09:31:07.2448 Info Adding target ConsoleTarget(Name=Console)
+2021-11-30 09:31:07.2448 Info Adding target FileTarget(Name=File)
+2021-11-30 09:31:07.2831 Info Validating config: TargetNames=File, ConfigItems=35, FilePath=C:\GitHub\SFA\das-apprentice-accounts-web\src\SFA.DAS.ApprenticeAccounts.Web\bin\Debug\netcoreapp3.1\nlog.Development.config
+2021-11-30 09:31:07.2831 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: Console
+2021-11-30 09:33:43.7366 Info Message Template Auto Format enabled
+2021-11-30 09:33:43.7739 Info Adding target ConsoleTarget(Name=Console)
+2021-11-30 09:33:43.7976 Info Adding target FileTarget(Name=File)
+2021-11-30 09:33:43.8357 Info Validating config: TargetNames=File, ConfigItems=35, FilePath=C:\GitHub\SFA\das-apprentice-accounts-web\src\SFA.DAS.ApprenticeAccounts.Web\bin\Debug\netcoreapp3.1\nlog.Development.config
+2021-11-30 09:33:43.8412 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: Console
+2021-11-30 09:36:15.2040 Info Message Template Auto Format enabled
+2021-11-30 09:36:15.2419 Info Adding target ConsoleTarget(Name=Console)
+2021-11-30 09:36:15.2686 Info Adding target FileTarget(Name=File)
+2021-11-30 09:36:15.2945 Info Validating config: TargetNames=File, ConfigItems=35, FilePath=C:\GitHub\SFA\das-apprentice-accounts-web\src\SFA.DAS.ApprenticeAccounts.Web\bin\Debug\netcoreapp3.1\nlog.Development.config
+2021-11-30 09:36:15.2945 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: Console
+2021-11-30 09:42:38.0873 Info Message Template Auto Format enabled
+2021-11-30 09:42:38.1260 Info Adding target ConsoleTarget(Name=Console)
+2021-11-30 09:42:38.1417 Info Adding target FileTarget(Name=File)
+2021-11-30 09:42:38.1711 Info Validating config: TargetNames=File, ConfigItems=35, FilePath=C:\GitHub\SFA\das-apprentice-accounts-web\src\SFA.DAS.ApprenticeAccounts.Web\bin\Debug\netcoreapp3.1\nlog.Development.config
+2021-11-30 09:42:38.1711 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: Console
+2021-11-30 10:58:36.7679 Info Message Template Auto Format enabled
+2021-11-30 10:58:36.8033 Info Adding target ConsoleTarget(Name=Console)
+2021-11-30 10:58:36.8166 Info Adding target FileTarget(Name=File)
+2021-11-30 10:58:36.8433 Info Validating config: TargetNames=File, ConfigItems=35, FilePath=C:\GitHub\SFA\das-apprentice-accounts-web\src\SFA.DAS.ApprenticeAccounts.Web\bin\Debug\netcoreapp3.1\nlog.Development.config
+2021-11-30 10:58:36.8433 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: Console
+2021-11-30 12:00:33.0864 Info Message Template Auto Format enabled
+2021-11-30 12:00:33.1226 Info Adding target ConsoleTarget(Name=Console)
+2021-11-30 12:00:33.1226 Info Adding target FileTarget(Name=File)
+2021-11-30 12:00:33.1586 Info Validating config: TargetNames=File, ConfigItems=35, FilePath=C:\GitHub\SFA\das-apprentice-accounts-web\src\SFA.DAS.ApprenticeAccounts.Web\bin\Debug\netcoreapp3.1\nlog.Development.config
+2021-11-30 12:00:33.1586 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: Console
+2021-11-30 12:02:41.9197 Info Message Template Auto Format enabled
+2021-11-30 12:02:41.9521 Info Adding target ConsoleTarget(Name=Console)
+2021-11-30 12:02:41.9807 Info Adding target FileTarget(Name=File)
+2021-11-30 12:02:42.0053 Info Validating config: TargetNames=File, ConfigItems=35, FilePath=C:\GitHub\SFA\das-apprentice-accounts-web\src\SFA.DAS.ApprenticeAccounts.Web\bin\Debug\netcoreapp3.1\nlog.Development.config
+2021-11-30 12:02:42.0053 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: Console
+2021-11-30 12:35:24.7346 Info Message Template Auto Format enabled
+2021-11-30 12:35:24.7671 Info Adding target ConsoleTarget(Name=Console)
+2021-11-30 12:35:24.7809 Info Adding target FileTarget(Name=File)
+2021-11-30 12:35:24.8066 Info Validating config: TargetNames=File, ConfigItems=35, FilePath=C:\GitHub\SFA\das-apprentice-accounts-web\src\SFA.DAS.ApprenticeAccounts.Web\bin\Debug\netcoreapp3.1\nlog.Development.config
+2021-11-30 12:35:24.8110 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: Console
+2021-11-30 12:37:11.8278 Info Message Template Auto Format enabled
+2021-11-30 12:37:11.8591 Info Adding target ConsoleTarget(Name=Console)
+2021-11-30 12:37:11.8735 Info Adding target FileTarget(Name=File)
+2021-11-30 12:37:11.8963 Info Validating config: TargetNames=File, ConfigItems=35, FilePath=C:\GitHub\SFA\das-apprentice-accounts-web\src\SFA.DAS.ApprenticeAccounts.Web\bin\Debug\netcoreapp3.1\nlog.Development.config
+2021-11-30 12:37:11.8963 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: Console
+2021-11-30 14:52:10.9979 Info Message Template Auto Format enabled
+2021-11-30 14:52:11.0270 Info Adding target ConsoleTarget(Name=Console)
+2021-11-30 14:52:11.0270 Info Adding target FileTarget(Name=File)
+2021-11-30 14:52:11.0608 Info Validating config: TargetNames=File, ConfigItems=35, FilePath=C:\GitHub\SFA\das-apprentice-accounts-web\src\SFA.DAS.ApprenticeAccounts.Web\bin\Debug\netcoreapp3.1\nlog.Development.config
+2021-11-30 14:52:11.0608 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: Console
+2021-11-30 16:30:30.6599 Info Message Template Auto Format enabled
+2021-11-30 16:30:30.6916 Info Adding target ConsoleTarget(Name=Console)
+2021-11-30 16:30:30.7043 Info Adding target FileTarget(Name=File)
+2021-11-30 16:30:30.7325 Info Validating config: TargetNames=File, ConfigItems=35, FilePath=C:\GitHub\SFA\das-apprentice-accounts-web\src\SFA.DAS.ApprenticeAccounts.Web\bin\Debug\netcoreapp3.1\nlog.Development.config
+2021-11-30 16:30:30.7325 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: Console
+2021-11-30 16:31:19.3184 Info AppDomain Shutting down. Logger closing...
+2021-11-30 16:31:19.3322 Info Logger has been shut down.
+2021-11-30 17:06:00.9231 Info Message Template Auto Format enabled
+2021-11-30 17:06:00.9560 Info Adding target ConsoleTarget(Name=Console)
+2021-11-30 17:06:00.9700 Info Adding target FileTarget(Name=File)
+2021-11-30 17:06:00.9956 Info Validating config: TargetNames=File, ConfigItems=35, FilePath=C:\GitHub\SFA\das-apprentice-accounts-web\src\SFA.DAS.ApprenticeAccounts.Web\bin\Debug\netcoreapp3.1\nlog.Development.config
+2021-11-30 17:06:00.9956 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: Console
+2021-11-30 17:15:20.8867 Info Message Template Auto Format enabled
+2021-11-30 17:15:20.9177 Info Adding target ConsoleTarget(Name=Console)
+2021-11-30 17:15:20.9177 Info Adding target FileTarget(Name=File)
+2021-11-30 17:15:20.9546 Info Validating config: TargetNames=File, ConfigItems=35, FilePath=C:\GitHub\SFA\das-apprentice-accounts-web\src\SFA.DAS.ApprenticeAccounts.Web\bin\Debug\netcoreapp3.1\nlog.Development.config
+2021-11-30 17:15:20.9546 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: Console
+2021-11-30 21:51:44.7298 Info Message Template Auto Format enabled
+2021-11-30 21:51:44.8168 Info Adding target ConsoleTarget(Name=Console)
+2021-11-30 21:51:44.8334 Info Adding target FileTarget(Name=File)
+2021-11-30 21:51:44.8825 Info Validating config: TargetNames=File, ConfigItems=35, FilePath=C:\GitHub\SFA\das-apprentice-accounts-web\src\SFA.DAS.ApprenticeAccounts.Web\bin\Debug\netcoreapp3.1\nlog.Development.config
+2021-11-30 21:51:44.8957 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: Console
+2021-12-01 09:39:46.6833 Info Message Template Auto Format enabled
+2021-12-01 09:39:46.7223 Info Adding target ConsoleTarget(Name=Console)
+2021-12-01 09:39:46.7362 Info Adding target FileTarget(Name=File)
+2021-12-01 09:39:46.7638 Info Validating config: TargetNames=File, ConfigItems=35, FilePath=C:\GitHub\SFA\das-apprentice-accounts-web\src\SFA.DAS.ApprenticeAccounts.Web\bin\Debug\netcoreapp3.1\nlog.Development.config
+2021-12-01 09:39:46.7638 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: Console
+2021-12-01 11:13:38.3776 Info Message Template Auto Format enabled
+2021-12-01 11:13:38.4136 Info Adding target ConsoleTarget(Name=Console)
+2021-12-01 11:13:38.4319 Info Adding target FileTarget(Name=File)
+2021-12-01 11:13:38.4579 Info Validating config: TargetNames=File, ConfigItems=35, FilePath=C:\GitHub\SFA\das-apprentice-accounts-web\src\SFA.DAS.ApprenticeAccounts.Web\bin\Debug\netcoreapp3.1\nlog.Development.config
+2021-12-01 11:13:38.4579 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: Console
+2021-12-01 11:13:39.6341 Info AppDomain Shutting down. Logger closing...
+2021-12-01 11:13:39.6341 Info Logger has been shut down.
+2021-12-01 11:15:35.8051 Info Message Template Auto Format enabled
+2021-12-01 11:15:35.8381 Info Adding target ConsoleTarget(Name=Console)
+2021-12-01 11:15:35.8532 Info Adding target FileTarget(Name=File)
+2021-12-01 11:15:35.8797 Info Validating config: TargetNames=File, ConfigItems=35, FilePath=C:\GitHub\SFA\das-apprentice-accounts-web\src\SFA.DAS.ApprenticeAccounts.Web\bin\Debug\netcoreapp3.1\nlog.Development.config
+2021-12-01 11:15:35.8797 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: Console
+2021-12-01 11:19:19.2204 Info Message Template Auto Format enabled
+2021-12-01 11:19:19.2530 Info Adding target ConsoleTarget(Name=Console)
+2021-12-01 11:19:19.2713 Info Adding target FileTarget(Name=File)
+2021-12-01 11:19:19.3060 Info Validating config: TargetNames=File, ConfigItems=35, FilePath=C:\GitHub\SFA\das-apprentice-accounts-web\src\SFA.DAS.ApprenticeAccounts.Web\bin\Debug\netcoreapp3.1\nlog.Development.config
+2021-12-01 11:19:19.3060 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: Console
+2021-12-01 11:21:56.7432 Info Message Template Auto Format enabled
+2021-12-01 11:21:56.7766 Info Adding target ConsoleTarget(Name=Console)
+2021-12-01 11:21:56.8088 Info Adding target FileTarget(Name=File)
+2021-12-01 11:21:56.8537 Info Validating config: TargetNames=File, ConfigItems=35, FilePath=C:\GitHub\SFA\das-apprentice-accounts-web\src\SFA.DAS.ApprenticeAccounts.Web\bin\Debug\netcoreapp3.1\nlog.Development.config
+2021-12-01 11:21:56.8537 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: Console
+2021-12-01 11:25:09.1722 Info Message Template Auto Format enabled
+2021-12-01 11:25:09.2032 Info Adding target ConsoleTarget(Name=Console)
+2021-12-01 11:25:09.2150 Info Adding target FileTarget(Name=File)
+2021-12-01 11:25:09.2378 Info Validating config: TargetNames=File, ConfigItems=35, FilePath=C:\GitHub\SFA\das-apprentice-accounts-web\src\SFA.DAS.ApprenticeAccounts.Web\bin\Debug\netcoreapp3.1\nlog.Development.config
+2021-12-01 11:25:09.2420 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: Console
+2021-12-01 12:50:37.1432 Info Message Template Auto Format enabled
+2021-12-01 12:50:37.1794 Info Adding target ConsoleTarget(Name=Console)
+2021-12-01 12:50:37.1934 Info Adding target FileTarget(Name=File)
+2021-12-01 12:50:37.2176 Info Validating config: TargetNames=File, ConfigItems=35, FilePath=C:\GitHub\SFA\das-apprentice-accounts-web\src\SFA.DAS.ApprenticeAccounts.Web\bin\Debug\netcoreapp3.1\nlog.Development.config
+2021-12-01 12:50:37.2176 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: Console
+2021-12-01 12:54:55.0291 Info Message Template Auto Format enabled
+2021-12-01 12:54:55.0659 Info Adding target ConsoleTarget(Name=Console)
+2021-12-01 12:54:55.0792 Info Adding target FileTarget(Name=File)
+2021-12-01 12:54:55.1120 Info Validating config: TargetNames=File, ConfigItems=35, FilePath=C:\GitHub\SFA\das-apprentice-accounts-web\src\SFA.DAS.ApprenticeAccounts.Web\bin\Debug\netcoreapp3.1\nlog.Development.config
+2021-12-01 12:54:55.1181 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: Console
+2021-12-01 13:10:38.7515 Info Message Template Auto Format enabled
+2021-12-01 13:10:38.7855 Info Adding target ConsoleTarget(Name=Console)
+2021-12-01 13:10:38.7979 Info Adding target FileTarget(Name=File)
+2021-12-01 13:10:38.8275 Info Validating config: TargetNames=File, ConfigItems=35, FilePath=C:\GitHub\SFA\das-apprentice-accounts-web\src\SFA.DAS.ApprenticeAccounts.Web\bin\Debug\netcoreapp3.1\nlog.Development.config
+2021-12-01 13:10:38.8329 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: Console
+2021-12-01 15:17:30.7948 Info Message Template Auto Format enabled
+2021-12-01 15:17:30.8274 Info Adding target ConsoleTarget(Name=Console)
+2021-12-01 15:17:30.8411 Info Adding target FileTarget(Name=File)
+2021-12-01 15:17:30.8675 Info Validating config: TargetNames=File, ConfigItems=35, FilePath=C:\GitHub\SFA\das-apprentice-accounts-web\src\SFA.DAS.ApprenticeAccounts.Web\bin\Debug\netcoreapp3.1\nlog.Development.config
+2021-12-01 15:17:30.8675 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: Console
+2021-12-01 15:26:38.3056 Info Message Template Auto Format enabled
+2021-12-01 15:26:38.3455 Info Adding target ConsoleTarget(Name=Console)
+2021-12-01 15:26:38.3713 Info Adding target FileTarget(Name=File)
+2021-12-01 15:26:38.3978 Info Validating config: TargetNames=File, ConfigItems=35, FilePath=C:\GitHub\SFA\das-apprentice-accounts-web\src\SFA.DAS.ApprenticeAccounts.Web\bin\Debug\netcoreapp3.1\nlog.Development.config
+2021-12-01 15:26:38.3978 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: Console
+2021-12-01 15:29:48.4492 Info Message Template Auto Format enabled
+2021-12-01 15:29:48.4835 Info Adding target ConsoleTarget(Name=Console)
+2021-12-01 15:29:48.4972 Info Adding target FileTarget(Name=File)
+2021-12-01 15:29:48.5232 Info Validating config: TargetNames=File, ConfigItems=35, FilePath=C:\GitHub\SFA\das-apprentice-accounts-web\src\SFA.DAS.ApprenticeAccounts.Web\bin\Debug\netcoreapp3.1\nlog.Development.config
+2021-12-01 15:29:48.5232 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: Console
+2021-12-01 15:35:43.1543 Info Message Template Auto Format enabled
+2021-12-01 15:35:43.1950 Info Adding target ConsoleTarget(Name=Console)
+2021-12-01 15:35:43.2152 Info Adding target FileTarget(Name=File)
+2021-12-01 15:35:43.2507 Info Validating config: TargetNames=File, ConfigItems=35, FilePath=C:\GitHub\SFA\das-apprentice-accounts-web\src\SFA.DAS.ApprenticeAccounts.Web\bin\Debug\netcoreapp3.1\nlog.Development.config
+2021-12-01 15:35:43.2551 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: Console
+2021-12-01 15:39:30.3406 Info Message Template Auto Format enabled
+2021-12-01 15:39:30.3852 Info Adding target ConsoleTarget(Name=Console)
+2021-12-01 15:39:30.4001 Info Adding target FileTarget(Name=File)
+2021-12-01 15:39:30.4242 Info Validating config: TargetNames=File, ConfigItems=35, FilePath=C:\GitHub\SFA\das-apprentice-accounts-web\src\SFA.DAS.ApprenticeAccounts.Web\bin\Debug\netcoreapp3.1\nlog.Development.config
+2021-12-01 15:39:30.4285 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: Console
+2021-12-01 15:51:19.7043 Info Message Template Auto Format enabled
+2021-12-01 15:51:19.7361 Info Adding target ConsoleTarget(Name=Console)
+2021-12-01 15:51:19.7488 Info Adding target FileTarget(Name=File)
+2021-12-01 15:51:19.7841 Info Validating config: TargetNames=File, ConfigItems=35, FilePath=C:\GitHub\SFA\das-apprentice-accounts-web\src\SFA.DAS.ApprenticeAccounts.Web\bin\Debug\netcoreapp3.1\nlog.Development.config
+2021-12-01 15:51:19.7884 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: Console
+2021-12-01 16:03:48.6288 Info Message Template Auto Format enabled
+2021-12-01 16:03:48.6777 Info Adding target ConsoleTarget(Name=Console)
+2021-12-01 16:03:48.7021 Info Adding target FileTarget(Name=File)
+2021-12-01 16:03:48.7308 Info Validating config: TargetNames=File, ConfigItems=35, FilePath=C:\GitHub\SFA\das-apprentice-accounts-web\src\SFA.DAS.ApprenticeAccounts.Web\bin\Debug\netcoreapp3.1\nlog.Development.config
+2021-12-01 16:03:48.7308 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: Console
+2021-12-01 16:09:56.3737 Info Message Template Auto Format enabled
+2021-12-01 16:09:56.4156 Info Adding target ConsoleTarget(Name=Console)
+2021-12-01 16:09:56.4281 Info Adding target FileTarget(Name=File)
+2021-12-01 16:09:56.4671 Info Validating config: TargetNames=File, ConfigItems=35, FilePath=C:\GitHub\SFA\das-apprentice-accounts-web\src\SFA.DAS.ApprenticeAccounts.Web\bin\Debug\netcoreapp3.1\nlog.Development.config
+2021-12-01 16:09:56.4671 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: Console
+2021-12-01 16:14:47.6077 Info Message Template Auto Format enabled
+2021-12-01 16:14:47.6410 Info Adding target ConsoleTarget(Name=Console)
+2021-12-01 16:14:47.6589 Info Adding target FileTarget(Name=File)
+2021-12-01 16:14:47.6831 Info Validating config: TargetNames=File, ConfigItems=35, FilePath=C:\GitHub\SFA\das-apprentice-accounts-web\src\SFA.DAS.ApprenticeAccounts.Web\bin\Debug\netcoreapp3.1\nlog.Development.config
+2021-12-01 16:14:47.6831 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: Console
+2021-12-01 16:15:16.0302 Info Message Template Auto Format enabled
+2021-12-01 16:15:16.0728 Info Adding target ConsoleTarget(Name=Console)
+2021-12-01 16:15:16.0895 Info Adding target FileTarget(Name=File)
+2021-12-01 16:15:16.1249 Info Validating config: TargetNames=File, ConfigItems=35, FilePath=C:\GitHub\SFA\das-apprentice-accounts-web\src\SFA.DAS.ApprenticeAccounts.Web\bin\Debug\netcoreapp3.1\nlog.Development.config
+2021-12-01 16:15:16.1307 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: Console
+2021-12-01 16:18:57.9678 Info Message Template Auto Format enabled
+2021-12-01 16:18:58.0023 Info Adding target ConsoleTarget(Name=Console)
+2021-12-01 16:18:58.0162 Info Adding target FileTarget(Name=File)
+2021-12-01 16:18:58.0390 Info Validating config: TargetNames=File, ConfigItems=35, FilePath=C:\GitHub\SFA\das-apprentice-accounts-web\src\SFA.DAS.ApprenticeAccounts.Web\bin\Debug\netcoreapp3.1\nlog.Development.config
+2021-12-01 16:18:58.0390 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: Console
+2021-12-01 20:55:12.4267 Info Message Template Auto Format enabled
+2021-12-01 20:55:12.4764 Info Adding target ConsoleTarget(Name=Console)
+2021-12-01 20:55:12.4957 Info Adding target FileTarget(Name=File)
+2021-12-01 20:55:12.5304 Info Validating config: TargetNames=File, ConfigItems=35, FilePath=C:\GitHub\SFA\das-apprentice-accounts-web\src\SFA.DAS.ApprenticeAccounts.Web\bin\Debug\netcoreapp3.1\nlog.Development.config
+2021-12-01 20:55:12.5374 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: Console
+2021-12-01 21:04:10.8813 Info Message Template Auto Format enabled
+2021-12-01 21:04:10.9430 Info Adding target ConsoleTarget(Name=Console)
+2021-12-01 21:04:10.9605 Info Adding target FileTarget(Name=File)
+2021-12-01 21:04:10.9957 Info Validating config: TargetNames=File, ConfigItems=35, FilePath=C:\GitHub\SFA\das-apprentice-accounts-web\src\SFA.DAS.ApprenticeAccounts.Web\bin\Debug\netcoreapp3.1\nlog.Development.config
+2021-12-01 21:04:10.9957 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: Console
+2021-12-02 20:01:58.0035 Info Message Template Auto Format enabled
+2021-12-02 20:01:58.0555 Info Adding target ConsoleTarget(Name=Console)
+2021-12-02 20:01:58.0751 Info Adding target FileTarget(Name=File)
+2021-12-02 20:01:58.1128 Info Validating config: TargetNames=File, ConfigItems=35, FilePath=C:\GitHub\SFA\das-apprentice-accounts-web\src\SFA.DAS.ApprenticeAccounts.Web\bin\Debug\netcoreapp3.1\nlog.Development.config
+2021-12-02 20:01:58.1192 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: Console
+2021-12-02 20:05:27.1527 Info Message Template Auto Format enabled
+2021-12-02 20:05:27.2142 Info Adding target ConsoleTarget(Name=Console)
+2021-12-02 20:05:27.2318 Info Adding target FileTarget(Name=File)
+2021-12-02 20:05:27.2770 Info Validating config: TargetNames=File, ConfigItems=35, FilePath=C:\GitHub\SFA\das-apprentice-accounts-web\src\SFA.DAS.ApprenticeAccounts.Web\bin\Debug\netcoreapp3.1\nlog.Development.config
+2021-12-02 20:05:27.2770 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: Console
+2021-12-03 08:20:03.2543 Info Message Template Auto Format enabled
+2021-12-03 08:20:03.2885 Info Adding target ConsoleTarget(Name=Console)
+2021-12-03 08:20:03.3019 Info Adding target FileTarget(Name=File)
+2021-12-03 08:20:03.3275 Info Validating config: TargetNames=File, ConfigItems=35, FilePath=C:\GitHub\SFA\das-apprentice-accounts-web\src\SFA.DAS.ApprenticeAccounts.Web\bin\Debug\netcoreapp3.1\nlog.Development.config
+2021-12-03 08:20:03.3275 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: Console
+2021-12-03 08:31:26.2405 Info Message Template Auto Format enabled
+2021-12-03 08:31:26.2745 Info Adding target ConsoleTarget(Name=Console)
+2021-12-03 08:31:26.2862 Info Adding target FileTarget(Name=File)
+2021-12-03 08:31:26.3117 Info Validating config: TargetNames=File, ConfigItems=35, FilePath=C:\GitHub\SFA\das-apprentice-accounts-web\src\SFA.DAS.ApprenticeAccounts.Web\bin\Debug\netcoreapp3.1\nlog.Development.config
+2021-12-03 08:31:26.3117 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: Console
+2021-12-03 08:32:16.3406 Info AppDomain Shutting down. Logger closing...
+2021-12-03 08:32:16.3528 Info Logger has been shut down.
+2021-12-03 08:44:23.4636 Info Message Template Auto Format enabled
+2021-12-03 08:44:23.4982 Info Adding target ConsoleTarget(Name=Console)
+2021-12-03 08:44:23.5114 Info Adding target FileTarget(Name=File)
+2021-12-03 08:44:23.5392 Info Validating config: TargetNames=File, ConfigItems=35, FilePath=C:\GitHub\SFA\das-apprentice-accounts-web\src\SFA.DAS.ApprenticeAccounts.Web\bin\Debug\netcoreapp3.1\nlog.Development.config
+2021-12-03 08:44:23.5392 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: Console

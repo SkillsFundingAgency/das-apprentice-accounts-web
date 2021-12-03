@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+
+    <Description>Apprentice portal shared UI components</Description>
+    <Authors>ESFA</Authors>
+    <Company>ESFA</Company>
+    <PackageLicense>https://github.com/SkillsFundingAgency/das-apprentice-accounts-web/master/LICENSE</PackageLicense>
+    <PackageProjectUrl>https://github.com/SkillsFundingAgency/das-apprentice-accounts-web</PackageProjectUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageOutputPath>$(SolutionDir)..\..\NugetPackages</PackageOutputPath>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="3.1.11" />
+  </ItemGroup>
+
+</Project>
