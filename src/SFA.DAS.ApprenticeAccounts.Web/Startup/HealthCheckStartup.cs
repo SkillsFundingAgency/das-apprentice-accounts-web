@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 
-namespace SFA.DAS.ApprenticeCommitments.Web.Startup
+namespace SFA.DAS.ApprenticeAccounts.Web.Startup
 {
     public static class HealthCheckStartup
     {

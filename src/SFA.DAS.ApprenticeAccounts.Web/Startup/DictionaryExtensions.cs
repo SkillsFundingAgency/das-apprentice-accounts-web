@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace SFA.DAS.ApprenticeCommitments.Web.Startup
+namespace SFA.DAS.ApprenticeAccounts.Web.Startup
 {
     public static class DictionaryExtensions
     {

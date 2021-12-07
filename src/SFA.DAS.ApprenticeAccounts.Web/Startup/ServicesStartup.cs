@@ -1,8 +1,9 @@
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using RestEase.HttpClientFactory;
 using SFA.DAS.ApprenticeAccounts.Web.Services;
 using SFA.DAS.ApprenticeAccounts.Web.Services.InnerApi;
-using SFA.DAS.ApprenticeCommitments.Web.Services;
 using SFA.DAS.ApprenticeCommitments.Web.TagHelpers;
 using SFA.DAS.ApprenticePortal.SharedUi.Services;
 using SFA.DAS.Http.Configuration;
@@ -19,29 +20,26 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Startup
             services.AddHealthChecks();
             services.AddTransient<ApprenticeApi>();
             services.AddTransient<ISimpleUrlHelper, AspNetCoreSimpleUrlHelper>();
-            services.AddScoped<ITimeProvider, UtcTimeProvider>();
             services.AddTransient<IMenuVisibility, MenuVisibility>();
             return services;
         }
 
         public static IServiceCollection AddInnerApi(
             this IServiceCollection services,
-            InnerApiConfiguration configuration)
+            InnerApiConfiguration configuration,
+            IWebHostEnvironment environment)
         {
 
             services.AddTransient<Http.MessageHandlers.DefaultHeadersHandler>();
-            //if (!IsNullOrWhiteSpace(configuration.IdentifierUri))
-            //{
-                services.AddTransient<IManagedIdentityTokenGenerator, ManagedIdentityTokenGenerator>();
-                services.AddTransient<Http.MessageHandlers.ManagedIdentityHeadersHandler>();
-            //}
+            services.AddTransient<IManagedIdentityTokenGenerator, ManagedIdentityTokenGenerator>();
+            services.AddTransient<Http.MessageHandlers.ManagedIdentityHeadersHandler>();
             services.AddTransient<Http.MessageHandlers.LoggingMessageHandler>();
 
             var builder = services
                 .AddRestEaseClient<IApiClient>(configuration.ApiBaseUrl)
                 .AddHttpMessageHandler<Http.MessageHandlers.DefaultHeadersHandler>();
 
-            if (!IsNullOrWhiteSpace(configuration.IdentifierUri))
+            if (!environment.IsDevelopment())
             {
                 builder.AddHttpMessageHandler<Http.MessageHandlers.ManagedIdentityHeadersHandler>();
             }

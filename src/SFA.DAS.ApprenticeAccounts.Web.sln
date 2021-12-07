@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.ApprenticeAccounts.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.ApprenticeAccounts.Authentication", "SFDA.DAS.ApprenticeAccounts.Authentication\SFA.DAS.ApprenticeAccounts.Authentication.csproj", "{8DA0AA9F-C65D-4F1F-9E18-71347354D513}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{A95F1A4D-6BE0-4AD2-95BB-1ADBED71353F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SAF.DAS.ApprenticeAccounts.Web.UnitTests", "SAF.DAS.ApprenticeAccounts.Web.UnitTests\SAF.DAS.ApprenticeAccounts.Web.UnitTests.csproj", "{DD388E12-6FEC-4758-9B17-8B65C922DB85}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,9 +25,16 @@ Global
 		{8DA0AA9F-C65D-4F1F-9E18-71347354D513}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DA0AA9F-C65D-4F1F-9E18-71347354D513}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DA0AA9F-C65D-4F1F-9E18-71347354D513}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD388E12-6FEC-4758-9B17-8B65C922DB85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD388E12-6FEC-4758-9B17-8B65C922DB85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD388E12-6FEC-4758-9B17-8B65C922DB85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD388E12-6FEC-4758-9B17-8B65C922DB85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DD388E12-6FEC-4758-9B17-8B65C922DB85} = {A95F1A4D-6BE0-4AD2-95BB-1ADBED71353F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {62F6E901-FB40-4FED-ABB0-C9CBCE53D60D}

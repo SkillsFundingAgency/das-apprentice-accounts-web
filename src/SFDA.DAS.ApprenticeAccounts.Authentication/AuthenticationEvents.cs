@@ -32,7 +32,7 @@ namespace SFA.DAS.ApprenticeAccounts.Authentication
             if (registrationClaim == null) return;
             if (apprenticeClaim != null) return;
 
-            principal.AddIdentity(IdentityClaims.CreateApprenticeIdClaim(registrationClaim.Value));
+            principal.AddApprenticeIdClaim(registrationClaim.Value);
         }
 
         public async Task AddClaims(ClaimsPrincipal principal)
@@ -44,7 +44,7 @@ namespace SFA.DAS.ApprenticeAccounts.Authentication
             AddApprenticeAccountClaims(principal, apprentice);
         }
 
-        private async Task<IApprenticeAccount?> GetApprentice(ClaimsPrincipal principal)
+        private async Task<IApprenticeAccount> GetApprentice(ClaimsPrincipal principal)
         {
             var claim = principal.ApprenticeIdClaim();
 
@@ -63,7 +63,7 @@ namespace SFA.DAS.ApprenticeAccounts.Authentication
 
         private static void AddApprenticeAccountClaims(ClaimsPrincipal principal, IApprenticeAccount apprentice)
         {
-            principal.AddIdentity(IdentityClaims.CreateAccountCreatedClaim());
+            principal.AddAccountCreatedClaim();
             principal.AddIdentity(new ClaimsIdentity(new[]
             {
                 new Claim(IdentityClaims.GivenName, apprentice.FirstName),
@@ -71,11 +71,8 @@ namespace SFA.DAS.ApprenticeAccounts.Authentication
             }));
 
             if (apprentice.TermsOfUseAccepted)
-                AddTermsOfUseClaim(principal);
+                principal.AddTermsOfUseAcceptedClaim();
         }
-
-        private static void AddTermsOfUseClaim(ClaimsPrincipal principal)
-            => principal.AddIdentity(IdentityClaims.CreateTermsOfUseAcceptedClaim());
 
         public static async Task UserAccountCreated(HttpContext context, IApprenticeAccount apprentice)
         {
@@ -94,7 +91,7 @@ namespace SFA.DAS.ApprenticeAccounts.Authentication
 
             if (authenticated.Succeeded)
             {
-                AddTermsOfUseClaim(authenticated.Principal);
+                authenticated.Principal.AddTermsOfUseAcceptedClaim();
                 await context.SignInAsync(authenticated.Principal, authenticated.Properties);
             }
         }

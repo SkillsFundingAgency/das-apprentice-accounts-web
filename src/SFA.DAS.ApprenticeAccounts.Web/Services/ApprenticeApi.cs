@@ -18,7 +18,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Services
             _client = client;
         }
 
-        public async Task<Apprentice?> TryGetApprentice(Guid apprenticeId)
+        public async Task<Apprentice> TryGetApprentice(Guid apprenticeId)
         {
             try
             {

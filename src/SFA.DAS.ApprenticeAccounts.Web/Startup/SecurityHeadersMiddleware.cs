@@ -1,7 +1,6 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Primitives;
-using SFA.DAS.ApprenticeCommitments.Web.Startup;
 
 namespace SFA.DAS.ApprenticeAccounts.Web.Startup
 {

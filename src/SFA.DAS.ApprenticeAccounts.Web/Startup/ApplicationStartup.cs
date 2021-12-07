@@ -1,15 +1,12 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SFA.DAS.ApprenticePortal.SharedUi.Menu;
 using SFA.DAS.ApprenticePortal.SharedUi.Startup;
-using System.Net;
-using SFA.DAS.ApprenticeAccounts.Web.Startup;
 
-namespace SFA.DAS.ApprenticeCommitments.Web.Startup
+namespace SFA.DAS.ApprenticeAccounts.Web.Startup
 {
     public class ApplicationStartup
     {
@@ -31,7 +28,7 @@ namespace SFA.DAS.ApprenticeCommitments.Web.Startup
                 .AddApplicationInsightsTelemetry()
                 .AddDataProtection(appConfig.ConnectionStrings, Environment)
                 .AddAuthentication(appConfig.Authentication, Environment)
-                .AddInnerApi(appConfig.ApprenticeAccountsApi)
+                .AddInnerApi(appConfig.ApprenticeAccountsApi, Environment)
                 .RegisterServices()
                 .AddControllers();
 

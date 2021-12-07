@@ -1,6 +1,5 @@
 ﻿#nullable disable
 
-using SFA.DAS.ApprenticeCommitments.Web.Startup;
 using SFA.DAS.ApprenticePortal.SharedUi;
 using SFA.DAS.ApprenticePortal.SharedUi.GoogleAnalytics;
 using SFA.DAS.ApprenticePortal.SharedUi.Menu;
