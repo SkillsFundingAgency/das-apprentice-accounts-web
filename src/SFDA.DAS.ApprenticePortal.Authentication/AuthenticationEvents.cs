@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Http;
 
-namespace SFA.DAS.ApprenticeAccounts.Authentication
+namespace SFA.DAS.ApprenticePortal.Authentication
 {
     public class AuthenticationEvents : OpenIdConnectEvents
     {
@@ -44,7 +44,7 @@ namespace SFA.DAS.ApprenticeAccounts.Authentication
             AddApprenticeAccountClaims(principal, apprentice);
         }
 
-        private async Task<IApprenticeAccount> GetApprentice(ClaimsPrincipal principal)
+        private async Task<IApprenticeAccount?> GetApprentice(ClaimsPrincipal principal)
         {
             var claim = principal.ApprenticeIdClaim();
 

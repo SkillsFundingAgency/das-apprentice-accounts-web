@@ -1,5 +1,5 @@
 ﻿using System;
-using SFA.DAS.ApprenticeAccounts.Authentication;
+using SFA.DAS.ApprenticePortal.Authentication;
 
 namespace SFA.DAS.ApprenticeAccounts.Web.Services.InnerApi
 {

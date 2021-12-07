@@ -2,7 +2,7 @@
 using System.Net.Mail;
 using System.Security.Claims;
 
-namespace SFA.DAS.ApprenticeAccounts.Authentication
+namespace SFA.DAS.ApprenticePortal.Authentication
 {
     public class AuthenticatedUser
     {

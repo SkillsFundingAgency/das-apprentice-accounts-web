@@ -1,10 +1,10 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using SFA.DAS.ApprenticeAccounts.Authentication;
 using SFA.DAS.ApprenticeAccounts.Web.Exceptions;
 using SFA.DAS.ApprenticeAccounts.Web.Services;
 using SFA.DAS.ApprenticeAccounts.Web.Services.InnerApi;
+using SFA.DAS.ApprenticePortal.Authentication;
 using SFA.DAS.ApprenticePortal.SharedUi.Menu;
 
 namespace SFA.DAS.ApprenticeAccounts.Web.Pages

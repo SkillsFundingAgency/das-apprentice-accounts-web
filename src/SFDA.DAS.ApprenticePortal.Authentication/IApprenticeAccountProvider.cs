@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace SFA.DAS.ApprenticeAccounts.Authentication
+namespace SFA.DAS.ApprenticePortal.Authentication
 {
     public interface IApprenticeAccountProvider
     {

@@ -10,7 +10,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Startup
     {
         public static IServiceCollection AddDataProtection(
             this IServiceCollection services,
-            DataProtectionConnectionStrings? configuration,
+            DataProtectionConnectionStrings configuration,
             IWebHostEnvironment environment)
         {
             if (environment.IsDevelopment())

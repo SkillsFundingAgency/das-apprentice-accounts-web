@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Security.Claims;
 
-namespace SFA.DAS.ApprenticeAccounts.Authentication
+namespace SFA.DAS.ApprenticePortal.Authentication
 {
     public class TestHelpers
     {

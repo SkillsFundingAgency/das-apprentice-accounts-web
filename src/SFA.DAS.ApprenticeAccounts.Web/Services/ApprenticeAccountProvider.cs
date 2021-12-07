@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using SFA.DAS.ApprenticeAccounts.Authentication;
+using SFA.DAS.ApprenticePortal.Authentication;
 
 namespace SFA.DAS.ApprenticeAccounts.Web.Services
 {
@@ -12,7 +12,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Services
         {
             _client = client;
         }
-        public async Task<IApprenticeAccount?> GetApprenticeAccount(Guid id)
+        public async Task<IApprenticeAccount> GetApprenticeAccount(Guid id)
         {
             return await _client.TryGetApprentice(id);
         }

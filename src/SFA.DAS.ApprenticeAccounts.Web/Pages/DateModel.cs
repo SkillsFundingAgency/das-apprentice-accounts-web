@@ -31,7 +31,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
 
         public bool IsValid => Validate() == null;
 
-        private Exception? Validate()
+        private Exception Validate()
         {
             if (!IsValidDay)
                 return new ArgumentException($"`{Day:00}` is not a valid day");

@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.ApprenticeAccounts.Web", "SFA.DAS.ApprenticeAccounts.Web\SFA.DAS.ApprenticeAccounts.Web.csproj", "{4577D895-9D16-49BF-B1E1-352755FF6A2C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.ApprenticeAccounts.Authentication", "SFDA.DAS.ApprenticeAccounts.Authentication\SFA.DAS.ApprenticeAccounts.Authentication.csproj", "{8DA0AA9F-C65D-4F1F-9E18-71347354D513}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{A95F1A4D-6BE0-4AD2-95BB-1ADBED71353F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SAF.DAS.ApprenticeAccounts.Web.UnitTests", "SAF.DAS.ApprenticeAccounts.Web.UnitTests\SAF.DAS.ApprenticeAccounts.Web.UnitTests.csproj", "{DD388E12-6FEC-4758-9B17-8B65C922DB85}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.ApprenticePortal.Authentication", "SFDA.DAS.ApprenticePortal.Authentication\SFA.DAS.ApprenticePortal.Authentication.csproj", "{57B895B2-4806-4A02-B9CD-ED65D75CFCC3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,14 +21,14 @@ Global
 		{4577D895-9D16-49BF-B1E1-352755FF6A2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4577D895-9D16-49BF-B1E1-352755FF6A2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4577D895-9D16-49BF-B1E1-352755FF6A2C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8DA0AA9F-C65D-4F1F-9E18-71347354D513}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8DA0AA9F-C65D-4F1F-9E18-71347354D513}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8DA0AA9F-C65D-4F1F-9E18-71347354D513}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8DA0AA9F-C65D-4F1F-9E18-71347354D513}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DD388E12-6FEC-4758-9B17-8B65C922DB85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DD388E12-6FEC-4758-9B17-8B65C922DB85}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD388E12-6FEC-4758-9B17-8B65C922DB85}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD388E12-6FEC-4758-9B17-8B65C922DB85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57B895B2-4806-4A02-B9CD-ED65D75CFCC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57B895B2-4806-4A02-B9CD-ED65D75CFCC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57B895B2-4806-4A02-B9CD-ED65D75CFCC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57B895B2-4806-4A02-B9CD-ED65D75CFCC3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

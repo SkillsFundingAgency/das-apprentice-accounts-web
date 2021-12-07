@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Logging;
-using SFA.DAS.ApprenticeAccounts.Authentication;
 using SFA.DAS.ApprenticeAccounts.Web.Services;
+using SFA.DAS.ApprenticePortal.Authentication;
 
 namespace SFA.DAS.ApprenticeAccounts.Web.Startup
 {

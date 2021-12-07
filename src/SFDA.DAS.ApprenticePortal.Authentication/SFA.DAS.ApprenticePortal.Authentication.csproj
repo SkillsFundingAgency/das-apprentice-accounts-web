@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Nullable>enable</Nullable>
 
     <Description>Apprentice portal shared UI components</Description>
     <Authors>ESFA</Authors>

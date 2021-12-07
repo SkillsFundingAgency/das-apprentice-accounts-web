@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace SFA.DAS.ApprenticeAccounts.Authentication
+namespace SFA.DAS.ApprenticePortal.Authentication
 {
     public static class ServiceCollectionExtensions
     {
