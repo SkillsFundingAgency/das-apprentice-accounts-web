@@ -37,7 +37,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SFDA.DAS.ApprenticeAccounts.Authentication\SFA.DAS.ApprenticeAccounts.Authentication.csproj" />
     <ProjectReference Include="..\SFDA.DAS.ApprenticePortal.Authentication\SFA.DAS.ApprenticePortal.Authentication.csproj" />
   </ItemGroup>
 
