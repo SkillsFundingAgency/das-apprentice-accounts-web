@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Routing;
 
-namespace SAF.DAS.ApprenticeAccounts.Web.UnitTests.AutoFixtureCustomisations
+namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests.AutoFixtureCustomisations
 {
     public class PageAutoDataAttribute : AutoDataAttribute
     {

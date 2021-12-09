@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -8,9 +7,9 @@ using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using SAF.DAS.ApprenticeAccounts.Web.UnitTests.Hooks;
+using SFA.DAS.ApprenticeAccounts.Web.UnitTests.Hooks;
 
-namespace SAF.DAS.ApprenticeAccounts.Web.UnitTests
+namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests
 {
     public class LocalWebApplicationFactory<TEntryPoint> : WebApplicationFactory<TEntryPoint> where TEntryPoint : class
     {

@@ -1,6 +1,6 @@
 ﻿using AutoFixture.AutoMoq;
 
-namespace SAF.DAS.ApprenticeAccounts.Web.UnitTests.AutoFixtureCustomisations
+namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests.AutoFixtureCustomisations
 {
     public class MoqAutoDataAttribute : AutoDataCustomisationAttributeBase
     {

@@ -8,7 +8,7 @@ using TechTalk.SpecFlow;
 using WireMock.RequestBuilders;
 using WireMock.ResponseBuilders;
 
-namespace SAF.DAS.ApprenticeAccounts.Web.UnitTests.FeatureSteps
+namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests.FeatureSteps
 {
     [Binding]
     [Scope(Feature = "AcceptTermsOfUse")]

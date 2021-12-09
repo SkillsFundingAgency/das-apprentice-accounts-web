@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using SFA.DAS.ApprenticePortal.Authentication;
 
-namespace SAF.DAS.ApprenticeAccounts.Web.UnitTests
+namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests
 {
     public class TestAuthenticationHandler : SignInAuthenticationHandler<AuthenticationSchemeOptions>
     {

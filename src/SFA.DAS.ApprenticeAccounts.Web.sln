@@ -7,11 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.ApprenticeAccounts.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{A95F1A4D-6BE0-4AD2-95BB-1ADBED71353F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SAF.DAS.ApprenticeAccounts.Web.UnitTests", "SAF.DAS.ApprenticeAccounts.Web.UnitTests\SAF.DAS.ApprenticeAccounts.Web.UnitTests.csproj", "{DD388E12-6FEC-4758-9B17-8B65C922DB85}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.ApprenticePortal.Authentication", "SFDA.DAS.ApprenticePortal.Authentication\SFA.DAS.ApprenticePortal.Authentication.csproj", "{57B895B2-4806-4A02-B9CD-ED65D75CFCC3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.ApprenticePortal.Authentication.UnitTests", "SFA.DAS.ApprenticePortal.Authentication.UnitTests\SFA.DAS.ApprenticePortal.Authentication.UnitTests.csproj", "{5454F07B-A711-4E9D-B2AB-8FDC08FFFD78}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.ApprenticePortal.Authentication.UnitTests", "SFA.DAS.ApprenticePortal.Authentication.UnitTests\SFA.DAS.ApprenticePortal.Authentication.UnitTests.csproj", "{5454F07B-A711-4E9D-B2AB-8FDC08FFFD78}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.ApprenticeAccounts.Web.UnitTests", "SFA.DAS.ApprenticeAccounts.Web.UnitTests\SFA.DAS.ApprenticeAccounts.Web.UnitTests.csproj", "{0A6861D1-0A6D-45CE-81EB-FFBDC5CD3032}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,6 @@ Global
 		{4577D895-9D16-49BF-B1E1-352755FF6A2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4577D895-9D16-49BF-B1E1-352755FF6A2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4577D895-9D16-49BF-B1E1-352755FF6A2C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DD388E12-6FEC-4758-9B17-8B65C922DB85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DD388E12-6FEC-4758-9B17-8B65C922DB85}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DD388E12-6FEC-4758-9B17-8B65C922DB85}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DD388E12-6FEC-4758-9B17-8B65C922DB85}.Release|Any CPU.Build.0 = Release|Any CPU
 		{57B895B2-4806-4A02-B9CD-ED65D75CFCC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{57B895B2-4806-4A02-B9CD-ED65D75CFCC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57B895B2-4806-4A02-B9CD-ED65D75CFCC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -35,12 +31,15 @@ Global
 		{5454F07B-A711-4E9D-B2AB-8FDC08FFFD78}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5454F07B-A711-4E9D-B2AB-8FDC08FFFD78}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5454F07B-A711-4E9D-B2AB-8FDC08FFFD78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A6861D1-0A6D-45CE-81EB-FFBDC5CD3032}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A6861D1-0A6D-45CE-81EB-FFBDC5CD3032}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A6861D1-0A6D-45CE-81EB-FFBDC5CD3032}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A6861D1-0A6D-45CE-81EB-FFBDC5CD3032}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{DD388E12-6FEC-4758-9B17-8B65C922DB85} = {A95F1A4D-6BE0-4AD2-95BB-1ADBED71353F}
 		{5454F07B-A711-4E9D-B2AB-8FDC08FFFD78} = {A95F1A4D-6BE0-4AD2-95BB-1ADBED71353F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution

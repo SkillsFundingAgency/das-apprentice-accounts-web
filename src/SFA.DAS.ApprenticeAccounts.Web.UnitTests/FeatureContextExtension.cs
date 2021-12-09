@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using TechTalk.SpecFlow;
 
-namespace SAF.DAS.ApprenticeAccounts.Web.UnitTests
+namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests
 {
     public static class FeatureContextExtension
     {

@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace SAF.DAS.ApprenticeAccounts.Web.UnitTests.Hooks
+namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests.Hooks
 {
     public class TestActionResult
     {

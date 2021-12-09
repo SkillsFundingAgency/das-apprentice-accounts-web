@@ -1,7 +1,7 @@
 ﻿using AutoFixture;
 using AutoFixture.NUnit3;
 
-namespace SAF.DAS.ApprenticeAccounts.Web.UnitTests.AutoFixtureCustomisations
+namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests.AutoFixtureCustomisations
 {
     public abstract class AutoDataCustomisationAttributeBase : AutoDataAttribute
     {

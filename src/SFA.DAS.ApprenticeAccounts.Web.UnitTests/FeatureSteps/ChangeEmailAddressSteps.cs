@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using TechTalk.SpecFlow;
 
-namespace SAF.DAS.ApprenticeAccounts.Web.UnitTests.FeatureSteps
+namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests.FeatureSteps
 {
     [Binding]
     [Scope(Feature = "ChangeEmailAddress")]
