@@ -40,9 +40,8 @@
     <ProjectReference Include="..\SFDA.DAS.ApprenticePortal.Authentication\SFA.DAS.ApprenticePortal.Authentication.csproj" />
   </ItemGroup>
 
-
   <ItemGroup>
-    <Content Update="wwwroot\lib\govuk-frontend\**" CopyToPublishDirectory="Never" />
+    <Folder Include="wwwroot\lib\" />
   </ItemGroup>
   
   <Target Name="ToolRestore" BeforeTargets="PreBuildEvent">

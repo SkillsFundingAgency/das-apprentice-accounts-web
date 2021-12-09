@@ -349,4 +349,14 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
-src/SFA.DAS.ApprenticeAccounts.Web/internal-nlog.txt
+appsettings.Development.json
+
+*-nlog.txt
+
+*.feature.cs
+# *.min.*
+# **/wwwroot/css/site.css
+# src/SFA.DAS.ApprenticeAccounts.Web/wwwroot/lib/govuk-frontend/
+# .DS_Store
+
+
