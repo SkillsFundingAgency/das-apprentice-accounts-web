@@ -39,10 +39,6 @@
   <ItemGroup>
     <ProjectReference Include="..\SFDA.DAS.ApprenticePortal.Authentication\SFA.DAS.ApprenticePortal.Authentication.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\lib\" />
-  </ItemGroup>
   
   <Target Name="ToolRestore" BeforeTargets="PreBuildEvent">
     <Exec Command="dotnet tool restore" StandardOutputImportance="high" />
