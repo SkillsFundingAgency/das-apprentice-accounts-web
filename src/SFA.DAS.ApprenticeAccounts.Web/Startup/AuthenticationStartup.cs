@@ -31,7 +31,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Startup
         {
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
             IdentityModelEventSource.ShowPII = true;
-            services.AddApprenticeAuthentication(config, environment);
+            services.AddApprenticeAuthentication(config.MetadataAddress.ToString(), environment);
             services.AddTransient<IApprenticeAccountProvider, ApprenticeAccountProvider>();
             return services;
         }
@@ -52,7 +52,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Startup
         }
     }
 
-    public class AuthenticationServiceConfiguration : IApprenticeAuthenticationConfiguration
+    public class AuthenticationServiceConfiguration 
     {
         public string MetadataAddress { get; set; } = null!;
         public string ChangeEmailPath { get; set; } = "/changeemail";

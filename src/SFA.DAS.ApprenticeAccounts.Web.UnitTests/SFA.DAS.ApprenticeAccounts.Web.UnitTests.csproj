@@ -20,7 +20,6 @@
     <PackageReference Include="SpecFlow.Plus.LivingDocPlugin" Version="3.9.50" />
     <PackageReference Include="WireMock.Net" Version="1.4.20" />
     <ProjectReference Include="..\SFA.DAS.ApprenticeAccounts.Web\SFA.DAS.ApprenticeAccounts.Web.csproj" />
-    <ProjectReference Include="..\SFA.DAS.ApprenticePortal.Authentication.UnitTests\SFA.DAS.ApprenticePortal.Authentication.UnitTests.csproj" />
   </ItemGroup>
 
 </Project>
