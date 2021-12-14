@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Testing.Handlers;
 using SFA.DAS.ApprenticeAccounts.Web.Startup;
 using SFA.DAS.ApprenticeAccounts.Web.UnitTests.Hooks;
+using SFA.DAS.ApprenticePortal.Authentication.TestHelpers;
 using TechTalk.SpecFlow;
 
 namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests.Bindings
@@ -57,7 +58,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests.Bindings
             }
 
             _context.Web = new ApprenticeAccountsWeb(Client, ActionResultHook, Config, Cookies);
-            TestAuthenticationHandler.Authentications.Clear();
+            AuthenticationHandlerForTesting.Authentications.Clear();
         }
 
         [AfterScenario()]

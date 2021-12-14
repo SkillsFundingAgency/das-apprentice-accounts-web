@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using FluentAssertions;
 using SFA.DAS.ApprenticeAccounts.Web.Pages;
+using SFA.DAS.ApprenticePortal.Authentication.TestHelpers;
 using TechTalk.SpecFlow;
 using WireMock.RequestBuilders;
 using WireMock.ResponseBuilders;
@@ -86,8 +87,8 @@ namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests.FeatureSteps
         [Then("the authentication includes the terms of use")]
         public void TheAuthenticationIncludesTheTermsOfUse()
         {
-            TestAuthenticationHandler.Authentications.Should().ContainSingle();
-            var claims = TestAuthenticationHandler.Authentications[0].Claims;
+            AuthenticationHandlerForTesting.Authentications.Should().ContainSingle();
+            var claims = AuthenticationHandlerForTesting.Authentications[0].Claims;
             claims.Should().ContainEquivalentOf(new
             {
                 Type = "TermsOfUseAccepted",

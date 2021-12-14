@@ -8,6 +8,7 @@ using FluentAssertions;
 using Newtonsoft.Json;
 using SFA.DAS.ApprenticeAccounts.Web.Pages;
 using SFA.DAS.ApprenticeAccounts.Web.Services.InnerApi;
+using SFA.DAS.ApprenticePortal.Authentication.TestHelpers;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 using WireMock.RequestBuilders;
@@ -309,8 +310,8 @@ namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests.FeatureSteps
         [Then(@"the authentication includes the apprentice's names: ""(.*)"" and ""(.*)""")]
         public void TheAuthenticationIncludesTheApprenticesNames(string firstName, string lastName)
         {
-            TestAuthenticationHandler.Authentications.Should().ContainSingle();
-            var claims = TestAuthenticationHandler.Authentications[0].Claims;
+            AuthenticationHandlerForTesting.Authentications.Should().ContainSingle();
+            var claims = AuthenticationHandlerForTesting.Authentications[0].Claims;
             claims.Should().ContainEquivalentOf(new
             {
                 Type = "given_name",

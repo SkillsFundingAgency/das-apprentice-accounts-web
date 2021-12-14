@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SFA.DAS.ApprenticeAccounts.Web.UnitTests.Hooks;
+using SFA.DAS.ApprenticePortal.Authentication.TestHelpers;
 
 namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests
 {
@@ -35,7 +36,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests
             {
                 services
                     .AddAuthentication("TestScheme")
-                    .AddScheme<AuthenticationSchemeOptions, TestAuthenticationHandler>("TestScheme", _ => { });
+                    .AddScheme<AuthenticationSchemeOptions, AuthenticationHandlerForTesting>("TestScheme", _ => { });
             });
 
             builder.ConfigureServices(s =>
