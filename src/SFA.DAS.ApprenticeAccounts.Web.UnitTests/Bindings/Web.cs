@@ -38,7 +38,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests.Bindings
                 {
                     {"EnvironmentName", "ACCEPTANCE_TESTS"},
                     {"Authentication:MetadataAddress", _context.IdentityServiceUrl},
-                    {"ApprenticeAccountsApi:ApiBaseUrl", _context.InnerApi.BaseAddress},
+                    {"ApprenticeAccountsApi:ApiBaseUrl", "https://WWW.GOOGLE.COM" }, // _context.InnerApi.BaseAddress},
                     {"ApplicationUrls:ApprenticeHomeUrl", "https://home/"},
                     {"ApplicationUrls:ApprenticeCommitmentsUrl", "https://confirm/"},
                     {"ApplicationUrls:ApprenticeLoginUrl", "https://login/"},
