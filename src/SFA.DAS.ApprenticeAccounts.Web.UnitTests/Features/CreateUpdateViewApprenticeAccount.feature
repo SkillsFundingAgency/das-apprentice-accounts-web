@@ -1,15 +1,15 @@
-﻿#Feature: CreateUpdateViewApprenticeAccount
-#	As an apprentice who wants to view, create and update my profile
-#	And be directed to the Terms of use page if not accepted
-#	Or be directed registration process page if this is part verification process
-#	And update the Users Claims to say they have created an account
-#
-#Scenario: The apprentice has just created a login account
-#	Given the apprentice has logged in but not created their account
-#	When accessing the account page 
-#	Then the apprentice should see the personal details page
-#	And the personal details should be empty
-#
+﻿Feature: CreateUpdateViewApprenticeAccount
+	As an apprentice who wants to view, create and update my profile
+	And be directed to the Terms of use page if not accepted
+	Or be directed registration process page if this is part verification process
+	And update the Users Claims to say they have created an account
+
+Scenario: The apprentice has just created a login account
+	Given the apprentice has logged in but not created their account
+	When accessing the account page 
+	Then the apprentice should see the personal details page
+	And the personal details should be empty
+
 #Scenario: The apprentice has previously created a login account and created an apprentice account
 #	Given the apprentice has logged in 
 #	And the apprentice has created their account

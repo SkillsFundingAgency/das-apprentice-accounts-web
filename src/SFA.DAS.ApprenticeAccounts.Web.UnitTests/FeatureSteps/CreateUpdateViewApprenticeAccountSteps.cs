@@ -62,13 +62,13 @@ namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests.FeatureSteps
         [Given("the apprentice has not created their account")]
         public void GivenTheApprenticeHasNotCreatedTheirAccount()
         {
-            _context.InnerApi.MockServer.Given(
-                Request.Create()
-                    .UsingGet()
-                    .WithPath($"/apprentices/{_userContext.ApprenticeId}"))
+            //_context.InnerApi.MockServer.Given(
+            //    Request.Create()
+            //        .UsingGet()
+            //        .WithPath($"/apprentices/{_userContext.ApprenticeId}"))
 
-                .RespondWith(Response.Create()
-                    .WithStatusCode(404));
+            //    .RespondWith(Response.Create()
+            //        .WithStatusCode(404));
         }
 
         [Given(@"the registration process has been triggered")]
