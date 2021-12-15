@@ -30,8 +30,8 @@ namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests.FeatureSteps
         {
             _context = context;
             _userContext = userContext;
-            _context.ClearCookies();
-            _context.InnerApi.Reset();
+            //_context.ClearCookies();
+            //_context.InnerApi.Reset();
         }
 
         [Given("the apprentice has logged in")]
