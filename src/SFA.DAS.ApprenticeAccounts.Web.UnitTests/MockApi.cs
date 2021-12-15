@@ -13,7 +13,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests
 
         public MockApi()
         {
-            MockServer = WireMockServer.Start();
+            MockServer = WireMockServer.Start(null, true);
             BaseAddress = MockServer.Urls[0];
         }
 
