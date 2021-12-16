@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="WireMock.Net" Version="1.4.20" />
+    <PackageReference Include="WireMock.Net.StandAlone" Version="1.4.20" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SFA.DAS.ApprenticeAccounts.Web\SFA.DAS.ApprenticeAccounts.Web.csproj" />
+  </ItemGroup>
+
+</Project>

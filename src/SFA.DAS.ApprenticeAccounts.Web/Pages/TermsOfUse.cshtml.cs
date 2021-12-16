@@ -38,23 +38,8 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
 
             if (Request.Cookies.Keys.Contains("RegistrationCode"))
                 return Redirect(_urlHelper.Generate(NavigationSection.Registration));
-            else
-                return Redirect(_urlHelper.Generate(NavigationSection.Home, "Home"));
 
+            return Redirect(_urlHelper.Generate(NavigationSection.Home, "Home"));
         }
-
-
-        //private IActionResult RedirectAfterUpdate()
-        //{
-        //    if (!TermsOfUseAccepted)
-        //        return RedirectToPage("/TermsOfUse");
-
-        //    if (Request.Cookies.Keys.Contains("RegistrationCode"))
-        //        return Redirect(_urlHelper.Generate(NavigationSection.Registration));
-
-        //    return Redirect(_urlHelper.Generate(NavigationSection.Home, "Home"));
-        //}
-
-
     }
 }
