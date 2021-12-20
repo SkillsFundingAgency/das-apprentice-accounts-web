@@ -37,7 +37,7 @@ Scenario: The apprentice updates their account details
 	Then the apprentice account is updated
 	And the apprentice should be redirected to Accept Terms of Use Page
 
-Scenario: The apprentice updates their account details, but hadn't accepted terms of use 
+Scenario: The apprentice updates their account details and has already accepted terms of use 
 	Given the apprentice has logged in 
 	And the apprentice has created their account
 	And the apprentice has accepted the terms of use
@@ -46,7 +46,7 @@ Scenario: The apprentice updates their account details, but hadn't accepted term
 	| First name | Last name  | EmailAddress    | Date of Birth |
 	| Sally      | Robertson  | bob@example.com | 2000-01-30    |
 	Then the apprentice account is updated
-	#And the authentication includes the apprentice's names: "Sally" and "Robertson"
+	And the authentication includes the apprentice's names: "Sally" and "Robertson"
 	And the apprentice should be sent to the home page
 
 Scenario: The apprentice updates their account details, as part of the registration process 

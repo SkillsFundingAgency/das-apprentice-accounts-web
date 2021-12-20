@@ -28,13 +28,13 @@ namespace SFA.DAS.ApprenticeAccounts.Web.MockServer
             {
                 Console.WriteLine("Running with -hasAccount");
 
-                apiBuilder.WithUserAccountButNoTermsOfUseAgreed();
+                apiBuilder = apiBuilder.WithUserAccountButNoTermsOfUseAgreed();
             }
             else if (args.Contains("-hasTerms"))
             {
                 Console.WriteLine("Running with -hasTerms");
 
-                apiBuilder.WithUserAccountAndTermsOfUseAgreed();
+                apiBuilder = apiBuilder.WithUserAccountAndTermsOfUseAgreed();
             }
             else
             {
