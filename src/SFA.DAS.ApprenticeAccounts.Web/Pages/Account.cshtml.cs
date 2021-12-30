@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -62,7 +63,18 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
         {
             try
             {
+
+                var apprentice = new Apprentice
+                {
+                    ApprenticeId = user.ApprenticeId,
+                    FirstName = FirstName,
+                    LastName = LastName,
+                    DateOfBirth = DateOfBirth.IsValid ? DateOfBirth.Date : default,
+                    Email = user.Email.ToString(),
+                };
+
                 await _apprentices.UpdateApprentice(user.ApprenticeId, FirstName, LastName, DateOfBirth.Date);
+                await AuthenticationEvents.UserAccountUpdated(HttpContext, apprentice);
 
                 return RedirectAfterUpdate();
             }
@@ -72,7 +84,12 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
                 {
                     ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
                 }
+
                 return Page();
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
         }
 
