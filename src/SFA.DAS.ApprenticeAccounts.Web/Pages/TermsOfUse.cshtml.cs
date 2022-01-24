@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SFA.DAS.ApprenticeAccounts.Web.Services;
@@ -8,31 +9,42 @@ using SFA.DAS.ApprenticePortal.SharedUi.Menu;
 namespace SFA.DAS.ApprenticeAccounts.Web.Pages
 {
     [HideNavigationBar]
+    [AllowAnonymous]
     public class TermsOfUseModel : PageModel
     {
-        private readonly AuthenticatedUser _apprentice;
         private readonly ApprenticeApi _client;
         private readonly NavigationUrlHelper _urlHelper;
+
+        public bool PresentAgreement { get; set; }
 
         [BindProperty]
         public bool TermsOfUseAccepted { get; set; }
 
-        public TermsOfUseModel(AuthenticatedUser apprentice, ApprenticeApi client, NavigationUrlHelper urlHelper)
+        public TermsOfUseModel(ApprenticeApi client, NavigationUrlHelper urlHelper)
         {
-            _apprentice = apprentice;
             _client = client;
             _urlHelper = urlHelper;
         }
 
-        public void OnGet()
+        public async Task OnGet()
         {
+            if(User.Identity.IsAuthenticated)
+            {
+                var user = new AuthenticatedUser(User);
+                var apprentice = await _client.TryGetApprentice(user.ApprenticeId);
+                PresentAgreement = apprentice?.TermsOfUseAccepted == false;
+            }
+            else
+            {
+                PresentAgreement = false;
+            }
         }
 
-        public async Task<IActionResult> OnPost()
+        public async Task<IActionResult> OnPost([FromServices] AuthenticatedUser apprentice)
         {
             if (TermsOfUseAccepted)
             {
-                await _client.AcceptTermsOfUse(_apprentice.ApprenticeId);
+                await _client.AcceptTermsOfUse(apprentice.ApprenticeId);
                 await AuthenticationEvents.TermsOfUseAccepted(HttpContext);
             }
 

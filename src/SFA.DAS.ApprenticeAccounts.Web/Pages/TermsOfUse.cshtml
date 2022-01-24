@@ -52,9 +52,12 @@
             <li>the content and availability of external websites that link to the service or which are linked from it</li>
         </ul>
 
-        <form method="post" id="terms-of-use">
-            <input type="hidden" asp-for="TermsOfUseAccepted" value="true" />
-            <button class="govuk-button" data-module="govuk-button">Agree and continue</button>
-        </form>
+        @if (Model.PresentAgreement)
+        {
+            <form method="post" id="terms-of-use">
+                <input type="hidden" asp-for="TermsOfUseAccepted" value="true" />
+                <button class="govuk-button" data-module="govuk-button">Agree and continue</button>
+            </form>
+        }
     </div>
 </div>
