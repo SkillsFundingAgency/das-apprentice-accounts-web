@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Net;
 using System.Net.Http.Headers;
+using SFA.DAS.ApprenticeAccounts.Web.MockServer;
 using SFA.DAS.ApprenticeAccounts.Web.UnitTests.Hooks;
 using TechTalk.SpecFlow;
 
@@ -17,7 +18,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests
         }
 
         public ApprenticeAccountsWeb Web { get; set; }
-        public MockApi InnerApi => _feature.GetOrAdd<MockApi>();
+        public PortalOuterApiMock InnerApi => _feature.GetOrAdd<PortalOuterApiMock>();
         public TestActionResult ActionResult { get; set; }
         public string IdentityServiceUrl { get; } = "https://identity";
 

@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <IsPackable>false</IsPackable>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,6 +20,7 @@
     <PackageReference Include="SpecFlow.NUnit" Version="3.9.22" />
     <PackageReference Include="SpecFlow.Plus.LivingDocPlugin" Version="3.9.50" />
     <PackageReference Include="WireMock.Net" Version="1.4.20" />
+    <ProjectReference Include="..\SFA.DAS.ApprenticeAccounts.Web.MockServer\SFA.DAS.ApprenticeAccounts.Web.MockServer.csproj" />
     <ProjectReference Include="..\SFA.DAS.ApprenticeAccounts.Web\SFA.DAS.ApprenticeAccounts.Web.csproj" />
   </ItemGroup>
 

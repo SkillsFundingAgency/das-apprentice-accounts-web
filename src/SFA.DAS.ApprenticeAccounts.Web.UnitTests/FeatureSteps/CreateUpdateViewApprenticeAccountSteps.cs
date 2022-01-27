@@ -1,18 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
 using FluentAssertions;
 using Newtonsoft.Json;
 using SFA.DAS.ApprenticeAccounts.Web.Pages;
-using SFA.DAS.ApprenticeAccounts.Web.Services.InnerApi;
 using SFA.DAS.ApprenticePortal.Authentication.TestHelpers;
+using SFA.DAS.ApprenticePortal.OuterApi.Mock.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 using WireMock.RequestBuilders;
-using WireMock.ResponseBuilders;
 
 namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests.FeatureSteps
 {
@@ -48,7 +46,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests.FeatureSteps
         }
 
         [When(@"accessing the account page")]
-        public async Task  WhenAccessingTheProfilePage()
+        public async Task WhenAccessingTheProfilePage()
         {
             await _context.Web.Get("/account");
         }
@@ -62,13 +60,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests.FeatureSteps
         [Given("the apprentice has not created their account")]
         public void GivenTheApprenticeHasNotCreatedTheirAccount()
         {
-            _context.InnerApi.MockServer.Given(
-                Request.Create()
-                    .UsingGet()
-                    .WithPath($"/apprentices/{_userContext.ApprenticeId}"))
-
-                .RespondWith(Response.Create()
-                    .WithStatusCode(404));
+            _context.InnerApi.WithoutApprentice(_userContext.ApprenticeId);
         }
 
         [Given(@"the registration process has been triggered")]
@@ -127,8 +119,8 @@ namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests.FeatureSteps
             page.Model.Should().BeOfType<AccountModel>()
                 .Which.Should().BeEquivalentTo(new
                 {
-                    FirstName = (string) null, 
-                    LastName = (string) null, 
+                    FirstName = (string)null,
+                    LastName = (string)null,
                     DateOfBirth = (DateModel)null,
                     TermsOfUseAccepted = false,
                     IsCreating = true
@@ -157,30 +149,17 @@ namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests.FeatureSteps
         [Given("the apprentice has created their account")]
         public void GivenTheApprenticeHasCreatedTheirAccount()
         {
-            _apprentice = new Apprentice
-            {
-                ApprenticeId = Guid.NewGuid(),
-                Email = "someone@example.com",
-                FirstName = "Someone",
-                LastName = "Wurst",
-                DateOfBirth = new DateTime(2008, 08, 21),
-                TermsOfUseAccepted = false,
-            };
+            _apprentice = An.Apprentice
+                .WithId(_userContext.ApprenticeId)
+                .WithoutTermsOfUseAccepted();
 
-            _context.InnerApi.MockServer.Given(
-                Request.Create()
-                    .UsingGet()
-                    .WithPath($"/apprentices/{_userContext.ApprenticeId}")
-                                              )
-                .RespondWith(Response.Create()
-                    .WithStatusCode(200)
-                    .WithBodyAsJson(_apprentice));
+            _context.InnerApi.WithApprentice(_apprentice);
         }
 
         [Given("the apprentice has accepted the terms of use")]
         public void GivenTheApprenticeHasAcceptedTheTermsOfUse()
         {
-            _apprentice.TermsOfUseAccepted = true;
+            _apprentice = _apprentice.WithTermsOfUseAccepted();
         }
 
         [When("the apprentice creates their account with")]
@@ -195,9 +174,9 @@ namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests.FeatureSteps
                 {
                     { "FirstName", _postedApprenticeModel.FirstName },
                     { "LastName", _postedApprenticeModel.LastName },
-                    { "DateOfBirth.Day", _postedApprenticeModel?.DateOfBirth?.Day.ToString() },
-                    { "DateOfBirth.Month", _postedApprenticeModel?.DateOfBirth?.Month.ToString() },
-                    { "DateOfBirth.Year", _postedApprenticeModel?.DateOfBirth?.Year.ToString() },
+                    { "DateOfBirth.Day", _postedApprenticeModel.DateOfBirth.Day?.ToString() ?? ""},
+                    { "DateOfBirth.Month", _postedApprenticeModel.DateOfBirth.Month?.ToString() ?? "" },
+                    { "DateOfBirth.Year", _postedApprenticeModel.DateOfBirth.Year?.ToString() ?? "" },
                 }));
         }
 
@@ -213,10 +192,10 @@ namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests.FeatureSteps
                 {
                     { "FirstName", _postedApprenticeModel.FirstName },
                     { "LastName", _postedApprenticeModel.LastName },
-                    { "DateOfBirth.Day", _postedApprenticeModel?.DateOfBirth?.Day.ToString() },
-                    { "DateOfBirth.Month", _postedApprenticeModel?.DateOfBirth?.Month.ToString() },
-                    { "DateOfBirth.Year", _postedApprenticeModel?.DateOfBirth?.Year.ToString() },
-                    { "TermsOfUseAccepted", _apprentice?.TermsOfUseAccepted.ToString() },
+                    { "DateOfBirth.Day", _postedApprenticeModel.DateOfBirth.Day?.ToString() ?? ""},
+                    { "DateOfBirth.Month", _postedApprenticeModel.DateOfBirth.Month?.ToString() ?? "" },
+                    { "DateOfBirth.Year", _postedApprenticeModel.DateOfBirth.Year?.ToString() ?? "" },
+                    { "TermsOfUseAccepted", _apprentice.TermsOfUseAccepted.ToString() },
                 }));
         }
 
@@ -257,23 +236,11 @@ namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests.FeatureSteps
         [Given("the API will accept the account create")]
         public void WhenTheApiAcceptsTheAccount()
         {
-            _context.InnerApi.MockServer.Given(
-                Request.Create()
-                    .UsingPost()
-                    .WithPath("/apprentices"))
-                .RespondWith(Response.Create()
-                    .WithStatusCode(200));
         }
 
         [Given("the API will accept the account update")]
         public void GivenTheAPIWillAcceptTheAccountUpdate()
         {
-            _context.InnerApi.MockServer.Given(
-                Request.Create()
-                    .UsingPatch()
-                    .WithPath("/apprentices/*"))
-                .RespondWith(Response.Create()
-                    .WithStatusCode(200));
         }
 
         [Given("the API will reject the identity with the following errors")]
@@ -286,11 +253,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests.FeatureSteps
                     row => new[] { row["Error Message"] })
             };
 
-            _context.InnerApi.MockServer
-                .Given(Request.Create().WithPath("/apprentices"))
-                .RespondWith(Response.Create()
-                    .WithStatusCode(HttpStatusCode.BadRequest)
-                    .WithBodyAsJson(errors));
+            _context.InnerApi.RejectNewAccounts(errors);
         }
 
         [Then("the apprentice should see the following error messages")]
