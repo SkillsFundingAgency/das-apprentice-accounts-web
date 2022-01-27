@@ -82,7 +82,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.MockServer
             return this;
         }
 
-        internal PortalOuterApiMock WithApprentices(params Apprentice[] apprentices)
+        public PortalOuterApiMock WithApprentices(params Apprentice[] apprentices)
             => apprentices.Aggregate(this, (mock, apprentice) => mock.WithApprentice(apprentice));
 
         public void Dispose()
