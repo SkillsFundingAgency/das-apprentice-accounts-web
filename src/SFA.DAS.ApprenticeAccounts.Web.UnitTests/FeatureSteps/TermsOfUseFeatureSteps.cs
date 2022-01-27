@@ -1,10 +1,12 @@
+using AutoFixture;
+using FluentAssertions;
+using SFA.DAS.ApprenticeAccounts.Web.Pages;
+using SFA.DAS.ApprenticeAccounts.Web.Services.InnerApi;
+using SFA.DAS.ApprenticePortal.Authentication.TestHelpers;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using FluentAssertions;
-using SFA.DAS.ApprenticeAccounts.Web.Pages;
-using SFA.DAS.ApprenticePortal.Authentication.TestHelpers;
 using TechTalk.SpecFlow;
 using WireMock.RequestBuilders;
 using WireMock.ResponseBuilders;
@@ -15,6 +17,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests.FeatureSteps
     [Scope(Feature = "AcceptTermsOfUse")]
     public class TermsOfUseFeatureSteps : StepsBase
     {
+        private readonly Fixture _fixture = new Fixture();
         private readonly TestContext _context;
         private readonly AuthenticatedUserContext _userContext;
         private string _registrationCode;
@@ -33,8 +36,34 @@ namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests.FeatureSteps
             _context.UserLoggedIn(_userContext.ApprenticeId);
         }
 
+        [Given("the apprentice has an account")]
+        public void GivenTheApprenticeHasAnAccount()
+        {
+            AddApprenticeAccount(termsOfUseAccepted: false);
+        }
+
+        [Given("the apprentice has an account with terms of use accepted")]
+        public void GivenTheApprenticeHasAnAccountWithTermsOfUseAccepted()
+        {
+            AddApprenticeAccount(termsOfUseAccepted: true);
+        }
+
+        private void AddApprenticeAccount(bool termsOfUseAccepted)
+        {
+            var apprentice = _fixture
+                .Build<Apprentice>()
+                .With(a => a.TermsOfUseAccepted, termsOfUseAccepted)
+                .Create();
+
+            _context.InnerApi.MockServer
+                .Given(Request.Create()
+                    .WithPath("/apprentices/*").UsingGet())
+                .RespondWith(Response.Create()
+                    .WithBodyAsJson(apprentice));
+        }
+
         [When(@"accessing the terms of use page")]
-        public async Task  WhenAccessingTheTermsOfUseePage()
+        public async Task WhenAccessingTheTermsOfUseePage()
         {
             await _context.Web.Get("/termsofuse");
         }
@@ -71,7 +100,6 @@ namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests.FeatureSteps
             var action = _context.ActionResult.LastRedirectResult;
             action.Url.Should().Be("https://confirm/Register");
         }
-
 
         [Given("the API will accept the confirmation")]
         public void GivenTheAPIWillAcceptTheAccountUpdate()
@@ -139,6 +167,22 @@ namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests.FeatureSteps
                     .UsingPatch());
 
             posts.Should().NotBeEmpty();
+        }
+
+        [Then("is not able to accept the Terms of Use")]
+        public void ThenIsNotAbleToAcceptTheTermsOfUse()
+        {
+            _context.ActionResult.LastPageResult.Model
+                .Should().BeOfType<TermsOfUseModel>()
+                .Which.PresentAgreement.Should().BeFalse();
+        }
+
+        [Then("is able to accept the Terms of Use")]
+        public void ThenIsAbleToAcceptTheTermsOfUse()
+        {
+            _context.ActionResult.LastPageResult.Model
+                .Should().BeOfType<TermsOfUseModel>()
+                .Which.PresentAgreement.Should().BeTrue();
         }
     }
 }
