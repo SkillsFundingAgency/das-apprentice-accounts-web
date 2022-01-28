@@ -24,5 +24,10 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Controllers
                        $"profile/{clientId}/changeemail/confirm?email={HttpUtility.UrlEncode(email)}&token={HttpUtility.UrlEncode(token)}";
             return Redirect(endpoint);
         }
+
+        [Authorize]
+        [HttpGet("/AcceptTermsOfUse")]
+        public IActionResult AcceptTermsOfUse()
+            => Redirect("/TermsOfUse");
     }
 }
