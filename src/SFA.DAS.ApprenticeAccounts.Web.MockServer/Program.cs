@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SFA.DAS.ApprenticePortal.OuterApi.Mock.Models;
+using System;
 using System.Linq;
 
 namespace SFA.DAS.ApprenticeAccounts.Web.MockServer
@@ -22,26 +23,24 @@ namespace SFA.DAS.ApprenticeAccounts.Web.MockServer
                 return;
             }
 
-            var apiBuilder = ApprenticeAccountsApiBuilder.Create(5801);
+            var apiBuilder = new PortalOuterApiMock(5801, true);
 
             if (args.Contains("-hasAccount"))
             {
                 Console.WriteLine("Running with -hasAccount");
 
-                apiBuilder = apiBuilder.WithUserAccountButNoTermsOfUseAgreed();
+                apiBuilder.WithApprentice(An.Apprentice.WithoutTermsOfUseAccepted());
             }
             else if (args.Contains("-hasTerms"))
             {
                 Console.WriteLine("Running with -hasTerms");
 
-                apiBuilder = apiBuilder.WithUserAccountAndTermsOfUseAgreed();
+                apiBuilder.WithApprentice(An.Apprentice.WithTermsOfUseAccepted());
             }
             else
             {
                 Console.WriteLine("Running with no account found");
             }
-
-            apiBuilder.BuildAndRun();
 
             Console.WriteLine("Press any key to stop the servers");
             Console.ReadKey();
