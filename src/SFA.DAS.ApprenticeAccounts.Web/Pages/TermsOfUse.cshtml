@@ -9,7 +9,7 @@
 
         <h1 class="govuk-heading-l">Terms of use of service</h1>
 
-        @if (Model.IsPrivateBetaUser && !Model.TermsOfUseAccepted)
+        @if (Model.IsPrivateBetaUser && !Model.TermsOfUseAccepted && Model.TermsOfUsePreviouslyAccepted)
         {
             <div class="gov-inset-text">
                 <h3 class="govuk-heading-s">What's changed</h3>
@@ -36,7 +36,7 @@
             <li>sign out at the end of each session</li>
             <li>adhere to the <a class="govuk-link" href="https://www.legislation.gov.uk/ukpga/1990/18/contents" target="_blank" rel="noopener noreferrer">computer misuse act</a> 1990</li>
             <li>notify us of a change to your email address</li>
-            @if (Model.IsPrivateBetaUser && !Model.TermsOfUseAccepted)
+            @if (Model.IsPrivateBetaUser)
             {
                 <li>be contacted by email to give feedback on your training provider</li>
             }
