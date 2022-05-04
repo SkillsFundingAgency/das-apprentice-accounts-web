@@ -20,6 +20,8 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
         [BindProperty]
         public bool TermsOfUseAccepted { get; set; }
 
+        public bool IsPrivateBetaUser { get; set; }
+
         public TermsOfUseModel(ApprenticeApi client, NavigationUrlHelper urlHelper)
         {
             _client = client;
