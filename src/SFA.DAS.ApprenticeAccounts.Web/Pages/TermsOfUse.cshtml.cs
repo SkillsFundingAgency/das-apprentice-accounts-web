@@ -37,9 +37,12 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
                 var user = new AuthenticatedUser(User);
                 var apprentice = await _client.TryGetApprentice(user.ApprenticeId);
                 PresentAgreement = apprentice?.TermsOfUseAccepted == false;
-                TermsOfUseAccepted = apprentice.TermsOfUseAccepted;
-                TermsOfUsePreviouslyAccepted = apprentice.TermsOfUsePreviouslyAccepted;
-                IsPrivateBetaUser = apprentice.IsPrivateBetaUser;
+                if (apprentice != null)
+                {
+                    TermsOfUseAccepted = apprentice.TermsOfUseAccepted;
+                    TermsOfUsePreviouslyAccepted = apprentice.TermsOfUsePreviouslyAccepted;
+                    IsPrivateBetaUser = apprentice.IsPrivateBetaUser;
+                }
             }
             else
             {
