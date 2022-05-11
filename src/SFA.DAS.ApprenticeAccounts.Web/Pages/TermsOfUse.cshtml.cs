@@ -20,6 +20,10 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
         [BindProperty]
         public bool TermsOfUseAccepted { get; set; }
 
+        public bool ReacceptTermsOfUseRequired { get; set; }
+
+        public bool IsPrivateBetaUser { get; set; }
+
         public TermsOfUseModel(ApprenticeApi client, NavigationUrlHelper urlHelper)
         {
             _client = client;
@@ -32,7 +36,11 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
             {
                 var user = new AuthenticatedUser(User);
                 var apprentice = await _client.TryGetApprentice(user.ApprenticeId);
-                PresentAgreement = apprentice?.TermsOfUseAccepted == false;
+
+                IsPrivateBetaUser = apprentice?.IsPrivateBetaUser == true;
+                ReacceptTermsOfUseRequired = apprentice?.ReacceptTermsOfUseRequired == true;
+                
+                PresentAgreement = apprentice?.TermsOfUseAccepted == false || ReacceptTermsOfUseRequired;
             }
             else
             {
