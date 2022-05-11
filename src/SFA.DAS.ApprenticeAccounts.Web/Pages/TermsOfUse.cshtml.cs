@@ -41,7 +41,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
                 IsPrivateBetaUser = apprentice?.IsPrivateBetaUser == true;
                 ReacceptTermsOfUseRequired = apprentice?.ReacceptTermsOfUseRequired == true;
                 
-                PresentAgreement = termsOfUseAccepted || ReacceptTermsOfUseRequired;
+                PresentAgreement = !termsOfUseAccepted || ReacceptTermsOfUseRequired;
             }
             else
             {
