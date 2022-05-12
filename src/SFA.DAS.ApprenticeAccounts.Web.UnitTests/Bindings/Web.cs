@@ -43,6 +43,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests.Bindings
                     {"ApplicationUrls:ApprenticeAccountsUrl", "https://accounts/"},
                     {"ApplicationUrls:ApprenticeCommitmentsUrl", "https://confirm/"},
                     {"ApplicationUrls:ApprenticeLoginUrl", "https://login/"},
+                    {"ApplicationUrls:ApprenticeFeedbackUrl", "https://feedback/"},
                     {"ZenDesk:ZendeskSectionId", _fixture.Create<string>()},
                     {"ZenDesk:ZendeskSnippetKey", _fixture.Create<string>()},
                     {"ZenDesk:ZendeskCobrowsingSnippetKey", _fixture.Create<string>()},
