@@ -7,6 +7,10 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Services
     {
         public async Task<bool> ShowConfirmMyApprenticeship() => true;
 
-        public async Task<bool> ShowApprenticeFeedback() => true;
+        // The Apprentice Accounts Web does not have an Outer Api
+        // Only an Inner Api and we can't determine everything without
+        // the CMAD record. So behaving that in Apprentice Accounts you can't
+        // See Feedback.
+        public async Task<bool> ShowApprenticeFeedback() => false;
     }
 }
