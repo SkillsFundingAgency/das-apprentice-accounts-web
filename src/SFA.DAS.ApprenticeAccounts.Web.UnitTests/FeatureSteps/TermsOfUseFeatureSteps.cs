@@ -39,13 +39,13 @@ namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests.FeatureSteps
         [Given("the apprentice has an account")]
         public void GivenTheApprenticeHasAnAccount()
         {
-            AddApprenticeAccount(termsOfUseAccepted: false, reacceptTermsOfUseRequired: false);
+            AddApprenticeAccount(termsOfUseAccepted: false);
         }
 
         [Given("the apprentice has an account with terms of use accepted")]
         public void GivenTheApprenticeHasAnAccountWithTermsOfUseAccepted()
         {
-            AddApprenticeAccount(termsOfUseAccepted: true, reacceptTermsOfUseRequired: false);
+            AddApprenticeAccount(termsOfUseAccepted: true);
         }
 
         [Given("the apprentice has an account with terms of use needing updating")]
@@ -54,7 +54,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests.FeatureSteps
             AddApprenticeAccount(termsOfUseAccepted: true, reacceptTermsOfUseRequired: true);
         }
 
-        private void AddApprenticeAccount(bool termsOfUseAccepted, bool reacceptTermsOfUseRequired)
+        private void AddApprenticeAccount(bool termsOfUseAccepted, bool reacceptTermsOfUseRequired = false)
         {
             var apprentice = _fixture
                 .Build<Apprentice>()
