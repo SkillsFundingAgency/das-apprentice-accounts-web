@@ -51,7 +51,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests.FeatureSteps
         [Given("the apprentice has an account with terms of use needing updating")]
         public void GivenTheApprenticeHasAnAccountWithTermsOfUseNeedingUpdating()
         {
-            AddApprenticeAccount(termsOfUseAccepted: true, reacceptTermsOfUseRequired: true);
+            AddApprenticeAccount(termsOfUseAccepted: false, reacceptTermsOfUseRequired: true);
         }
 
         private void AddApprenticeAccount(bool termsOfUseAccepted, bool reacceptTermsOfUseRequired = false)

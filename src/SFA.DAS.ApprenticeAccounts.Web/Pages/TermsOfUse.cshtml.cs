@@ -39,8 +39,8 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
 
                 IsPrivateBetaUser = apprentice?.IsPrivateBetaUser == true;
                 ReacceptTermsOfUseRequired = apprentice?.ReacceptTermsOfUseRequired == true;
-                
-                PresentAgreement = apprentice?.TermsOfUseAccepted == false || ReacceptTermsOfUseRequired;
+                // If Reaccept is true, TermsOfUseAccepted is forced to false, so check can just be on TermsOfUse.
+                PresentAgreement = apprentice?.TermsOfUseAccepted == false;
             }
             else
             {
