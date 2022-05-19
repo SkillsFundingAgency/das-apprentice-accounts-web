@@ -29,6 +29,13 @@ Scenario: The apprentice has accepted terms of use and views them again
 	Then the apprentice is shown the Terms of Use
 	And is not able to accept the Terms of Use
 
+Scenario: The apprentice needs to accept an updated terms of use
+	Given the apprentice has logged in
+	And the apprentice has an account with terms of use needing updating
+	When accessing the terms of use page 
+	Then the apprentice is shown the Terms of Use
+	And is able to accept the Terms of Use
+
 Scenario: The apprentice confirms terms of use
 	Given the apprentice has logged in 
 	And the API will accept the confirmation

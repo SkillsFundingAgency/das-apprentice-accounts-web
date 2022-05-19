@@ -48,11 +48,18 @@ namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests.FeatureSteps
             AddApprenticeAccount(termsOfUseAccepted: true);
         }
 
-        private void AddApprenticeAccount(bool termsOfUseAccepted)
+        [Given("the apprentice has an account with terms of use needing updating")]
+        public void GivenTheApprenticeHasAnAccountWithTermsOfUseNeedingUpdating()
+        {
+            AddApprenticeAccount(termsOfUseAccepted: false, reacceptTermsOfUseRequired: true);
+        }
+
+        private void AddApprenticeAccount(bool termsOfUseAccepted, bool reacceptTermsOfUseRequired = false)
         {
             var apprentice = _fixture
                 .Build<Apprentice>()
                 .With(a => a.TermsOfUseAccepted, termsOfUseAccepted)
+                .With(b => b.ReacceptTermsOfUseRequired, reacceptTermsOfUseRequired)
                 .Create();
 
             _context.InnerApi.MockServer
@@ -63,7 +70,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests.FeatureSteps
         }
 
         [When(@"accessing the terms of use page")]
-        public async Task WhenAccessingTheTermsOfUseePage()
+        public async Task WhenAccessingTheTermsOfUsePage()
         {
             await _context.Web.Get("/termsofuse");
         }
