@@ -39,9 +39,16 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Startup
                 options.SetCurrentNavigationSection(NavigationSection.ConfirmMyApprenticeship);
             });
 
-            services.AddRazorPages(options =>
-                options.Conventions.AddPageRoute("/account", "{*url}"));
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            services.AddRazorPages().AddRazorPagesOptions(
+                options =>
+                {
+                    options.Conventions.AddPageRoute("/account", "{*url}");
+                });
+
+
+            services
+                .AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
