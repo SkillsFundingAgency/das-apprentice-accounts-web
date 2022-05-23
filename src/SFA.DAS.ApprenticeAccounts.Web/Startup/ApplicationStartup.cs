@@ -39,7 +39,8 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Startup
                 options.SetCurrentNavigationSection(NavigationSection.ConfirmMyApprenticeship);
             });
 
-            services.AddRazorPages();
+            services.AddRazorPages(options =>
+                options.Conventions.AddPageRoute("/account", "{*url}"));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
 
