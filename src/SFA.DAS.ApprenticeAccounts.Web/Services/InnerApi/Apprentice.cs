@@ -12,6 +12,5 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Services.InnerApi
         public DateTime DateOfBirth { get; set; }
         public bool TermsOfUseAccepted { get; set; }
         public bool ReacceptTermsOfUseRequired { get; set; }
-        public bool IsPrivateBetaUser { get; set; }
     }
 }
