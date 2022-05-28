@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
@@ -69,6 +70,16 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Services
                 var errors = JsonConvert.DeserializeObject<ValidationProblemDetails>(value);
                 throw new DomainValidationException(errors);
             }
+        }
+
+        public async Task<List<Preference>> GetPreferences()
+        {
+            return await _client.GetPreferences();
+        }
+
+        public async Task<ApprenticePreferencesResponse> GetApprenticePreferences(Guid apprenticeId)
+        {
+            return await _client.GetApprenticePreferences(apprenticeId);
         }
     }
 }

@@ -1,0 +1,92 @@
+﻿@page
+@model SFA.DAS.ApprenticeAccounts.Web.Pages.NotificationsSettingsModel
+@{
+    ViewData["Title"] = "Change your email notifications settings";
+}
+
+<a href="@Model.Backlink" class="govuk-back-link">Return to home</a>
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">
+            @ViewData["Title"]
+        </h1>
+        <p>
+            You can only change email notification settings about giving feedback on your training provider.
+        </p>
+        <p>
+            Changing these settings will not affect other emails about your My apprenticeship account.
+        </p>
+    </div>
+</div>
+
+<partial name="ValidationSummary"/>
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+
+        @foreach (var Preference in Model.ApprenticePreferences)
+        {
+            <form method="post">
+                <input type="hidden" asp-for="@Model.ApprenticePreferences"/>
+
+
+                <div class="govuk-form-group">
+                    <div validation-row-status property-name="@(Preference.Status)">
+                        <fieldset class="govuk-fieldset">
+                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                                <h2>@Preference.PreferenceMeaning</h2>
+                                <span class="govuk-hint">
+                                    These emails will be sent every 3 months.
+                                </span>
+                            </legend>
+
+                            <span asp-validation-for="@Preference.Status" class="govuk-error-message"></span>
+
+                            <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+                                <div class="govuk-radios__item">
+                                    @if (@Preference.Status == true)
+                                    {
+                                        <input class="govuk-radios__input" id="preference-yes" asp-for="@Preference.Status" type="radio" value="" checked="checked"/>
+                                    }
+                                    else
+                                    {
+                                        <input class="govuk-radios__input" id="preference-yes" asp-for="@Preference.Status" type="radio" value=""/>
+                                    }
+                                    <label class="govuk-label govuk-radios__label" for="preference-yes">
+                                        Yes
+                                    </label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    @if (@Preference.Status == false)
+                                    {
+                                        <input class="govuk-radios__input" id="preference-no" asp-for="@Preference.Status" type="radio" value="" checked="checked"/>
+                                    }
+                                    else
+                                    {
+                                        <input class="govuk-radios__input" id="preference-no" asp-for="@Preference.Status" type="radio" value=""/>
+                                    }
+                                    <label class="govuk-label govuk-radios__label" for="preference-no">
+                                        No
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </form>
+        }
+    </div>
+</div>
+
+<div class="govuk-grid-row govuk-!-margin-bottom-2">
+    <button class="govuk-button" type="submit">
+        Save settings
+    </button>
+    <a class="govuk-link govuk-body govuk-link--no-visited-state" href="@Model.Backlink">
+        Return to home
+    </a>
+</div>
