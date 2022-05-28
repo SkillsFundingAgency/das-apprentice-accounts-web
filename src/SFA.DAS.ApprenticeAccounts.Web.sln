@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30907.101
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.ApprenticeAccounts.Web", "SFA.DAS.ApprenticeAccounts.Web\SFA.DAS.ApprenticeAccounts.Web.csproj", "{4577D895-9D16-49BF-B1E1-352755FF6A2C}"
 EndProject
@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{A95F1A4D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.ApprenticeAccounts.Web.UnitTests", "SFA.DAS.ApprenticeAccounts.Web.UnitTests\SFA.DAS.ApprenticeAccounts.Web.UnitTests.csproj", "{0A6861D1-0A6D-45CE-81EB-FFBDC5CD3032}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.ApprenticeAccounts.Web.MockServer", "SFA.DAS.ApprenticeAccounts.Web.MockServer\SFA.DAS.ApprenticeAccounts.Web.MockServer.csproj", "{FB7BE5BC-59C2-43F9-8E55-C2D6B11000D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.ApprenticeAccounts.Web.MockServer", "SFA.DAS.ApprenticeAccounts.Web.MockServer\SFA.DAS.ApprenticeAccounts.Web.MockServer.csproj", "{FB7BE5BC-59C2-43F9-8E55-C2D6B11000D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

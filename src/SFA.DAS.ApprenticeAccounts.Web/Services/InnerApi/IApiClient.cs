@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.JsonPatch;
 using RestEase;
@@ -15,6 +16,12 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Services.InnerApi
 
         [Patch("/apprentices/{apprenticeId}")]
         Task UpdateApprentice([Path] Guid apprenticeId, [Body] JsonPatchDocument<Apprentice> patch);
+
+        [Get("/preferences")]
+        Task<List<Preference>> GetPreferences();
+
+        [Get("/apprenticepreferences/{apprenticeId}")]
+        Task<ApprenticePreferencesResponse> GetApprenticePreferences([Path] Guid apprenticeId);
 
     }
 }
