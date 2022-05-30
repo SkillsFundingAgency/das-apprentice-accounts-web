@@ -1,12 +1,12 @@
 ﻿@page
-@model SFA.DAS.ApprenticeAccounts.Web.Pages.NotificationsSettingsModel
+@model NotificationsSettingsModel
 @{
     ViewData["Title"] = "Change your email notifications settings";
 }
 <form method="post">
     <a href="@Model.BackLink" class="govuk-back-link">Return to home</a>
 
-    @if (@Model.SubmittedPreferences == true)
+    @if (Model.SubmittedPreferences)
     {
         <partial name="_EmailNotificationSettingsSaved", model="@Model"/>
     }
@@ -30,47 +30,49 @@
                     <partial name="ValidationSummary"/>
 
 
-                    @foreach (var preference in Model.ApprenticePreferences)
+                    @for (var i = 0; i < Model.ApprenticePreferences.Count; i++)
                     {
-                        <input type="hidden" asp-for="@preference.Status"/>
+                        <input type="hidden" asp-for="@Model.ApprenticePreferences[i].PreferenceId"/>
+                        <input type="hidden" asp-for="@Model.ApprenticePreferences[i].PreferenceMeaning"/>
 
                         <div class="govuk-form-group">
-                            <div validation-row-status property-name="@(preference.Status)">
+                            <div validation-row-status property-name="@(Model.ApprenticePreferences[i].Status)">
+
                                 <div class="govuk-fieldset__legend govuk-fieldset__legend--m">
                                     <h2 class="govuk-fieldset__heading">
-                                        @preference.PreferenceMeaning
+                                        @Model.ApprenticePreferences[i].PreferenceMeaning
                                         <span class="govuk-caption-m">
                                             These emails will be sent every 3 months.
                                         </span>
                                     </h2>
                                 </div>
 
-                                <span asp-validation-for="@preference.Status" class="govuk-error-message"></span>
+                                <span asp-validation-for="@Model.ApprenticePreferences[i].Status" class="govuk-error-message"></span>
 
                                 <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
                                     <div class="govuk-radios__item">
-                                        @if (preference.Status == true)
+                                        @if (Model.ApprenticePreferences[i].Status == true)
                                         {
-                                            <input class="govuk-radios__input" name="@($"preference-{preference.PreferenceId}")" id="@($"preference-{preference.PreferenceId}-true")" asp-for="@preference.Status" type="radio" value="@bool.TrueString" checked="checked"/>
+                                            <input class="govuk-radios__input" id="@($"preference-{Model.ApprenticePreferences[i].PreferenceId}-true")" asp-for="@Model.ApprenticePreferences[i].Status" type="radio" value="@true" checked="checked"/>
                                         }
                                         else
                                         {
-                                            <input class="govuk-radios__input" name="@($"preference-{preference.PreferenceId}")" id="@($"preference-{preference.PreferenceId}-true")" asp-for="@preference.Status" type="radio" value="@bool.TrueString"/>
+                                            <input class="govuk-radios__input" id="@($"preference-{Model.ApprenticePreferences[i].PreferenceId}-true")" asp-for="@Model.ApprenticePreferences[i].Status" type="radio" value="@true"/>
                                         }
-                                        <label class="govuk-label govuk-radios__label" for="@($"preference-{preference.PreferenceId}-true")">
+                                        <label class="govuk-label govuk-radios__label" for="@($"preference-{Model.ApprenticePreferences[i].PreferenceId}-true")">
                                             Yes
                                         </label>
                                     </div>
                                     <div class="govuk-radios__item">
-                                        @if (preference.Status == false)
+                                        @if (Model.ApprenticePreferences[i].Status == false)
                                         {
-                                            <input class="govuk-radios__input" name="@($"preference-{preference.PreferenceId}")" id="@($"preference-{preference.PreferenceId}-false")" asp-for="@preference.Status" type="radio" value="@bool.FalseString" checked="checked"/>
+                                            <input class="govuk-radios__input" id="@($"preference-{Model.ApprenticePreferences[i].PreferenceId}-false")" asp-for="@Model.ApprenticePreferences[i].Status" type="radio" value="@false" checked="checked"/>
                                         }
                                         else
                                         {
-                                            <input class="govuk-radios__input" name="@($"preference-{preference.PreferenceId}")" id="@($"preference-{preference.PreferenceId}-false")" asp-for="@preference.Status" type="radio" value="@bool.FalseString"/>
+                                            <input class="govuk-radios__input" id="@($"preference-{Model.ApprenticePreferences[i].PreferenceId}-false")" asp-for="@Model.ApprenticePreferences[i].Status" type="radio" value="@false"/>
                                         }
-                                        <label class="govuk-label govuk-radios__label" for="@($"preference-{preference.PreferenceId}-false")">
+                                        <label class="govuk-label govuk-radios__label" for="@($"preference-{Model.ApprenticePreferences[i].PreferenceId}-false")">
                                             No
                                         </label>
                                     </div>
