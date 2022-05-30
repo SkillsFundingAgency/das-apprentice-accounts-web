@@ -8,18 +8,26 @@
         </h2>
         <div class="govuk-error-summary__body">
             <ul class="govuk-list govuk-error-summary__list">
-
-                @foreach (var stateItem in ViewContext.ViewData.ModelState.OrderBy(x => Array.IndexOf(validationOrder, x.Key)))
+                @if (ViewContext.ViewData.ModelState.ContainsKey("MultipleErrorSummary"))
                 {
-                    var elementId = Html.GenerateIdFromName(ViewData.TemplateInfo.GetFullHtmlFieldName(stateItem.Key)) ?? stateItem.Key;
-
-                    if (elementId == "DateOfBirth") elementId = "DateOfBirth_Day";
-
-                    foreach (var error in stateItem.Value.Errors)
+                    <li>
+                        <a href="#">@ViewContext.ViewData.ModelState["MultipleErrorSummary"].Errors[0].ErrorMessage</a>
+                    </li>
+                }
+                else
+                {
+                    @foreach (var stateItem in ViewContext.ViewData.ModelState.OrderBy(x => Array.IndexOf(validationOrder, x.Key)))
                     {
-                        <li>
-                            <a href="#@elementId">@error.ErrorMessage</a>
-                        </li>
+                        var elementId = Html.GenerateIdFromName(ViewData.TemplateInfo.GetFullHtmlFieldName(stateItem.Key)) ?? stateItem.Key;
+
+                        if (elementId == "DateOfBirth") elementId = "DateOfBirth_Day";
+
+                        foreach (var error in stateItem.Value.Errors)
+                        {
+                            <li>
+                                <a href="#@elementId">@error.ErrorMessage</a>
+                            </li>
+                        }
                     }
                 }
             </ul>
