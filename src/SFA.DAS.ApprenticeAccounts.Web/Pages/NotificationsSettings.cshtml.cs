@@ -21,7 +21,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
             _urlHelper = urlHelper;
         }
 
-        [BindProperty] public List<ApprenticePreferencesCombination> ApprenticePreferences { get; set; }
+        [BindProperty] public List<ApprenticePreferenceCombination> ApprenticePreferences { get; set; }
         [BindProperty] public string BackLink { get; set; }
         [BindProperty] public bool SubmittedPreferences { get; set; }
 
@@ -32,8 +32,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
             var preferences = _apprenticeApi.GetPreferences().Result;
             var apprenticePreferences = _apprenticeApi.GetApprenticePreferences(user.ApprenticeId).Result;
 
-
-            var combination = new List<ApprenticePreferencesCombination>();
+            var combination = new List<ApprenticePreferenceCombination>();
 
             foreach (Preference preference in preferences)
             {
@@ -41,7 +40,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
                     apprenticePreferences.ApprenticePreferences.Find(a => a.PreferenceId == preference.PreferenceId);
                 if (apprenticePreference == null)
                 {
-                    var tempObject = new ApprenticePreferencesCombination()
+                    var tempObject = new ApprenticePreferenceCombination()
                     {
                         PreferenceId = preference.PreferenceId,
                         PreferenceMeaning = preference.PreferenceMeaning,
@@ -51,7 +50,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
                 }
                 else
                 {
-                    var tempObject = new ApprenticePreferencesCombination()
+                    var tempObject = new ApprenticePreferenceCombination()
                     {
                         PreferenceId = preference.PreferenceId,
                         PreferenceMeaning = preference.PreferenceMeaning,
@@ -68,25 +67,37 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
             return Page();
         }
 
-        public async Task OnPostAsync(
+        public async Task<IActionResult> OnPostAsync(
             [FromServices] AuthenticatedUser user)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    if (ModelState.ErrorCount > 0)
-            //    {
-            //        ModelState.AddModelError("MultipleErrorSummary", "Select Yes or No");
-            //    }
-            //}
+            if (!ModelState.IsValid)
+            {
+                if (ModelState.ErrorCount > 0)
+                {
+                    ModelState.AddModelError("MultipleErrorSummary", "Select Yes or No");
+                }
+
+                return Page();
+            }
 
             BackLink = _urlHelper.Generate(NavigationSection.Home, "Home");
             SubmittedPreferences = true;
 
-            foreach (ApprenticePreferencesCombination apprenticePreferences in ApprenticePreferences)
-            { 
-                await _apprenticeApi.UpdateApprenticePreferences(user.ApprenticeId, apprenticePreferences.PreferenceId,
-                    (bool)apprenticePreferences.Status);
+            var apprenticePreferencesCommand= new UpdateApprenticePreferencesCommand(){ApprenticePreferences = new List<UpdateApprenticePreferenceCommand>()};
+            foreach (ApprenticePreferenceCombination apprenticePreferences in ApprenticePreferences)
+            {
+                var apprenticePreference = new UpdateApprenticePreferenceCommand()
+                {
+                    ApprenticeId = user.ApprenticeId,
+                    PreferenceId = apprenticePreferences.PreferenceId,
+                    Status = (bool)apprenticePreferences.Status
+                }; 
+                apprenticePreferencesCommand.ApprenticePreferences.Add(apprenticePreference);
             }
+            
+            await _apprenticeApi.UpdateApprenticePreferences(apprenticePreferencesCommand);
+
+            return Page();
         }
     }
 }

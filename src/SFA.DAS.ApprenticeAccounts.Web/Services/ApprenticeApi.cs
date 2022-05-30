@@ -82,9 +82,14 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Services
             return await _client.GetApprenticePreferences(apprenticeId);
         }
 
-        internal async Task<IActionResult> UpdateApprenticePreferences(Guid apprenticeId, int preferenceId, bool status)
+        internal async Task<IActionResult> UpdateApprenticePreference(Guid apprenticeId, int preferenceId, bool status)
         {
-            return await _client.UpdateApprenticePreferences(apprenticeId, preferenceId, status);
+            return await _client.UpdateApprenticePreference(apprenticeId, preferenceId, status);
+        }
+
+        internal async Task<IActionResult> UpdateApprenticePreferences(UpdateApprenticePreferencesCommand apprenticePreferences)
+        {
+            return await _client.UpdateApprenticePreferences(apprenticePreferences);
         }
     }
 }

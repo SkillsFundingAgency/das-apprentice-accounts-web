@@ -2,10 +2,10 @@
 
 namespace SFA.DAS.ApprenticeAccounts.Web.Services.InnerApi
 {
-    public class ApprenticePreferencesCombination
+    public class UpdateApprenticePreferenceCommand
     {
+        public Guid ApprenticeId { get; set; }
         public int PreferenceId { get; set; }
-        public string PreferenceMeaning { get; set; }
         public bool? Status { get; set; }
     }
 }
