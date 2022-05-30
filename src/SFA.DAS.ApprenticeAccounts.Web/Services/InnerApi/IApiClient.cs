@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.Mvc;
 using RestEase;
 
 namespace SFA.DAS.ApprenticeAccounts.Web.Services.InnerApi
@@ -22,6 +23,9 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Services.InnerApi
 
         [Get("/apprenticepreferences/{apprenticeId}")]
         Task<ApprenticePreferencesResponse> GetApprenticePreferences([Path] Guid apprenticeId);
+
+        [Post("/apprenticepreferences/{apprenticeId}/{preferenceId}/{status}")]
+        Task<IActionResult> UpdateApprenticePreferences([Path] Guid apprenticeId, [Path] int preferenceId, [Path] bool status);
 
     }
 }

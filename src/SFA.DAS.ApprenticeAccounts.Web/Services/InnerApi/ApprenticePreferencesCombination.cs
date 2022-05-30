@@ -1,4 +1,6 @@
-﻿namespace SFA.DAS.ApprenticeAccounts.Web.Services.InnerApi
+﻿using System;
+
+namespace SFA.DAS.ApprenticeAccounts.Web.Services.InnerApi
 {
     public class ApprenticePreferencesCombination
     {
