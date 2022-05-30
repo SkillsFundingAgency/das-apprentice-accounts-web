@@ -68,21 +68,26 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
             return Page();
         }
 
-        //public async Task<IActionResult> OnPostAsync(
-        //    [FromServices] AuthenticatedUser user)
-        //{
-        //    BackLink = _urlHelper.Generate(NavigationSection.Home, "Home");
-        //    SubmittedPreferences = true;
+        public async Task OnPostAsync(
+            [FromServices] AuthenticatedUser user)
+        {
+            //if (!ModelState.IsValid)
+            //{
+            //    if (ModelState.ErrorCount > 0)
+            //    {
+            //        ModelState.AddModelError("MultipleErrorSummary", "Select Yes or No");
+            //    }
+            //}
 
-        //    foreach (ApprenticePreferencesCombination apprenticePreferences in ApprenticePreferences)
-        //    {
-        //        _apprenticeApi.UpdateApprenticePreferences(user.ApprenticeId, apprenticePreferences.PreferenceId,
-        //            (bool)apprenticePreferences.Status);
-        //    }
+            BackLink = _urlHelper.Generate(NavigationSection.Home, "Home");
+            SubmittedPreferences = true;
 
-
-        //    return Page();
-        //}
+            foreach (ApprenticePreferencesCombination apprenticePreferences in ApprenticePreferences)
+            { 
+                await _apprenticeApi.UpdateApprenticePreferences(user.ApprenticeId, apprenticePreferences.PreferenceId,
+                    (bool)apprenticePreferences.Status);
+            }
+        }
     }
 }
 
