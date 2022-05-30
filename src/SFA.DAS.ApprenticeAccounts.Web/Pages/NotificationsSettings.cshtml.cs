@@ -22,11 +22,13 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
         }
 
         [BindProperty] public List<ApprenticePreferencesCombination> ApprenticePreferences { get; set; }
-        [BindProperty] public string Backlink { get; set; }
+        [BindProperty] public string BackLink { get; set; }
+        [BindProperty] public bool SubmittedPreferences { get; set; }
 
         public async Task<IActionResult> OnGetAsync(
             [FromServices] AuthenticatedUser user)
         {
+            SubmittedPreferences = false;
             var preferences = _apprenticeApi.GetPreferences().Result;
             var apprenticePreferences = _apprenticeApi.GetApprenticePreferences(user.ApprenticeId).Result;
 
@@ -61,20 +63,26 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
                 ApprenticePreferences = combination;
             }
 
-            Backlink = _urlHelper.Generate(NavigationSection.Home, "Home");
+            BackLink = _urlHelper.Generate(NavigationSection.Home, "Home");
 
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
-        {
-            if (ModelState.ErrorCount > 1)
-            {
-                ModelState.AddModelError("MultipleErrorSummary", "Select Yes or No");
-            }
+        //public async Task<IActionResult> OnPostAsync(
+        //    [FromServices] AuthenticatedUser user)
+        //{
+        //    BackLink = _urlHelper.Generate(NavigationSection.Home, "Home");
+        //    SubmittedPreferences = true;
 
-            return Page();
-        }
+        //    foreach (ApprenticePreferencesCombination apprenticePreferences in ApprenticePreferences)
+        //    {
+        //        _apprenticeApi.UpdateApprenticePreferences(user.ApprenticeId, apprenticePreferences.PreferenceId,
+        //            (bool)apprenticePreferences.Status);
+        //    }
+
+
+        //    return Page();
+        //}
     }
 }
 
