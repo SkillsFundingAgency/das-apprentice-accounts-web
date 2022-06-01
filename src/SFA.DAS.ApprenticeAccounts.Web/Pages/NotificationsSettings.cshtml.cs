@@ -72,7 +72,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
             }
             catch
             {
-                return Redirect("/Error");
+                return Redirect("Error");
             }
         }
 
@@ -92,21 +92,29 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
             BackLink = _urlHelper.Generate(NavigationSection.Home, "Home");
             SubmittedPreferences = true;
 
-            var apprenticePreferencesCommand= new UpdateApprenticePreferencesCommand(){ApprenticePreferences = new List<UpdateApprenticePreferenceCommand>()};
-            foreach (ApprenticePreferenceCombination apprenticePreferences in ApprenticePreferences)
+            try
             {
-                var apprenticePreference = new UpdateApprenticePreferenceCommand()
+                var apprenticePreferencesCommand = new UpdateApprenticePreferencesCommand()
+                    { ApprenticePreferences = new List<UpdateApprenticePreferenceCommand>() };
+                foreach (ApprenticePreferenceCombination apprenticePreferences in ApprenticePreferences)
                 {
-                    ApprenticeId = user.ApprenticeId,
-                    PreferenceId = apprenticePreferences.PreferenceId,
-                    Status = (bool)apprenticePreferences.Status
-                }; 
-                apprenticePreferencesCommand.ApprenticePreferences.Add(apprenticePreference);
-            }
-            
-            await _apprenticeApi.UpdateApprenticePreferences(apprenticePreferencesCommand);
+                    var apprenticePreference = new UpdateApprenticePreferenceCommand()
+                    {
+                        ApprenticeId = user.ApprenticeId,
+                        PreferenceId = apprenticePreferences.PreferenceId,
+                        Status = (bool)apprenticePreferences.Status
+                    };
+                    apprenticePreferencesCommand.ApprenticePreferences.Add(apprenticePreference);
+                }
 
-            return Page();
+                await _apprenticeApi.UpdateApprenticePreferences(apprenticePreferencesCommand);
+
+                return Page();
+            }
+            catch
+            {
+                return Redirect("Error");
+            }
         }
     }
 }
