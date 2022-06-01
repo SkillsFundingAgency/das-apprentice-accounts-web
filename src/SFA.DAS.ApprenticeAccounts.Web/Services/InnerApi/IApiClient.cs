@@ -27,7 +27,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Services.InnerApi
         [Post("/apprenticepreferences/{apprenticeId}/{preferenceId}/{status}")]
         Task<IActionResult> UpdateApprenticePreference([Path] Guid apprenticeId, [Path] int preferenceId, [Path] bool status);
 
-        [Post("/apprenticepreferences/{apprenticePreferences")]
+        [Post("/apprenticepreferences/apprenticePreferences")]
         Task<IActionResult> UpdateApprenticePreferences([Body] UpdateApprenticePreferencesCommand apprenticePreferences);
 
     }

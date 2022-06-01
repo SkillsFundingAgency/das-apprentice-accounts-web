@@ -29,42 +29,51 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
             [FromServices] AuthenticatedUser user)
         {
             SubmittedPreferences = false;
-            var preferences = _apprenticeApi.GetPreferences().Result;
-            var apprenticePreferences = _apprenticeApi.GetApprenticePreferences(user.ApprenticeId).Result;
 
-            var combination = new List<ApprenticePreferenceCombination>();
-
-            foreach (Preference preference in preferences)
+            try
             {
-                var apprenticePreference =
-                    apprenticePreferences.ApprenticePreferences.Find(a => a.PreferenceId == preference.PreferenceId);
-                if (apprenticePreference == null)
+                var preferences = _apprenticeApi.GetPreferences().Result;
+                var apprenticePreferences = _apprenticeApi.GetApprenticePreferences(user.ApprenticeId).Result;
+
+                var combination = new List<ApprenticePreferenceCombination>();
+
+                foreach (Preference preference in preferences)
                 {
-                    var tempObject = new ApprenticePreferenceCombination()
+                    var apprenticePreference =
+                        apprenticePreferences.ApprenticePreferences.Find(a =>
+                            a.PreferenceId == preference.PreferenceId);
+                    if (apprenticePreference == null)
                     {
-                        PreferenceId = preference.PreferenceId,
-                        PreferenceMeaning = preference.PreferenceMeaning,
-                        Status = null
-                    };
-                    combination.Add(tempObject);
-                }
-                else
-                {
-                    var tempObject = new ApprenticePreferenceCombination()
+                        var tempObject = new ApprenticePreferenceCombination()
+                        {
+                            PreferenceId = preference.PreferenceId,
+                            PreferenceMeaning = preference.PreferenceMeaning,
+                            Status = null
+                        };
+                        combination.Add(tempObject);
+                    }
+                    else
                     {
-                        PreferenceId = preference.PreferenceId,
-                        PreferenceMeaning = preference.PreferenceMeaning,
-                        Status = apprenticePreference.Status
-                    };
-                    combination.Add(tempObject);
+                        var tempObject = new ApprenticePreferenceCombination()
+                        {
+                            PreferenceId = preference.PreferenceId,
+                            PreferenceMeaning = preference.PreferenceMeaning,
+                            Status = apprenticePreference.Status
+                        };
+                        combination.Add(tempObject);
+                    }
+
+                    ApprenticePreferences = combination;
                 }
 
-                ApprenticePreferences = combination;
+                BackLink = _urlHelper.Generate(NavigationSection.Home, "Home");
+
+                return Page();
             }
-
-            BackLink = _urlHelper.Generate(NavigationSection.Home, "Home");
-
-            return Page();
+            catch
+            {
+                return Redirect("/Error");
+            }
         }
 
         public async Task<IActionResult> OnPostAsync(
