@@ -1,5 +1,5 @@
 ﻿@page
-@model NotificationsSettingsModel
+@model NotificationSettingsModel
 @{
     ViewData["Title"] = "Change your email notifications settings";
 }
@@ -10,8 +10,8 @@
     {
         <partial name="_EmailNotificationSettingsSaved", model="@Model"/>
     }
-    
-        <partial name="ValidationSummary"/>
+
+    <partial name="ValidationSummary"/>
 
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">

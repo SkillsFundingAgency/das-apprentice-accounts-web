@@ -4,8 +4,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using RestEase;
+using SFA.DAS.ApprenticeAccounts.Web.Services.InnerApi;
 
-namespace SFA.DAS.ApprenticeAccounts.Web.Services.InnerApi
+namespace SFA.DAS.ApprenticeAccounts.Web.Services
 {
     public interface IApiClient
     {
@@ -19,16 +20,13 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Services.InnerApi
         Task UpdateApprentice([Path] Guid apprenticeId, [Body] JsonPatchDocument<Apprentice> patch);
 
         [Get("/preferences")]
-        Task<List<Preference>> GetPreferences();
+        Task<List<PreferenceDto>> GetAllPreferences();
 
         [Get("/apprenticepreferences/{apprenticeId}")]
-        Task<ApprenticePreferencesResponse> GetApprenticePreferences([Path] Guid apprenticeId);
-
-        [Post("/apprenticepreferences/{apprenticeId}/{preferenceId}/{status}")]
-        Task<IActionResult> UpdateApprenticePreference([Path] Guid apprenticeId, [Path] int preferenceId, [Path] bool status);
+        Task<ApprenticePreferencesDto> GetAllApprenticePreferencesForApprentice([Path] Guid apprenticeId);
 
         [Post("/apprenticepreferences/apprenticePreferences")]
-        Task<IActionResult> UpdateApprenticePreferences([Body] UpdateApprenticePreferencesCommand apprenticePreferences);
+        Task<IActionResult> UpdateAllApprenticePreferences([Body] ApprenticePreferencesCommand apprenticePreferencesCommand);
 
     }
 }

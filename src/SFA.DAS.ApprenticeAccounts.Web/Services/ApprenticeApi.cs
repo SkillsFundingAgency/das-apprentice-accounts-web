@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
@@ -25,7 +26,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Services
             {
                 return await _client.GetApprentice(apprenticeId);
             }
-            catch (ApiException e) when (e.StatusCode == System.Net.HttpStatusCode.NotFound)
+            catch (ApiException e) when (e.StatusCode == HttpStatusCode.NotFound)
             {
                 return null;
             }
@@ -64,7 +65,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Services
             {
                 await action();
             }
-            catch (ApiException ex) when (ex.StatusCode == System.Net.HttpStatusCode.BadRequest)
+            catch (ApiException ex) when (ex.StatusCode == HttpStatusCode.BadRequest)
             {
                 var value = ex.Content!;
                 var errors = JsonConvert.DeserializeObject<ValidationProblemDetails>(value);
@@ -72,24 +73,20 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Services
             }
         }
 
-        internal async Task<List<Preference>> GetPreferences()
+        internal async Task<List<PreferenceDto>> GetAllPreferences()
         {
-            return await _client.GetPreferences();
+            return await _client.GetAllPreferences();
         }
 
-        internal async Task<ApprenticePreferencesResponse> GetApprenticePreferences(Guid apprenticeId)
+        internal async Task<ApprenticePreferencesDto> GetAllApprenticePreferencesForApprentice(Guid apprenticeId)
         {
-            return await _client.GetApprenticePreferences(apprenticeId);
+            return await _client.GetAllApprenticePreferencesForApprentice(apprenticeId);
         }
 
-        internal async Task<IActionResult> UpdateApprenticePreference(Guid apprenticeId, int preferenceId, bool status)
+        internal async Task<IActionResult> UpdateAllApprenticePreferences(
+            ApprenticePreferencesCommand apprenticePreferencesCommand)
         {
-            return await _client.UpdateApprenticePreference(apprenticeId, preferenceId, status);
-        }
-
-        internal async Task<IActionResult> UpdateApprenticePreferences(UpdateApprenticePreferencesCommand apprenticePreferences)
-        {
-            return await _client.UpdateApprenticePreferences(apprenticePreferences);
+            return await _client.UpdateAllApprenticePreferences(apprenticePreferencesCommand);
         }
     }
 }
