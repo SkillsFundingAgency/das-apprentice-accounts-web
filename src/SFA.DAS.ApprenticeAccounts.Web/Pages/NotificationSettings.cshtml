@@ -4,8 +4,8 @@
     ViewData["Title"] = "Change your email notifications settings";
 }
 <form method="post">
-    <a href="@Model.BackLink" class="govuk-back-link">Return to home</a>
-    @*    @section BreadCrumbs { <a href="@Model.BackLink" class="govuk-back-link">Return to home</a> }*@
+
+    @section BreadCrumbs { <a href="@Model.BackLink" class="govuk-back-link">Return to home</a> }
 
     @if (Model.SubmittedPreferences)
     {
