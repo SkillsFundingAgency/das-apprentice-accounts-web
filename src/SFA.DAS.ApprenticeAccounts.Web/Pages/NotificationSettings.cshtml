@@ -5,6 +5,7 @@
 }
 <form method="post">
     <a href="@Model.BackLink" class="govuk-back-link">Return to home</a>
+    @*    @section BreadCrumbs { <a href="@Model.BackLink" class="govuk-back-link">Return to home</a> }*@
 
     @if (Model.SubmittedPreferences)
     {
@@ -21,46 +22,43 @@
                         <h1 class="govuk-heading-l">
                             @ViewData["Title"]
                         </h1>
-                        <p>
-                            You can only change email notification settings about giving feedback on your training provider.
-                        </p>
-                        <p>
-                            Changing these settings will not affect other emails about your My apprenticeship account.
-                        </p>
                     </legend>
+                    <p>
+                        You can only change email notification settings about giving feedback on your training provider.
+                    </p>
+                    <p>
+                        Changing these settings will not affect other emails about your My apprenticeship account.
+                    </p>
 
                     @for (var i = 0; i < Model.ApprenticePreferences.Count; i++)
                     {
                         <input type="hidden" asp-for="@Model.ApprenticePreferences[i].PreferenceId"/>
                         <input type="hidden" asp-for="@Model.ApprenticePreferences[i].PreferenceMeaning"/>
 
-                        <div class="govuk-form-group">
-                            <div validation-row-status property-name="@($"Model.ApprenticePreferences[{i}].Status")">
+                        <div class="govuk-form-group" validation-row-status property-name="@($"Model.ApprenticePreferences[{i}].Status")">
+                            <div class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                                <h2 class="govuk-fieldset__heading">
+                                    @Model.ApprenticePreferences[i].PreferenceMeaning
+                                    <span class="govuk-caption-m">
+                                        These emails will be sent every 3 months.
+                                    </span>
+                                </h2>
+                            </div>
 
-                                <div class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                                    <h2 class="govuk-fieldset__heading">
-                                        @Model.ApprenticePreferences[i].PreferenceMeaning
-                                        <span class="govuk-caption-m">
-                                            These emails will be sent every 3 months.
-                                        </span>
-                                    </h2>
+                            <span asp-validation-for="ApprenticePreferences[i].Status" class="govuk-error-message"></span>
+
+                            <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="@($"preference-{Model.ApprenticePreferences[i].PreferenceId}-true")" asp-for="@Model.ApprenticePreferences[i].Status" type="radio" value="@bool.TrueString"/>
+                                    <label class="govuk-label govuk-radios__label" for="@($"preference-{Model.ApprenticePreferences[i].PreferenceId}-true")">
+                                        Yes
+                                    </label>
                                 </div>
-
-                                <span asp-validation-for="ApprenticePreferences[i].Status" class="govuk-error-message"></span>
-
-                                <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
-                                    <div class="govuk-radios__item">
-                                        <input class="govuk-radios__input" id="@($"preference-{Model.ApprenticePreferences[i].PreferenceId}-true")" asp-for="@Model.ApprenticePreferences[i].Status" type="radio" value="@bool.TrueString"/>
-                                        <label class="govuk-label govuk-radios__label" for="@($"preference-{Model.ApprenticePreferences[i].PreferenceId}-true")">
-                                            Yes
-                                        </label>
-                                    </div>
-                                    <div class="govuk-radios__item">
-                                        <input class="govuk-radios__input" id="@($"preference-{Model.ApprenticePreferences[i].PreferenceId}-false")" asp-for="@Model.ApprenticePreferences[i].Status" type="radio" value="@bool.FalseString"/>
-                                        <label class="govuk-label govuk-radios__label" for="@($"preference-{Model.ApprenticePreferences[i].PreferenceId}-false")">
-                                            No
-                                        </label>
-                                    </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="@($"preference-{Model.ApprenticePreferences[i].PreferenceId}-false")" asp-for="@Model.ApprenticePreferences[i].Status" type="radio" value="@bool.FalseString"/>
+                                    <label class="govuk-label govuk-radios__label" for="@($"preference-{Model.ApprenticePreferences[i].PreferenceId}-false")">
+                                        No
+                                    </label>
                                 </div>
                             </div>
                         </div>
@@ -69,11 +67,8 @@
                 </fieldset>
             </div>
 
-            <button class="govuk-button govuk-!-margin-0" type="submit" data-prevent-double-click="true">
-                Save settings
-            </button>
-            <div class="govuk-body" style="display: inline-block; padding-left: 16px; padding-top: 8px">
-                <a class="govuk-link" href="@Model.BackLink">Return to home</a>
+            <div class="govuk-button-group">
+                <button class="govuk-button" type="submit"> Save settings </button> <a class="govuk-link" href="@Model.BackLink">Return to home</a>
             </div>
 
         </div>
