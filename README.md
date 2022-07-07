@@ -30,7 +30,7 @@ The ServiceBus Support Utility is an Azure ServiceBus Queue management tool that
 
 ## How It Works
 
-_Add a description of how the project works technically, this should give new developers an insight into the how the project hangs together, the core concepts in-use and the high-level features that it provides_
+This repo is the front end website for the accounts microsrvice.  The SFA.DAS.ApprenticeAccounts.Web project should be run in kestrel to ensure that the 7080 port is used.
 
 _For Example_
 ```
@@ -74,19 +74,48 @@ This utility uses the standard Apprenticeship Service configuration. All configu
 AppSettings.Development.json file
 ```json
 {
-    "Logging": {
-      "LogLevel": {
-        "Default": "Information",
-        "Microsoft": "Warning",
-        "Microsoft.Hosting.Lifetime": "Information"
-      }
-    },
-    "ConfigurationStorageConnectionString": "UseDevelopmentStorage=true;",
-    "ConfigNames": "SFA.DAS.Tools.Servicebus.Support,SFA.DAS.AuditApiClient",
-    "EnvironmentName": "LOCAL",
-    "Version": "1.0",
-    "APPINSIGHTS_INSTRUMENTATIONKEY": ""
-  }  
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "ConnectionStrings": {
+    "RedisConnectionString": "localhost",
+    "DataProtectionKeysDatabase": "DefaultDatabase=3"
+  },
+  "cdn": {
+    "url": "https://das-at-frnt-end.azureedge.net"
+  },
+  "Authentication": {
+    "MetadataAddress": "https://localhost:5001"
+  },
+  //"ApprenticeCommitmentsApi": {
+  //  "ApiBaseUrl": "https://localhost:5121"
+  //},
+  "ApprenticeAccountsApi": {
+    "ApiBaseUrl": "https://localhost:5801"
+  },
+  "Hashing": {
+    "AllowedHashstringCharacters": "46789BCDFGHJKLMNPRSTVWXY",
+    "Hashstring": "SFA: digital apprenticeship service"
+  },
+  "ZenDesk": {
+    "SectionId": "360003002699",
+    "SnippetKey": "e0730bdd-a32c-4c39-8032-7d7a908eacb4",
+    "CobrowsingSnippetKey": "zdbckey"
+  },
+  "GoogleAnalytics": {
+    "GoogleTagManagerId": "zdbckey"
+  },
+  "ApplicationUrls": {
+    "ApprenticeHomeUrl": "https://localhost:44398",
+    "ApprenticeAccountsUrl": "https://localhost:7080",
+    "ApprenticeCommitmentsUrl": "https://localhost:7070",
+    "ApprenticeLoginUrl": "https://localhost:5001"
+  }
+}
 ```
 
 Azure Table Storage config
