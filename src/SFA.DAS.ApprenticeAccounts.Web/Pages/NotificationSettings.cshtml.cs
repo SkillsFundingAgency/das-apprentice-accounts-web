@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -8,7 +7,6 @@ using SFA.DAS.ApprenticeAccounts.Web.Services;
 using SFA.DAS.ApprenticeAccounts.Web.Services.InnerApi;
 using SFA.DAS.ApprenticePortal.Authentication;
 using SFA.DAS.ApprenticePortal.SharedUi.Menu;
-using SFA.DAS.ApprenticePortal.SharedUi.Services;
 
 namespace SFA.DAS.ApprenticeAccounts.Web.Pages
 {
@@ -37,38 +35,21 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
 
             try
             {
-                var preferencesDto = await _apprenticeApi.GetAllPreferences();
-                var apprenticePreferencesDto =
-                    await _apprenticeApi.GetAllApprenticePreferencesForApprentice(user.ApprenticeId);
+                var preferencesDto =  _apprenticeApi.GetAllPreferences();
+                var apprenticePreferencesDto = _apprenticeApi.GetAllApprenticePreferencesForApprentice(user.ApprenticeId);
+                await Task.WhenAll(preferencesDto, apprenticePreferencesDto);
 
                 var apprenticePreferencesCombination = new List<ApprenticePreference>();
 
-                foreach (var preference in preferencesDto)
+                foreach (var apprenticePreference in from preference in preferencesDto.Result let apprenticePreferenceDto = apprenticePreferencesDto.Result.ApprenticePreferences.FirstOrDefault(ap =>
+                             ap.PreferenceId == preference.PreferenceId) select new ApprenticePreference
+                         {
+                             PreferenceId = preference.PreferenceId,
+                             PreferenceMeaning = preference.PreferenceMeaning,
+                             Status = apprenticePreferenceDto?.Status
+                         })
                 {
-                    var apprenticePreferenceDto =
-                        apprenticePreferencesDto.ApprenticePreferences.Find(ap =>
-                            ap.PreferenceId == preference.PreferenceId);
-
-                    if (apprenticePreferenceDto == null)
-                    {
-                        var apprenticePreference = new ApprenticePreference
-                        {
-                            PreferenceId = preference.PreferenceId,
-                            PreferenceMeaning = preference.PreferenceMeaning,
-                            Status = null
-                        };
-                        apprenticePreferencesCombination.Add(apprenticePreference);
-                    }
-                    else
-                    {
-                        var apprenticePreference = new ApprenticePreference
-                        {
-                            PreferenceId = preference.PreferenceId,
-                            PreferenceMeaning = preference.PreferenceMeaning,
-                            Status = apprenticePreferenceDto.Status
-                        };
-                        apprenticePreferencesCombination.Add(apprenticePreference);
-                    }
+                    apprenticePreferencesCombination.Add(apprenticePreference);
 
                     ApprenticePreferences = apprenticePreferencesCombination;
                 }
