@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -25,35 +26,31 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
         [BindProperty] public List<ApprenticePreference> ApprenticePreferences { get; set; }
         [BindProperty] public string BackLink { get; set; }
         [BindProperty] public bool SubmittedPreferences { get; set; }
-        
+
 
         public async Task<IActionResult> OnGetAsync(
             [FromServices] AuthenticatedUser user)
         {
-
             SubmittedPreferences = false;
 
             try
             {
-                var preferencesDto =  _apprenticeApi.GetAllPreferences();
-                var apprenticePreferencesDto = _apprenticeApi.GetAllApprenticePreferencesForApprentice(user.ApprenticeId);
+                var preferencesDto = _apprenticeApi.GetAllPreferences();
+                var apprenticePreferencesDto =
+                    _apprenticeApi.GetAllApprenticePreferencesForApprentice(user.ApprenticeId);
                 await Task.WhenAll(preferencesDto, apprenticePreferencesDto);
 
-                var apprenticePreferencesCombination = new List<ApprenticePreference>();
+                var apprenticePreferences = new List<ApprenticePreference>();
 
-                foreach (var apprenticePreference in from preference in preferencesDto.Result let apprenticePreferenceDto = apprenticePreferencesDto.Result.ApprenticePreferences.FirstOrDefault(ap =>
-                             ap.PreferenceId == preference.PreferenceId) select new ApprenticePreference
-                         {
-                             PreferenceId = preference.PreferenceId,
-                             PreferenceMeaning = preference.PreferenceMeaning,
-                             Status = apprenticePreferenceDto?.Status
-                         })
+                apprenticePreferences = preferencesDto.Result.Select(p => new ApprenticePreference
                 {
-                    apprenticePreferencesCombination.Add(apprenticePreference);
+                    PreferenceId = p.PreferenceId,
+                    PreferenceMeaning = p.PreferenceMeaning,
+                    Status = ((apprenticePreferencesDto.Result.ApprenticePreferences.ToList()
+                        .FirstOrDefault(ap => ap.PreferenceId == p.PreferenceId)).Status) ?? (bool)null
+                });
 
-                    ApprenticePreferences = apprenticePreferencesCombination;
-                }
-
+                ApprenticePreferences = apprenticePreferences;
                 BackLink = _urlHelper.Generate(NavigationSection.Home, "Home");
 
                 return Page();
@@ -80,17 +77,17 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
             try
             {
                 var apprenticePreferencesCommand = new ApprenticePreferencesCommand
-                    { ApprenticePreferences = new List<ApprenticePreferenceCommand>() };
+                {
+                    ApprenticePreferences = ApprenticePreferences.Select(apprenticePreferences =>
+                        new ApprenticePreferenceCommand
+                        {
+                            ApprenticeId = user.ApprenticeId,
+                            PreferenceId = apprenticePreferences.PreferenceId,
+                            Status = apprenticePreferences.Status
+                        })
+                };
 
-                foreach (var apprenticePreference in ApprenticePreferences.Select(apprenticePreferences =>
-                             new ApprenticePreferenceCommand
-                             {
-                                 ApprenticeId = user.ApprenticeId,
-                                 PreferenceId = apprenticePreferences.PreferenceId,
-                                 Status = apprenticePreferences.Status
-                             }))
-                    apprenticePreferencesCommand.ApprenticePreferences.Add(apprenticePreference);
-
+                 
                 await _apprenticeApi.UpdateAllApprenticePreferences(apprenticePreferencesCommand);
 
                 return Page();
