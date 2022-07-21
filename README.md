@@ -27,7 +27,7 @@ Depending on the action performed by the user the messages will follow one of th
 
 ## Developer Setup
 
-Requires that the standard das-employer-config configuration is setup and running locally in Azure Storage Emiulator
+Requires that the standard das-employer-config configuration is setup and running locally in Azure Storage Emulator
 
 runs on: https://localhost:7080/
 
@@ -59,23 +59,8 @@ local appsettings.development.json file:
   "Authentication": {
     "MetadataAddress": "https://localhost:5001"
   },
-  //"ApprenticeCommitmentsApi": {
-  //  "ApiBaseUrl": "https://localhost:5121"
-  //},
   "ApprenticeAccountsApi": {
     "ApiBaseUrl": "https://localhost:5801"
-  },
-  "Hashing": {
-    "AllowedHashstringCharacters": "46789BCDFGHJKLMNPRSTVWXY",
-    "Hashstring": "SFA: digital apprenticeship service"
-  },
-  "ZenDesk": {
-    "SectionId": "360003002699",
-    "SnippetKey": "e0730bdd-a32c-4c39-8032-7d7a908eacb4",
-    "CobrowsingSnippetKey": "zdbckey"
-  },
-  "GoogleAnalytics": {
-    "GoogleTagManagerId": "zdbckey"
   },
   "ApplicationUrls": {
     "ApprenticeHomeUrl": "https://localhost:44398",
