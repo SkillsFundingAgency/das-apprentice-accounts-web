@@ -27,7 +27,7 @@ Depending on the action performed by the user the messages will follow one of th
 
 ## Developer Setup
 
-Requires that the standard das-employer-config configuration is setup and running locally in Azure Storage Emiulator
+Requires that the standard das-employer-config configuration is setup and running locally in Azure Storage Emulator
 
 runs on: https://localhost:7080/
 
