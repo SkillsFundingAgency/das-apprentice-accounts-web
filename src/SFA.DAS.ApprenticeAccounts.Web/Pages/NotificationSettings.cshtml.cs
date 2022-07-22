@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -40,15 +39,13 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
                     _apprenticeApi.GetAllApprenticePreferencesForApprentice(user.ApprenticeId);
                 await Task.WhenAll(preferencesDto, apprenticePreferencesDto);
 
-                var apprenticePreferences = new List<ApprenticePreference>();
-
-                apprenticePreferences = preferencesDto.Result.Select(p => new ApprenticePreference
+               var apprenticePreferences = preferencesDto.Result.Select(p => new ApprenticePreference
                 {
                     PreferenceId = p.PreferenceId,
                     PreferenceMeaning = p.PreferenceMeaning,
-                    Status = ((apprenticePreferencesDto.Result.ApprenticePreferences.ToList()
-                        .FirstOrDefault(ap => ap.PreferenceId == p.PreferenceId)).Status) ?? (bool)null
-                });
+                    Status = apprenticePreferencesDto.Result.ApprenticePreferences
+                        .FirstOrDefault(ap => ap.PreferenceId == p.PreferenceId)?.Status
+                }).ToList();
 
                 ApprenticePreferences = apprenticePreferences;
                 BackLink = _urlHelper.Generate(NavigationSection.Home, "Home");

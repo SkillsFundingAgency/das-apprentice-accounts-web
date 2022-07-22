@@ -1,0 +1,84 @@
+﻿@using System.Linq
+@using SFA.DAS.ApprenticeAccounts.Web.Services.InnerApi
+@model NotificationSettingsModel
+@{
+}
+@*@{
+    var i = 0;
+}*@
+@*@foreach (var apprenticePreference in @Model.ApprenticePreferences)
+{
+    <input type="hidden" asp-for="@apprenticePreference.PreferenceId"/>
+    <input type="hidden" asp-for="@apprenticePreference.PreferenceMeaning"/>
+
+        var preference = $"apprenticePreference{apprenticePreference.PreferenceId}.Status";
+
+    <div class="govuk-form-group" validation-row-status property-name=@preference>
+        <div class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h2 class="govuk-fieldset__heading">
+                @apprenticePreference.PreferenceMeaning
+                <span class="govuk-caption-m">
+                    These emails will be sent every 3 months.
+                </span>
+            </h2>
+        </div>
+
+        <span asp-validation-for=@preference class="govuk-error-message"></span>
+        
+        @{
+            var radioName = $"apprenticePreference[{i}].Status";
+        }
+
+        <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="@($"preference-{apprenticePreference.PreferenceId}-true")" asp-for=@apprenticePreference[i].Status type="radio" value="@bool.TrueString"/>
+                <label class="govuk-label govuk-radios__label" for="@($"preference-{apprenticePreference.PreferenceId}-true")">
+                    Yes
+                </label>
+            </div>
+            <div class="govuk-radios__item">
+                 <input class="govuk-radios__input" id="@($"preference-{apprenticePreference.PreferenceId}-false")" asp-for=@apprenticePreference[i].Status type="radio" value="@bool.FalseString"/>
+                <label class="govuk-label govuk-radios__label" for="@($"preference-{apprenticePreference.PreferenceId}-false")">
+                    No
+                </label>
+            </div>
+        </div>
+
+    </div>
+
+    i++;
+}*@
+
+@for (var i = 0; i < Model.ApprenticePreferences.Count; i++)
+{
+    <input type="hidden" asp-for="@Model.ApprenticePreferences[i].PreferenceId"/>
+    <input type="hidden" asp-for="@Model.ApprenticePreferences[i].PreferenceMeaning"/>
+
+    <div class="govuk-form-group" validation-row-status property-name="@($"Model.ApprenticePreferences[{i}].Status")">
+        <div class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h2 class="govuk-fieldset__heading">
+                @Model.ApprenticePreferences[i].PreferenceMeaning
+                <span class="govuk-caption-m">
+                    These emails will be sent every 3 months.
+                </span>
+            </h2>
+        </div>
+
+        <span asp-validation-for="(@Model.ApprenticePreferences[i].Status" class="govuk-error-message"></span>
+
+        <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="@($"preference-{Model.ApprenticePreferences[i].PreferenceId}-true")" asp-for="@Model.ApprenticePreferences[i].Status" type="radio" value="@bool.TrueString"/>
+                <label class="govuk-label govuk-radios__label" for="@($"preference-{Model.ApprenticePreferences[i].PreferenceId}-true")">
+                    Yes
+                </label>
+            </div>
+            <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="@($"preference-{Model.ApprenticePreferences[i].PreferenceId}-false")" asp-for="@Model.ApprenticePreferences[i].Status" type="radio" value="@bool.FalseString"/>
+                <label class="govuk-label govuk-radios__label" for="@($"preference-{Model.ApprenticePreferences[i].PreferenceId}-false")">
+                    No
+                </label>
+            </div>
+        </div>
+    </div>
+}
