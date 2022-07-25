@@ -1,5 +1,4 @@
 ﻿@page
-@using SFA.DAS.ApprenticeAccounts.Web.Services.InnerApi
 @model NotificationSettingsModel
 @{
     ViewData["Title"] = "Change your email notifications settings";
@@ -31,42 +30,7 @@
                         Changing these settings will not affect other emails about your My apprenticeship account.
                     </p>
 
-                     <partial name="_EmailNotificationSettingsQuestions", model="@Model"/>
-@*                    @Html.Partial("_EmailNotificationSettingsQuestions", Model.ApprenticePreferences);*@
-@*                    @foreach (var apprenticePreference in Model.ApprenticePreferences)
-                    {
-                        <input type="hidden" asp-for="@apprenticePreference.PreferenceId"/>
-                        <input type="hidden" asp-for="@apprenticePreference.PreferenceMeaning"/>
-
-                        <div class="govuk-form-group" validation-row-status property-name="@apprenticePreference.Status">
-                            <div class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                                <h2 class="govuk-fieldset__heading">
-                                    @apprenticePreference.PreferenceMeaning
-                                    <span class="govuk-caption-m">
-                                        These emails will be sent every 3 months.
-                                    </span>
-                                </h2>
-                            </div>
-
-                            <span asp-validation-for="@apprenticePreference.Status" class="govuk-error-message"></span>
-
-                            <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
-                                <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="@($"preference-{apprenticePreference.PreferenceId}-true")" asp-for="@apprenticePreference.Status" type="radio" value="@bool.TrueString"/>
-                                    <label class="govuk-label govuk-radios__label" for="@($"preference-{apprenticePreference.PreferenceId}-true")">
-                                        Yes
-                                    </label>
-                                </div>
-                                <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="@($"preference-{apprenticePreference.PreferenceId}-false")" asp-for="@apprenticePreference.Status" type="radio" value="@bool.FalseString"/>
-                                    <label class="govuk-label govuk-radios__label" for="@($"preference-{apprenticePreference.PreferenceId}-false")">
-                                        No
-                                    </label>
-                                </div>
-                            </div>
-
-                        </div>
-                    }*@
+                    <partial name="_EmailNotificationSettingsQuestions", model="@Model.ApprenticePreferences"/>
 
                 </fieldset>
             </div>
