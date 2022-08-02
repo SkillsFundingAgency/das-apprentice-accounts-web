@@ -1,4 +1,5 @@
 using FluentAssertions;
+using Newtonsoft.Json;
 using SFA.DAS.ApprenticeAccounts.Web.Pages;
 using SFA.DAS.ApprenticePortal.Authentication.TestHelpers;
 using SFA.DAS.ApprenticePortal.OuterApi.Mock.Models;
@@ -6,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using System.Text.Json;
 using System.Threading.Tasks;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
@@ -223,7 +223,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests.FeatureSteps
             var post = posts.First();
 
             post.RequestMessage.Path.Should().Be("/apprentices");
-            var reg = JsonSerializer.Deserialize<Apprentice>(post.RequestMessage.Body);
+            var reg = JsonConvert.DeserializeObject<Apprentice>(post.RequestMessage.Body);
             reg.Should().BeEquivalentTo(new
             {
                 _userContext.ApprenticeId,

@@ -33,8 +33,6 @@
     <PackageReference Include="SFA.DAS.NLog.Targets.Redis" Version="1.2.1" />
 
     <PackageReference Include="StackExchange.Redis" Version="2.2.50" />
-
-    <PackageReference Include="System.Text.Json" Version="7.0.0-preview.6.22324.4" />
     <PackageReference Include="WebEssentials.AspNetCore.CdnTagHelpers" Version="1.0.21" />
   </ItemGroup>
 
