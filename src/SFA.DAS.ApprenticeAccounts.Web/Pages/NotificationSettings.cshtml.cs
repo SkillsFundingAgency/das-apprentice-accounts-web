@@ -61,6 +61,8 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
         public async Task<IActionResult> OnPostAsync(
             [FromServices] AuthenticatedUser user)
         {
+            BackLink = _urlHelper.Generate(NavigationSection.Home, "Home");
+
             if (!ModelState.IsValid)
             {
                 if (ModelState.ErrorCount > 0) ModelState.AddModelError("MultipleErrorSummary", "Select Yes or No");
@@ -68,7 +70,6 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
                 return Page();
             }
 
-            BackLink = _urlHelper.Generate(NavigationSection.Home, "Home");
             SubmittedPreferences = true;
 
             try
