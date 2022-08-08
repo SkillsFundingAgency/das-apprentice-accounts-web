@@ -65,7 +65,11 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
 
             if (!ModelState.IsValid)
             {
-                if (ModelState.ErrorCount > 0) ModelState.AddModelError("MultipleErrorSummary", "Select Yes or No");
+                if (ModelState.ErrorCount > 1)
+                {
+                    ModelState.AddModelError("MultipleErrorSummary", "Select Yes or No");
+                    ViewData["MultipleErrorAnchor"] = "#preferenceRadioGroup0";
+                }
 
                 return Page();
             }

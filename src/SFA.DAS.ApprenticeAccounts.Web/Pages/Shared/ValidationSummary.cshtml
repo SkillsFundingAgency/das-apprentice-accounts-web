@@ -1,4 +1,5 @@
-﻿@if (!ViewData.ModelState.IsValid)
+﻿@using System.Text.RegularExpressions
+@if (!ViewData.ModelState.IsValid)
 {
     var validationOrder = ViewBag.ValidationOrder != null ? ViewBag.ValidationOrder.Split(',') : new string[] { };
 
@@ -10,18 +11,21 @@
             <ul class="govuk-list govuk-error-summary__list">
                 @if (ViewContext.ViewData.ModelState.ContainsKey("MultipleErrorSummary"))
                 {
+                    var anchorLink = @ViewContext.ViewData["MultipleErrorAnchor"] ?? "#";
                     <li>
-                        <a href="#">@ViewContext.ViewData.ModelState["MultipleErrorSummary"].Errors[0].ErrorMessage</a>
+                        <a href="@anchorLink">@ViewContext.ViewData.ModelState["MultipleErrorSummary"].Errors[0].ErrorMessage</a>
                     </li>
                 }
                 else
                 {
+                    var regex = new Regex("z(\\d*)__Status");
                     @foreach (var stateItem in ViewContext.ViewData.ModelState.OrderBy(x => Array.IndexOf(validationOrder, x.Key)))
                     {
                         var elementId = Html.GenerateIdFromName(ViewData.TemplateInfo.GetFullHtmlFieldName(stateItem.Key)) ?? stateItem.Key;
 
                         if (elementId == "DateOfBirth") elementId = "DateOfBirth_Day";
-
+                        if (regex.IsMatch(elementId)) elementId = $"preferenceRadioGroup{regex.Match(elementId).Groups[1].Value}";
+                        
                         foreach (var error in stateItem.Value.Errors)
                         {
                             <li>
