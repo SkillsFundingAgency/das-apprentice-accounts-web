@@ -6,7 +6,7 @@
     <input type="hidden" asp-for="@Model[i].PreferenceId"/>
     <input type="hidden" asp-for="@Model[i].PreferenceMeaning"/>
 
-    <div class="govuk-form-group" validation-row-status property-name="@($"Model[{i}].Status")" id="@($"preferenceRadioGroup{i}")">
+    <div class="govuk-form-group" id="@($"preferenceRadioGroup{i}")" validation-row-status property-name="@($"[{i}].Status")">
         <div class="govuk-fieldset__legend govuk-fieldset__legend--m">
             <h2 class="govuk-fieldset__heading">
                 @Model[i].PreferenceMeaning
@@ -16,7 +16,7 @@
             </h2>
         </div>
 
-        <span asp-validation-for="(@Model[i].Status" class="govuk-error-message"></span>
+        <span asp-validation-for="@Model[i].Status" class="govuk-error-message"></span>
 
         <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
             <div class="govuk-radios__item">
