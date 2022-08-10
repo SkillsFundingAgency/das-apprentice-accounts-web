@@ -43,6 +43,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
                 {
                     PreferenceId = p.PreferenceId,
                     PreferenceMeaning = p.PreferenceMeaning,
+                    PreferenceHint = p.PreferenceHint,
                     Status = apprenticePreferencesDto.Result.ApprenticePreferences
                         .FirstOrDefault(ap => ap.PreferenceId == p.PreferenceId)?.Status
                 }).ToList();

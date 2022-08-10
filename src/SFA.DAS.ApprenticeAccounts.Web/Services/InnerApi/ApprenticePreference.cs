@@ -6,6 +6,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Services.InnerApi
     {
         public int PreferenceId { get; set; }
         public string PreferenceMeaning { get; set; }
+        public string PreferenceHint { get; set; }
 
         [Required(ErrorMessage = "Select Yes or No")]
         public bool? Status { get; set; }
