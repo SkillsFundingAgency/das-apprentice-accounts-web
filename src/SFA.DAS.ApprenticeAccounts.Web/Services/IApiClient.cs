@@ -25,8 +25,8 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Services
         [Get("/apprenticepreferences/{apprenticeId}")]
         Task<ApprenticePreferencesDto> GetAllApprenticePreferencesForApprentice([Path] Guid apprenticeId);
 
-        [Post("/apprenticepreferences/apprenticePreferences")]
-        Task<IActionResult> UpdateAllApprenticePreferences([Body] ApprenticePreferencesCommand apprenticePreferencesCommand);
+        [Post("/apprenticepreferences/{apprenticeId}")]
+        Task<IActionResult> UpdateAllApprenticePreferences([Path] Guid apprenticeId ,[Body] ApprenticePreferencesCommand apprenticePreferencesCommand);
 
     }
 }

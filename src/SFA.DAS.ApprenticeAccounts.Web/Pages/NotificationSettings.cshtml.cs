@@ -39,13 +39,13 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
                     _apprenticeApi.GetAllApprenticePreferencesForApprentice(user.ApprenticeId);
                 await Task.WhenAll(preferencesDto, apprenticePreferencesDto);
 
-               var apprenticePreferences = preferencesDto.Result.Select(p => new ApprenticePreference
+                var apprenticePreferences = preferencesDto.Result.Select(p => new ApprenticePreference
                 {
                     PreferenceId = p.PreferenceId,
                     PreferenceMeaning = p.PreferenceMeaning,
                     PreferenceHint = p.PreferenceHint,
                     Status = apprenticePreferencesDto.Result.ApprenticePreferences
-                        .FirstOrDefault(ap => ap.PreferenceId == p.PreferenceId)?.Status
+                         .FirstOrDefault(ap => ap.PreferenceId == p.PreferenceId)?.Status
                 }).ToList();
 
                 ApprenticePreferences = apprenticePreferences;
@@ -84,14 +84,14 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
                     ApprenticePreferences = ApprenticePreferences.Select(apprenticePreferences =>
                         new ApprenticePreferenceCommand
                         {
-                            ApprenticeId = user.ApprenticeId,
                             PreferenceId = apprenticePreferences.PreferenceId,
                             Status = apprenticePreferences.Status
-                        })
+                        }),
+                    ApprenticeId = user.ApprenticeId
                 };
 
-                 
-                await _apprenticeApi.UpdateAllApprenticePreferences(apprenticePreferencesCommand);
+
+                await _apprenticeApi.UpdateAllApprenticePreferences(user.ApprenticeId, apprenticePreferencesCommand);
 
                 return Page();
             }
