@@ -1,7 +1,7 @@
 ﻿@page
 @model NotificationSettingsModel
 @{
-    ViewData["Title"] = "Change your email notifications settings";
+    ViewData["Title"] = "Change your notification settings";
 }
 <form method="post">
 
@@ -9,7 +9,7 @@
 
     @if (Model.SubmittedPreferences)
     {
-        <partial name="_EmailNotificationSettingsSaved", model="@Model"/>
+        <partial name="_NotificationSettingsSaved", model="@Model"/>
     }
 
     <partial name="ValidationSummary"/>
@@ -24,19 +24,16 @@
                         </h1>
                     </legend>
                     <p>
-                        You can only change email notification settings about giving feedback on your training provider.
-                    </p>
-                    <p>
-                        Changing these settings will not affect other emails about your My apprenticeship account.
+                        Please select whether you would like us to contact you about the following:
                     </p>
 
-                    <partial name="_EmailNotificationSettingsQuestions", model="@Model.ApprenticePreferences"/>
+                    <partial name="_NotificationSettingsQuestions", model="@Model.ApprenticePreferences"/>
 
                 </fieldset>
             </div>
 
             <div class="govuk-button-group">
-                <button class="govuk-button" type="submit"> Save settings </button> <a class="govuk-link" href="@Model.BackLink">Return to home</a>
+                <button class="govuk-button" type="submit"> Update notification settings</button> <a class="govuk-link" href="@Model.BackLink">Return to home</a>
             </div>
 
         </div>
