@@ -1,0 +1,41 @@
+﻿@page
+@model NotificationSettingsModel
+@{
+    ViewData["Title"] = "Change your notification settings";
+}
+<form method="post">
+
+    @section BreadCrumbs { <a href="@Model.BackLink" class="govuk-back-link">Return to home</a> }
+
+    @if (Model.SubmittedPreferences)
+    {
+        <partial name="_NotificationSettingsSaved", model="@Model"/>
+    }
+
+    <partial name="ValidationSummary"/>
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend">
+                        <h1 class="govuk-heading-l">
+                            @ViewData["Title"]
+                        </h1>
+                    </legend>
+                    <p>
+                        Please select whether you would like us to contact you about the following:
+                    </p>
+
+                    <partial name="_NotificationSettingsQuestions", model="@Model.ApprenticePreferences"/>
+
+                </fieldset>
+            </div>
+
+            <div class="govuk-button-group">
+                <button class="govuk-button" type="submit"> Update notification settings</button> <a class="govuk-link" href="@Model.BackLink">Return to home</a>
+            </div>
+
+        </div>
+    </div>
+</form>

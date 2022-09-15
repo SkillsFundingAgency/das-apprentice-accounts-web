@@ -11,5 +11,6 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Services.InnerApi
         public string Email { get; set; } = null!;
         public DateTime DateOfBirth { get; set; }
         public bool TermsOfUseAccepted { get; set; }
+        public bool ReacceptTermsOfUseRequired { get; set; }
     }
 }

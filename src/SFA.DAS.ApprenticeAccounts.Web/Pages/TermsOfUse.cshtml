@@ -9,6 +9,14 @@
 
         <h1 class="govuk-heading-l">Terms of use of service</h1>
 
+        @if (Model.ReacceptTermsOfUseRequired)
+        {
+            <div class="govuk-inset-text">
+                <h2 class="govuk-heading-s">What's changed</h2>
+                <p>By using this service you agree to be contacted by email to give feedback on your training provider.</p>
+            </div>
+        }
+
         <p class="govuk-body">To use this service you must be:</p>
 
         <ul class="govuk-list govuk-list--bullet">
@@ -27,12 +35,13 @@
             <li>sign out at the end of each session</li>
             <li>adhere to the <a class="govuk-link" href="https://www.legislation.gov.uk/ukpga/1990/18/contents" target="_blank" rel="noopener noreferrer">computer misuse act</a> 1990</li>
             <li>notify us of a change to your email address</li>
+            <li>be contacted by email to give feedback on your training provider</li>
         </ul>
 
         <h2 class="govuk-heading-m">Responsibility for the service</h2>
 
         <p class="govuk-body">
-            This service is run by the Education and Skills Funding Agency (ESFA).
+            This service is run by the Department for Education (DfE).
             We do our best to make sure this service is:
         </p>
 
@@ -43,7 +52,7 @@
             <li>alerting users to any changes to terms of use and updates to the service</li>
         </ul>
 
-        <p class="govuk-body">The ESFA accepts no liability for:</p>
+        <p class="govuk-body">The DfE accepts no liability for:</p>
 
         <ul class="govuk-list govuk-list--bullet">
             <li>you being unable to access the service (eg because of excessive demand or because we've taken the service down for maintenance)</li>
