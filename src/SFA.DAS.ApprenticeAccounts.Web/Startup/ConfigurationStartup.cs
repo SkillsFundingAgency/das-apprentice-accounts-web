@@ -25,7 +25,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Startup
                         options.PreFixConfigurationKeys = false;
                     });
                 }
-                configBuilder.AddJsonFile("appsettings.Development.json", true);
+                configBuilder.AddJsonFile("appsettings.development.json", true);
             });
 
             return hostBuilder;
