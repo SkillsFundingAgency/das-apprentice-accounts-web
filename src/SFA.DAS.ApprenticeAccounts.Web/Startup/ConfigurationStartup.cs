@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using System;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using SFA.DAS.Configuration.AzureTableStorage;
@@ -11,16 +12,20 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Startup
         {
             hostBuilder.ConfigureAppConfiguration((hostingContext, configBuilder) =>
             {
-                if (hostingContext.HostingEnvironment.IsDevelopment()) return;
+                var config = configBuilder.Build();
 
-                configBuilder.AddAzureTableStorage(options =>
+                if (!config["EnvironmentName"].Equals("DEV", StringComparison.InvariantCultureIgnoreCase))
                 {
-                    var (names, connectionString, environment) = configBuilder.ConfigurationSections();
-                    options.ConfigurationKeys = names.Split(",");
-                    options.StorageConnectionString = connectionString;
-                    options.EnvironmentName = environment;
-                    options.PreFixConfigurationKeys = false;
-                });
+                    configBuilder.AddAzureTableStorage(options =>
+                    {
+                        var (names, connectionString, environment) = configBuilder.ConfigurationSections();
+                        options.ConfigurationKeys = names.Split(",");
+                        options.StorageConnectionString = connectionString;
+                        options.EnvironmentName = environment;
+                        options.PreFixConfigurationKeys = false;
+                    });
+                }
+                configBuilder.AddJsonFile("appsettings.Development.json", true);
             });
 
             return hostBuilder;
