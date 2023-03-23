@@ -44,7 +44,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
             [FromQuery] string returnUrl)
         {
             ViewData.SetWelcomeText("Welcome");
-            TempData[ReturnUrlKey] = returnUrl;
+            if (!string.IsNullOrEmpty(returnUrl)) TempData[ReturnUrlKey] = returnUrl;
             var apprentice = await _apprentices.TryGetApprentice(user.ApprenticeId);
 
             if (apprentice == null)
