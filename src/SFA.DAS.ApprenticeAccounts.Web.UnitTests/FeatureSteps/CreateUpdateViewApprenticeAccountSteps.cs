@@ -1,13 +1,13 @@
-using FluentAssertions;
-using Newtonsoft.Json;
-using SFA.DAS.ApprenticeAccounts.Web.Pages;
-using SFA.DAS.ApprenticePortal.Authentication.TestHelpers;
-using SFA.DAS.ApprenticePortal.OuterApi.Mock.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using FluentAssertions;
+using Newtonsoft.Json;
+using SFA.DAS.ApprenticeAccounts.Web.Pages;
+using SFA.DAS.ApprenticePortal.Authentication.TestHelpers;
+using SFA.DAS.ApprenticePortal.OuterApi.Mock.Models;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 using WireMock.RequestBuilders;
@@ -286,5 +286,21 @@ namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests.FeatureSteps
                 Value = lastName,
             });
         }
+
+        const string ReturnUrl = @"https://localhost:7053";
+
+        [Given(@"the query string has return URL")]
+        public async Task GivenTheQueryStringHasReturnURL()
+        {
+            await _context.Web.Get(@$"/account?returnUrl={ReturnUrl}");
+        }
+
+        [Then(@"the user is navigated to return URL")]
+        public void ThenTheUserIsNavigatedToReturnURL()
+        {
+            _context.Web.Response.Should().Be302Redirect();
+            _context.Web.Response.Headers.Location.Should().Be(ReturnUrl);
+        }
+
     }
 }

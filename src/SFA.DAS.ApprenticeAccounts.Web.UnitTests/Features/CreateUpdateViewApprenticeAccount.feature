@@ -78,3 +78,11 @@ Scenario: The apprentice enters invalid identity information
 	| LastName      | Enter your last name     |
 	| DateOfBirth   | Enter your date of birth |
 
+Scenario: The apprentice enters with return URL
+	Given the apprentice has logged in but not created their account
+	And the query string has return URL
+	When the apprentice creates their account with
+	| First name | Last name  | EmailAddress    | Date of Birth |
+	| Bob        | Robertson  | bob@example.com | 2000-01-30    |
+	Then the apprentice account is created
+	And the user is navigated to return URL

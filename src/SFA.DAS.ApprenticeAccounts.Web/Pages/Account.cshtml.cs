@@ -13,6 +13,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
     [HideNavigationBar]
     public class AccountModel : PageModel
     {
+        const string ReturnUrlKey = "returnUrl";
         private readonly ApprenticeApi _apprentices;
         private readonly NavigationUrlHelper _urlHelper;
 
@@ -39,9 +40,11 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
         public bool IsCreating { get; private set; } = false;
 
         public async Task<IActionResult> OnGetAsync(
-            [FromServices] AuthenticatedUser user)
+            [FromServices] AuthenticatedUser user,
+            [FromQuery] string returnUrl)
         {
             ViewData.SetWelcomeText("Welcome");
+            if (!string.IsNullOrEmpty(returnUrl)) TempData[ReturnUrlKey] = returnUrl;
             var apprentice = await _apprentices.TryGetApprentice(user.ApprenticeId);
 
             if (apprentice == null)
@@ -125,12 +128,16 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
 
         private IActionResult RedirectAfterUpdate()
         {
+            if (TempData.TryGetValue(ReturnUrlKey, out object returnUrl))
+            {
+                return Redirect(returnUrl.ToString());
+            }
             if (!TermsOfUseAccepted)
                 return RedirectToPage("TermsOfUse");
-            
+
             if (Request.Cookies.Keys.Contains("RegistrationCode"))
                 return Redirect(_urlHelper.Generate(NavigationSection.Registration));
-            
+
             return Redirect(_urlHelper.Generate(NavigationSection.Home, "Home"));
         }
     }
