@@ -9,31 +9,23 @@
         </h2>
         <div class="govuk-error-summary__body">
             <ul class="govuk-list govuk-error-summary__list">
-                @if (ViewContext.ViewData.ModelState.ContainsKey("MultipleErrorSummary"))
+            @{
+                var regex = new Regex("z(\\d*)__Status");
+                foreach (var stateItem in ViewContext.ViewData.ModelState.OrderBy(x => Array.IndexOf(validationOrder, x.Key)))
                 {
-                    var anchorLink = @ViewContext.ViewData["MultipleErrorAnchor"] ?? "#";
-                    <li>
-                        <a href="@anchorLink">@ViewContext.ViewData.ModelState["MultipleErrorSummary"].Errors[0].ErrorMessage</a>
-                    </li>
-                }
-                else
-                {
-                    var regex = new Regex("z(\\d*)__Status");
-                    @foreach (var stateItem in ViewContext.ViewData.ModelState.OrderBy(x => Array.IndexOf(validationOrder, x.Key)))
-                    {
-                        var elementId = Html.GenerateIdFromName(ViewData.TemplateInfo.GetFullHtmlFieldName(stateItem.Key)) ?? stateItem.Key;
+                    var elementId = Html.GenerateIdFromName(ViewData.TemplateInfo.GetFullHtmlFieldName(stateItem.Key)) ?? stateItem.Key;
 
-                        if (elementId == "DateOfBirth") elementId = "DateOfBirth_Day";
-                        if (regex.IsMatch(elementId)) elementId = $"preferenceRadioGroup{regex.Match(elementId).Groups[1].Value}";
-                        
-                        foreach (var error in stateItem.Value.Errors)
-                        {
-                            <li>
-                                <a href="#@elementId">@error.ErrorMessage</a>
-                            </li>
-                        }
+                    if (elementId == "DateOfBirth") elementId = "DateOfBirth_Day";
+                    if (regex.IsMatch(elementId)) elementId = $"z{regex.Match(elementId).Groups[1].Value}__Status-true";
+                            
+                    foreach (var error in stateItem.Value.Errors)
+                    {
+                        <li>
+                            <a href="#@elementId">@error.ErrorMessage</a>
+                        </li>
                     }
                 }
+            }
             </ul>
         </div>
     </div>

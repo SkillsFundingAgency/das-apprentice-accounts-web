@@ -21,14 +21,14 @@
 
         <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
             <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="@($"preference-{Model[i].PreferenceId}-true")" asp-for="@Model[i].Status" type="radio" value="@bool.TrueString"/>
-                <label class="govuk-label govuk-radios__label" for="@($"preference-{Model[i].PreferenceId}-true")">
+                <input class="govuk-radios__input" id="@($"z{i}__Status-true")" asp-for="@Model[i].Status" type="radio" value="@bool.TrueString" />
+                <label class="govuk-label govuk-radios__label" for="@($"z{i}__Status-true")">
                     Yes
                 </label>
             </div>
             <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="@($"preference-{Model[i].PreferenceId}-false")" asp-for="@Model[i].Status" type="radio" value="@bool.FalseString"/>
-                <label class="govuk-label govuk-radios__label" for="@($"preference-{Model[i].PreferenceId}-false")">
+                <input class="govuk-radios__input" id="@($"z{i}__Status-false")" asp-for="@Model[i].Status" type="radio" value="@bool.FalseString" />
+                <label class="govuk-label govuk-radios__label" for="@($"z{i}__Status-false")">
                     No
                 </label>
             </div>
