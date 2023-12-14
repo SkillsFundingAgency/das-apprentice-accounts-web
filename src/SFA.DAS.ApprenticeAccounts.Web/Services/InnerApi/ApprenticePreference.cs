@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using SFA.DAS.ApprenticeAccounts.Web.Attributes;
 
 namespace SFA.DAS.ApprenticeAccounts.Web.Services.InnerApi
 {
@@ -8,7 +8,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Services.InnerApi
         public string PreferenceMeaning { get; set; }
         public string PreferenceHint { get; set; }
 
-        [Required(ErrorMessage = "Select Yes or No")]
+        [RequiredWithDynamicMessage("Select Yes or No to", nameof(PreferenceMeaning))]
         public bool? Status { get; set; }
     }
 }
