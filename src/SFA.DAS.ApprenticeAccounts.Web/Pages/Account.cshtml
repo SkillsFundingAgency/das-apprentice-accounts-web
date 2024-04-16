@@ -36,17 +36,17 @@
 
                 <div id="FirstNameFieldRow" class="govuk-form-group">
                     <div validation-row-status property-name="FirstName">
-                    <label class="govuk-label govuk-label--s" for="FirstNameInput">First name</label>
+                    <label class="govuk-label govuk-label--s" asp-for="FirstName">First name</label>
                         <span asp-validation-for="FirstName" class="govuk-error-message"></span>
-                        <input id="FirstNameInput" class="govuk-input govuk-input--width-20" asp-for="FirstName">
+                        <input class="govuk-input govuk-input--width-20" asp-for="FirstName">
                     </div>
                 </div>
 
                 <div id="LastNameFieldRow" class="govuk-form-group">
                     <div validation-row-status property-name="LastName">
-                        <label class="govuk-label govuk-label--s" for="LastNameInput">Last name</label>
+                        <label class="govuk-label govuk-label--s" asp-for="FirstName">Last name</label>
                         <span asp-validation-for="LastName" class="govuk-error-message"></span>
-                    <input id="LastNameInput" class="govuk-input govuk-input--width-20" asp-for="LastName">
+                        <input class="govuk-input govuk-input--width-20" asp-for="LastName">
                     </div>
                 </div>
 
@@ -63,20 +63,20 @@
                             <div class="govuk-date-input" id="date-of-birth">
                                 <div class="govuk-date-input__item">
                                     <div class="govuk-form-group">
-                                        <label class="govuk-label govuk-label govuk-date-input__label" for="DateOfBirthDay">Day</label>
-                                        <input id="DateOfBirthDay" class="govuk-input govuk-date-input__input govuk-input--width-2 length-limit" asp-for="DateOfBirth.Day" type="text" autocomplete="bday-day" pattern="[0-9]*" inputmode="numeric" maxlength="2" min="1" max="31">
+                                        <label class="govuk-label govuk-label govuk-date-input__label" asp-for="DateOfBirth.Day">Day</label>
+                                        <input class="govuk-input govuk-date-input__input govuk-input--width-2 length-limit" asp-for="DateOfBirth.Day" type="text" autocomplete="bday-day" pattern="[0-9]*" inputmode="numeric" maxlength="2" min="1" max="31">
                                     </div>
                                 </div>
                                 <div class="govuk-date-input__item">
                                     <div class="govuk-form-group">
-                                        <label class="govuk-label govuk-label govuk-date-input__label" for="DateOfBirthMonth">Month</label>
-                                        <input id="DateOfBirthMonth" class="govuk-input govuk-date-input__input govuk-input--width-2 length-limit" asp-for="DateOfBirth.Month" type="text" autocomplete="bday-month" pattern="[0-9]*" inputmode="numeric" maxlength="2" min="1" max="12">
+                                        <label class="govuk-label govuk-label govuk-date-input__label" asp-for="DateOfBirth.Month">Month</label>
+                                        <input class="govuk-input govuk-date-input__input govuk-input--width-2 length-limit" asp-for="DateOfBirth.Month" type="text" autocomplete="bday-month" pattern="[0-9]*" inputmode="numeric" maxlength="2" min="1" max="12">
                                     </div>
                                 </div>
                                 <div class="govuk-date-input__item">
                                     <div class="govuk-form-group">
-                                        <label class="govuk-label govuk-label govuk-date-input__label" for="DateOfBirthYear">Year</label>
-                                        <input id="DateOfBirthYear" class="govuk-input govuk-date-input__input govuk-input--width-4 length-limit" asp-for="DateOfBirth.Year" type="text" autocomplete="bday-year" pattern="[0-9]*" inputmode="numeric" maxlength="4" min="1900" max="9999">
+                                        <label class="govuk-label govuk-label govuk-date-input__label" asp-for="DateOfBirth.Year">Year</label>
+                                        <input class="govuk-input govuk-date-input__input govuk-input--width-4 length-limit" asp-for="DateOfBirth.Year" type="text" autocomplete="bday-year" pattern="[0-9]*" inputmode="numeric" maxlength="4" min="1900" max="9999">
                                     </div>
                                 </div>
                             </div>
