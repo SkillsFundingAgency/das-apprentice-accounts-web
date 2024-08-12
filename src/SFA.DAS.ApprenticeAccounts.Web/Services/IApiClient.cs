@@ -15,6 +15,9 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Services
 
         [Post("/apprentices")]
         Task CreateApprenticeAccount([Body] Apprentice apprentice);
+        
+        [Put("/apprentices")]
+        Task<Apprentice> PutApprentice([Body] PutApprenticeRequest request);
 
         [Patch("/apprentices/{apprenticeId}")]
         Task UpdateApprentice([Path] Guid apprenticeId, [Body] JsonPatchDocument<Apprentice> patch);

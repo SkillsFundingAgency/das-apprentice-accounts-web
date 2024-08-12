@@ -3,8 +3,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SFA.DAS.ApprenticePortal.Authentication;
 using SFA.DAS.ApprenticePortal.SharedUi.Menu;
 using SFA.DAS.ApprenticePortal.SharedUi.Startup;
+using SFA.DAS.GovUK.Auth.Services;
 
 namespace SFA.DAS.ApprenticeAccounts.Web.Startup
 {
@@ -27,11 +29,20 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Startup
             services
                 .AddApplicationInsightsTelemetry()
                 .AddDataProtection(appConfig.ConnectionStrings, Environment)
-                .AddAuthentication(appConfig.Authentication, Environment)
                 .AddInnerApi(appConfig.ApprenticeAccountsApi, Environment)
                 .RegisterServices()
                 .AddControllers();
-
+            
+            services.AddTransient<ICustomClaims, ApprenticeAccountPostAuthenticationClaimsHandler>();
+            if (appConfig.UseGovSignIn)
+            {
+                services.AddGovLoginAuthentication(appConfig.ApplicationUrls,Configuration);
+            }
+            else
+            {
+                services.AddAuthentication(appConfig!.Authentication, Environment);    
+            }
+            
             services.AddSharedUi(appConfig, options =>
             {
                 options.EnableZendesk();

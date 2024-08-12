@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 using SFA.DAS.ApprenticePortal.SharedUi.Services;
 
 namespace SFA.DAS.ApprenticeAccounts.Web.Services
@@ -12,10 +12,8 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Services
         // the CMAD record. So behaving that in Apprentice Accounts you can't
         // See Feedback or the title of Confirm my Apprenticeship option.
         public async Task<bool> ShowApprenticeFeedback() => false;
-        public Task<bool> ShowApprenticeAan()
-        {
-            return Task.FromResult(false);
-        }
+        public Task<bool> ShowApprenticeAan() => Task.FromResult(true);
+        
 
         public async Task<ConfirmMyApprenticeshipTitleStatus> ConfirmMyApprenticeshipTitleStatus() =>
             ApprenticePortal.SharedUi.Services.ConfirmMyApprenticeshipTitleStatus.DoNotShow;
