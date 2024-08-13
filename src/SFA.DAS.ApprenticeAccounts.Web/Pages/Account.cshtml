@@ -1,4 +1,7 @@
 ﻿@page "/account"
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using SFA.DAS.ApprenticeAccounts.Web.TagHelpers
+@using SFA.DAS.ApprenticePortal.SharedUi.Menu
 @model SFA.DAS.ApprenticeAccounts.Web.Pages.AccountModel
 @{
     ViewData["Title"] = Model.IsCreating ? "Create My apprenticeship account" : "Change your personal details";
@@ -82,6 +85,13 @@
                         </fieldset>
                     </div>
                 </div>
+
+                @if (ViewData.UseGovSignIn())
+                {
+                    <div class="govuk-inset-text">
+                        By continuing, you agree to our <a class="govuk-link" asp-external-section="@NavigationSection.Home" asp-external-page="Privacy" target="_blank" rel="noopener noreferrer">privacy statement</a>.
+                    </div>
+                }
 
                 <input type="hidden" asp-for="TermsOfUseAccepted" value="@Model.TermsOfUseAccepted" />
 
