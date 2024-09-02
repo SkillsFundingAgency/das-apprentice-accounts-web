@@ -46,6 +46,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Startup
             services.AddApplicationAuthorisation();
             services.AddTransient<IApprenticeAccountProvider, ApprenticeAccountProvider>();
             services.AddTransient((_) => config);
+            services.AddTransient((_) => new AuthenticationServiceConfiguration());
         }
 
         private static IServiceCollection AddApplicationAuthorisation(

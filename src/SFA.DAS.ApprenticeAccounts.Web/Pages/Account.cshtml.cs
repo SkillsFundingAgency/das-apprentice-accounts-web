@@ -30,7 +30,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
         public string LastName { get; set; }
 
         [BindProperty]
-        public DateModel DateOfBirth { get; set; }
+        public DateModel? DateOfBirth { get; set; }
 
         [BindProperty]
         public bool TermsOfUseAccepted { get; set; }
@@ -55,7 +55,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
             {
                 FirstName = apprentice.FirstName;
                 LastName = apprentice.LastName;
-                DateOfBirth = new DateModel(apprentice.DateOfBirth);
+                DateOfBirth = apprentice.DateOfBirth == null ? null : new DateModel(apprentice.DateOfBirth.Value);
                 TermsOfUseAccepted = apprentice.TermsOfUseAccepted;
             }
 
