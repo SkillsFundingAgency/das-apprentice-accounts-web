@@ -47,7 +47,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
             if (!string.IsNullOrEmpty(returnUrl)) TempData[ReturnUrlKey] = returnUrl;
             var apprentice = await _apprentices.TryGetApprentice(user.ApprenticeId);
 
-            if (apprentice == null)
+            if (apprentice?.DateOfBirth == null)
             {
                 IsCreating = true;
             }
