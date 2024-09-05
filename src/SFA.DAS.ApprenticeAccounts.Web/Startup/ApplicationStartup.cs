@@ -32,6 +32,8 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Startup
                 .AddInnerApi(appConfig.ApprenticeAccountsApi, Environment)
                 .RegisterServices()
                 .AddControllers();
+
+            services.AddSingleton(appConfig);
             
             services.AddTransient<ICustomClaims, ApprenticeAccountPostAuthenticationClaimsHandler>();
             if (appConfig.UseGovSignIn)

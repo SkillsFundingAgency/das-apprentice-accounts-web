@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using SFA.DAS.ApprenticeAccounts.Web.Exceptions;
 using SFA.DAS.ApprenticeAccounts.Web.Services;
 using SFA.DAS.ApprenticeAccounts.Web.Services.InnerApi;
+using SFA.DAS.ApprenticeAccounts.Web.Startup;
 using SFA.DAS.ApprenticePortal.Authentication;
 using SFA.DAS.ApprenticePortal.SharedUi.Menu;
 
@@ -16,11 +17,13 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
         const string ReturnUrlKey = "returnUrl";
         private readonly ApprenticeApi _apprentices;
         private readonly NavigationUrlHelper _urlHelper;
+        private readonly ApplicationConfiguration _configuration;
 
-        public AccountModel(ApprenticeApi api, NavigationUrlHelper urlHelper)
+        public AccountModel(ApprenticeApi api, NavigationUrlHelper urlHelper, ApplicationConfiguration configuration)
         {
             _apprentices = api;
             _urlHelper = urlHelper;
+            _configuration = configuration;
         }
 
         [BindProperty]
@@ -75,7 +78,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
                     DateOfBirth = DateOfBirth.IsValid ? DateOfBirth.Date : default,
                     Email = user.Email.ToString(),
                 };
-
+                
                 await _apprentices.UpdateApprentice(user.ApprenticeId, FirstName, LastName, DateOfBirth.Date);
                 await AuthenticationEvents.UserAccountUpdated(HttpContext, apprentice);
 
@@ -110,7 +113,16 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
                     DateOfBirth = DateOfBirth.IsValid ? DateOfBirth.Date : default,
                     Email = user.Email.ToString(),
                 };
-                await _apprentices.CreateApprentice(apprentice);
+                
+                if (_configuration.UseGovSignIn)
+                {
+                    await _apprentices.UpdateApprentice(user.ApprenticeId, FirstName, LastName, DateOfBirth.Date);
+                }
+                else
+                {
+                    await _apprentices.CreateApprentice(apprentice);
+                }
+                
 
                 await AuthenticationEvents.UserAccountCreated(HttpContext, apprentice);
 
