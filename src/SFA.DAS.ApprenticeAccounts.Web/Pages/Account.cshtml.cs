@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SFA.DAS.ApprenticeAccounts.Web.Exceptions;
@@ -8,6 +9,7 @@ using SFA.DAS.ApprenticeAccounts.Web.Services.InnerApi;
 using SFA.DAS.ApprenticeAccounts.Web.Startup;
 using SFA.DAS.ApprenticePortal.Authentication;
 using SFA.DAS.ApprenticePortal.SharedUi.Menu;
+using SFA.DAS.GovUK.Auth.Services;
 
 namespace SFA.DAS.ApprenticeAccounts.Web.Pages
 {
@@ -18,12 +20,14 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
         private readonly ApprenticeApi _apprentices;
         private readonly NavigationUrlHelper _urlHelper;
         private readonly ApplicationConfiguration _configuration;
+        private readonly IOidcService _oidcService;
 
-        public AccountModel(ApprenticeApi api, NavigationUrlHelper urlHelper, ApplicationConfiguration configuration)
+        public AccountModel(ApprenticeApi api, NavigationUrlHelper urlHelper, ApplicationConfiguration configuration, IOidcService oidcService)
         {
             _apprentices = api;
             _urlHelper = urlHelper;
             _configuration = configuration;
+            _oidcService = oidcService;
         }
 
         [BindProperty]
@@ -48,6 +52,17 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
         {
             ViewData.SetWelcomeText("Welcome");
             if (!string.IsNullOrEmpty(returnUrl)) TempData[ReturnUrlKey] = returnUrl;
+
+            if (_configuration.UseGovSignIn && !_configuration.UseStubAuth)
+            {
+                var token = await HttpContext.GetTokenAsync("access_token");
+                var govUkUser = await _oidcService.GetAccountDetails(token);
+                if (!govUkUser.Email.Equals(user.Email!.Address, StringComparison.CurrentCultureIgnoreCase))
+                {
+                    await _apprentices.PutApprentice(govUkUser.Email, govUkUser.Sub);
+                }
+            }
+            
             var apprentice = await _apprentices.TryGetApprentice(user.ApprenticeId);
 
             if (apprentice?.DateOfBirth == null)
