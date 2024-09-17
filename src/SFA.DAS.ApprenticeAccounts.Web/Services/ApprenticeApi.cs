@@ -32,6 +32,11 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Services
             }
         }
 
+        public async Task<Apprentice> PutApprentice(string email, string govUkIdentifier)
+        {
+            return await _client.PutApprentice(new PutApprenticeRequest(email, govUkIdentifier));
+        }
+
         internal async Task CreateApprentice(Apprentice apprentice)
         {
             await TryApi(() => _client.CreateApprenticeAccount(apprentice));

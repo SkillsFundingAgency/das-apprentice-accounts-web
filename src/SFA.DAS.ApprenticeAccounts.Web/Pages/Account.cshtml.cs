@@ -1,12 +1,15 @@
 using System;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SFA.DAS.ApprenticeAccounts.Web.Exceptions;
 using SFA.DAS.ApprenticeAccounts.Web.Services;
 using SFA.DAS.ApprenticeAccounts.Web.Services.InnerApi;
+using SFA.DAS.ApprenticeAccounts.Web.Startup;
 using SFA.DAS.ApprenticePortal.Authentication;
 using SFA.DAS.ApprenticePortal.SharedUi.Menu;
+using SFA.DAS.GovUK.Auth.Services;
 
 namespace SFA.DAS.ApprenticeAccounts.Web.Pages
 {
@@ -16,11 +19,15 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
         const string ReturnUrlKey = "returnUrl";
         private readonly ApprenticeApi _apprentices;
         private readonly NavigationUrlHelper _urlHelper;
+        private readonly ApplicationConfiguration _configuration;
+        private readonly IOidcService _oidcService;
 
-        public AccountModel(ApprenticeApi api, NavigationUrlHelper urlHelper)
+        public AccountModel(ApprenticeApi api, NavigationUrlHelper urlHelper, ApplicationConfiguration configuration, IOidcService oidcService)
         {
             _apprentices = api;
             _urlHelper = urlHelper;
+            _configuration = configuration;
+            _oidcService = oidcService;
         }
 
         [BindProperty]
@@ -30,7 +37,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
         public string LastName { get; set; }
 
         [BindProperty]
-        public DateModel DateOfBirth { get; set; }
+        public DateModel? DateOfBirth { get; set; }
 
         [BindProperty]
         public bool TermsOfUseAccepted { get; set; }
@@ -45,9 +52,20 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
         {
             ViewData.SetWelcomeText("Welcome");
             if (!string.IsNullOrEmpty(returnUrl)) TempData[ReturnUrlKey] = returnUrl;
+
+            if (_configuration.UseGovSignIn && !_configuration.UseStubAuth)
+            {
+                var token = await HttpContext.GetTokenAsync("access_token");
+                var govUkUser = await _oidcService.GetAccountDetails(token);
+                if (!govUkUser.Email.Equals(user.Email!.Address, StringComparison.CurrentCultureIgnoreCase))
+                {
+                    await _apprentices.PutApprentice(govUkUser.Email, govUkUser.Sub);
+                }
+            }
+            
             var apprentice = await _apprentices.TryGetApprentice(user.ApprenticeId);
 
-            if (apprentice == null)
+            if (apprentice?.DateOfBirth == null)
             {
                 IsCreating = true;
             }
@@ -55,7 +73,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
             {
                 FirstName = apprentice.FirstName;
                 LastName = apprentice.LastName;
-                DateOfBirth = new DateModel(apprentice.DateOfBirth);
+                DateOfBirth = apprentice.DateOfBirth == null ? null : new DateModel(apprentice.DateOfBirth.Value);
                 TermsOfUseAccepted = apprentice.TermsOfUseAccepted;
             }
 
@@ -75,7 +93,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
                     DateOfBirth = DateOfBirth.IsValid ? DateOfBirth.Date : default,
                     Email = user.Email.ToString(),
                 };
-
+                
                 await _apprentices.UpdateApprentice(user.ApprenticeId, FirstName, LastName, DateOfBirth.Date);
                 await AuthenticationEvents.UserAccountUpdated(HttpContext, apprentice);
 
@@ -110,7 +128,16 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
                     DateOfBirth = DateOfBirth.IsValid ? DateOfBirth.Date : default,
                     Email = user.Email.ToString(),
                 };
-                await _apprentices.CreateApprentice(apprentice);
+                
+                if (_configuration.UseGovSignIn)
+                {
+                    await _apprentices.UpdateApprentice(user.ApprenticeId, FirstName, LastName, DateOfBirth.Date);
+                }
+                else
+                {
+                    await _apprentices.CreateApprentice(apprentice);
+                }
+                
 
                 await AuthenticationEvents.UserAccountCreated(HttpContext, apprentice);
 

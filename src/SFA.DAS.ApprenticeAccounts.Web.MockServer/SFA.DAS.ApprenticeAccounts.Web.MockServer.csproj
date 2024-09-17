@@ -2,15 +2,15 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-	<PackageReference Include="Faker.Net" Version="2.0.154" />
-	<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="WireMock.Net" Version="1.4.20" />
-    <PackageReference Include="WireMock.Net.StandAlone" Version="1.4.20" />
+	<PackageReference Include="Faker.Net" Version="2.0.163" />
+	<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="WireMock.Net" Version="1.5.62" />
+    <PackageReference Include="WireMock.Net.StandAlone" Version="1.5.62" />
   </ItemGroup>
 
   <ItemGroup>

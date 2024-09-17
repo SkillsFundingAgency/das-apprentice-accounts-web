@@ -165,7 +165,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests.FeatureSteps
         [When("the apprentice creates their account with")]
         public async Task WhenTheApprenticeCreatesTheirAccountWith(Table table)
         {
-            _postedApprenticeModel = table.CreateInstance(() => new AccountModel(null, null));
+            _postedApprenticeModel = table.CreateInstance(() => new AccountModel(null, null, null, null));
             _postedApprenticeModel.DateOfBirth =
                 new DateModel(DateTime.Parse(table.Rows[0]["Date of Birth"]));
 
@@ -183,7 +183,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests.FeatureSteps
         [When("the apprentice updates their account with")]
         public async Task WhenTheApprenticeUpdatesTheirAccountWith(Table table)
         {
-            _postedApprenticeModel = table.CreateInstance(() => new AccountModel(null, null));
+            _postedApprenticeModel = table.CreateInstance(() => new AccountModel(null, null, null, null));
             _postedApprenticeModel.DateOfBirth =
                 new DateModel(DateTime.Parse(table.Rows[0]["Date of Birth"]));
 
