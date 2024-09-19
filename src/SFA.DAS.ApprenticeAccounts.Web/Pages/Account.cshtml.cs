@@ -53,7 +53,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
             ViewData.SetWelcomeText("Welcome");
             if (!string.IsNullOrEmpty(returnUrl)) TempData[ReturnUrlKey] = returnUrl;
 
-            if (_configuration.UseGovSignIn && !_configuration.UseStubAuth)
+            if (_configuration.UseGovSignIn && !_configuration.StubAuth)
             {
                 var token = await HttpContext.GetTokenAsync("access_token");
                 var govUkUser = await _oidcService.GetAccountDetails(token);
