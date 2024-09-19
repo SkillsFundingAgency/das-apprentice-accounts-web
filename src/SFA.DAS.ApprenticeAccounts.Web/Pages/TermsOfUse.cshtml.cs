@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SFA.DAS.ApprenticeAccounts.Web.Services;
@@ -14,6 +15,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
     {
         private readonly ApprenticeApi _client;
         private readonly NavigationUrlHelper _urlHelper;
+        private readonly AuthenticatedUser _authenticatedUser;
 
         public bool PresentAgreement { get; set; }
 
@@ -22,18 +24,18 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
 
         public bool ReacceptTermsOfUseRequired { get; set; }
 
-        public TermsOfUseModel(ApprenticeApi client, NavigationUrlHelper urlHelper)
+        public TermsOfUseModel(ApprenticeApi client, NavigationUrlHelper urlHelper, AuthenticatedUser authenticatedUser)
         {
             _client = client;
             _urlHelper = urlHelper;
+            _authenticatedUser = authenticatedUser;
         }
 
         public async Task OnGet()
         {
             if(User.Identity.IsAuthenticated)
             {
-                var user = new AuthenticatedUser(User);
-                var apprentice = await _client.TryGetApprentice(user.ApprenticeId);
+                var apprentice = await _client.TryGetApprentice(_authenticatedUser.ApprenticeId);
 
                 ReacceptTermsOfUseRequired = apprentice?.ReacceptTermsOfUseRequired == true;
                 // If Reaccept is true, TermsOfUseAccepted is forced to false, so check can just be on TermsOfUse.
