@@ -53,13 +53,19 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
             ViewData.SetWelcomeText("Welcome");
             if (!string.IsNullOrEmpty(returnUrl)) TempData[ReturnUrlKey] = returnUrl;
 
-            if (_configuration.UseGovSignIn && !_configuration.UseStubAuth)
+            if (_configuration.UseGovSignIn && !_configuration.StubAuth)
             {
-                var token = await HttpContext.GetTokenAsync("access_token");
-                var govUkUser = await _oidcService.GetAccountDetails(token);
-                if (!govUkUser.Email.Equals(user.Email!.Address, StringComparison.CurrentCultureIgnoreCase))
+                try
                 {
-                    await _apprentices.PutApprentice(govUkUser.Email, govUkUser.Sub);
+                    var token = await HttpContext.GetTokenAsync("access_token");
+                    var govUkUser = await _oidcService.GetAccountDetails(token);
+                    if (!govUkUser.Email.Equals(user.Email!.Address, StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        await _apprentices.PutApprentice(govUkUser.Email, govUkUser.Sub);
+                    }
+                }
+                catch
+                {
                 }
             }
             

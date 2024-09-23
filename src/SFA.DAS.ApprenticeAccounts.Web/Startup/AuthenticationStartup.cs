@@ -43,7 +43,13 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Startup
             IConfiguration configuration)
         {
             services.AddGovLoginAuthentication(configuration);
-            services.AddApplicationAuthorisation();
+            services.AddAuthorization();
+
+            services.AddRazorPages(o => o.Conventions
+                .AuthorizeFolder("/")
+                .AllowAnonymousToPage("/ping"));
+            services.AddScoped<AuthenticatedUser>();
+            services.AddHttpContextAccessor();
             services.AddTransient<IApprenticeAccountProvider, ApprenticeAccountProvider>();
             services.AddTransient((_) => config);
             services.AddTransient((_) => new AuthenticationServiceConfiguration());
@@ -60,6 +66,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Startup
             services.AddScoped<AuthenticatedUser>();
             services.AddScoped(s => s
                 .GetRequiredService<IHttpContextAccessor>().HttpContext.User);
+            services.AddHttpContextAccessor();
             return services;
         }
     }
