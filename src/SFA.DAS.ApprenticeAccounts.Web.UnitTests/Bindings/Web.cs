@@ -37,6 +37,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.UnitTests.Bindings
                 Config = new Dictionary<string, string>
                 {
                     {"EnvironmentName", "ACCEPTANCE_TESTS"},
+                    {"UseGovSignIn", "false"},
                     {"Authentication:MetadataAddress", _context.IdentityServiceUrl},
                     {"ApprenticeAccountsApi:ApiBaseUrl", _context.InnerApi.BaseAddress},
                     {"ApplicationUrls:ApprenticeHomeUrl", "https://home/"},
