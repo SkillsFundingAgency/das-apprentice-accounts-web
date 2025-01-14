@@ -19,16 +19,17 @@
     "SFA.DAS.ApprenticeAccounts.Web": {
       "commandName": "Project",
       "launchBrowser": true,
+      "applicationUrl": "https://localhost:7080;http://localhost:7081",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation"
-      },
-      "applicationUrl": "https://localhost:7080;http://localhost:7081"
+      }
     },
     "Docker": {
       "commandName": "Docker",
       "launchBrowser": true,
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "environmentVariables": {},
       "publishAllPorts": true,
       "useSSL": true
     }
