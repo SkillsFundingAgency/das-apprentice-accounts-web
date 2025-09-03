@@ -1,4 +1,4 @@
-﻿@page 
+﻿@page
 @model SFA.DAS.ApprenticeAccounts.Web.Pages.TermsOfUseModel
 @{
     ViewData["Title"] = "Terms of use";
@@ -7,7 +7,7 @@
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-        <h1 class="govuk-heading-l">Terms of use of service</h1>
+        <h1 class="govuk-heading-l">Accept the terms and conditions</h1>
 
         @if (Model.ReacceptTermsOfUseRequired)
         {
@@ -17,14 +17,16 @@
             </div>
         }
 
-        <p class="govuk-body">To use this service you must be:</p>
+        <h3 class="govuk-heading-m">To use this service </h3>
+        <p class="govuk-body">You must be:</p>
 
         <ul class="govuk-list govuk-list--bullet">
             <li>a minimum of 15 years old</li>
             <li>on an apprenticeship</li>
         </ul>
 
-        <h2 class="govuk-heading-m">By using this service you agree to:</h2>
+        <h2 class="govuk-heading-m">By using this service</h2>
+        <p class="govuk-body">You must agree to:</p>
 
         <ul class="govuk-list govuk-list--bullet">
             <li>use a legitimate email address that only you have access to</li>
@@ -33,7 +35,7 @@
             <li>not allow anyone to confirm any data on your behalf</li>
             <li>not submit data on anyone else's behalf</li>
             <li>sign out at the end of each session</li>
-            <li>adhere to the <a class="govuk-link" href="https://www.legislation.gov.uk/ukpga/1990/18/contents" target="_blank" rel="noopener noreferrer">computer misuse act</a> 1990</li>
+            <li>adhere to the <a class="govuk-link" href="https://www.legislation.gov.uk/ukpga/1990/18/contents" target="_blank" rel="noopener noreferrer">Computer Misuse Act 1990</a></li>
             <li>notify us of a change to your email address</li>
             <li>be contacted by email to give feedback on your training provider</li>
         </ul>
@@ -41,30 +43,39 @@
         <h2 class="govuk-heading-m">Responsibility for the service</h2>
 
         <p class="govuk-body">
-            This service is run by the Department for Education (DfE).
-            We do our best to make sure this service is:
+            This service is run by the Department for Education.
+            We do our best to make sure this service:
         </p>
 
         <ul class="govuk-list govuk-list--bullet">
-            <li>constantly available</li>
-            <li>virus free</li>
-            <li>providing information that is accurate and complete</li>
-            <li>alerting users to any changes to terms of use and updates to the service</li>
+            <li>is constantly available</li>
+            <li>is virus free</li>
+            <li>alerts users to any changes to terms of use and updates to the service</li>
         </ul>
 
-        <p class="govuk-body">The DfE accepts no liability for:</p>
+        <p class="govuk-body">The Department for Education accepts no liability for:</p>
 
         <ul class="govuk-list govuk-list--bullet">
-            <li>you being unable to access the service (eg because of excessive demand or because we've taken the service down for maintenance)</li>
+            <li>you being unable to access the service (for example, because of excessive demand or because we've taken the service down for maintenance)</li>
             <li>delay or failure in receiving data</li>
             <li>indirect damages arising from you using the service or relying on its content</li>
             <li>the content and availability of external websites that link to the service or which are linked from it</li>
         </ul>
 
-        @if (Model.PresentAgreement)
+        @if (Model.PresentAgreement | !ModelState.IsValid)
         {
-            <form method="post" id="terms-of-use">
-                <input type="hidden" asp-for="TermsOfUseAccepted" value="true" />
+            <form method="post" id="terms-of-use">                
+                <div class="govuk-form-group">
+                    <div class="govuk-checkboxes govuk-checkboxes--medium" data-module="govuk-checkboxes">
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" asp-for="TermsOfUseAccepted" type="checkbox">
+                            <label class="govuk-label govuk-checkboxes__label" for="TermsOfUseAccepted">
+                                I accept the terms and conditions
+                            </label>
+                        </div>
+                    </div>
+                    <span asp-validation-for="TermsOfUseAccepted" class="govuk-error-message"></span>
+                </div>
                 <button class="govuk-button" data-module="govuk-button">Agree and continue</button>
             </form>
         }

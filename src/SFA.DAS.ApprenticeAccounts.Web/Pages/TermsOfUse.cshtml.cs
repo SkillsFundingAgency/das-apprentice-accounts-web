@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -20,6 +21,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
         public bool PresentAgreement { get; set; }
 
         [BindProperty]
+        [Required(ErrorMessage = "You must accept the terms and conditions")]
         public bool TermsOfUseAccepted { get; set; }
 
         public bool ReacceptTermsOfUseRequired { get; set; }
@@ -32,8 +34,8 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
         }
 
         public async Task OnGet()
-        {
-            if(User.Identity.IsAuthenticated)
+        {           
+                if(User.Identity.IsAuthenticated)
             {
                 var apprentice = await _client.TryGetApprentice(_authenticatedUser.ApprenticeId);
 
@@ -48,11 +50,15 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Pages
         }
 
         public async Task<IActionResult> OnPost([FromServices] AuthenticatedUser apprentice)
-        {
+        {                                  
             if (TermsOfUseAccepted)
             {
                 await _client.AcceptTermsOfUse(apprentice.ApprenticeId);
                 await AuthenticationEvents.TermsOfUseAccepted(HttpContext);
+            } else
+            {
+                ModelState.AddModelError("TermsOfUseAccepted", "You must accept the terms and conditions");
+                return Page();
             }
 
             if (Request.Cookies.Keys.Contains("RegistrationCode"))
