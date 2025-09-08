@@ -62,10 +62,32 @@
             <li>the content and availability of external websites that link to the service or which are linked from it</li>
         </ul>
 
+        <h2 class="govuk-heading-m">Cookies</h2>
+        <p class="govuk-body">
+            Cookies are files saved on your phone, tablet or computer when you visit an app or website.
+            We use cookies to store information about how you use this app, such as the pages you visit.
+        </p>
+
+        <p class="govuk-body">
+            We use Google Analytics and Microsoft Clarity to measure how you use the app so we can improve it based on user needs.
+            We do not allow Google or Microsoft to use or share the data about how you use this app.
+        </p>
+
+        <p class="govuk-body">
+            Google Analytics and Microsoft Clarity set cookies that store anonymised information about:
+        </p>
+
+        <ul class="govuk-list govuk-list--bullet">
+            <li>how you got to the app</li>
+            <li>the pages you visit on GOV.UK and government digital services, and how long you spend on each page</li>
+            <li>what you click on while you're visiting the app</li>
+        </ul>
+
         @if (Model.PresentAgreement | !ModelState.IsValid)
         {
             <form method="post" id="terms-of-use">                
                 <div class="govuk-form-group">
+                    <span asp-validation-for="TermsOfUseAccepted" class="govuk-error-message"></span>
                     <div class="govuk-checkboxes govuk-checkboxes--medium" data-module="govuk-checkboxes">
                         <div class="govuk-checkboxes__item">
                             <input class="govuk-checkboxes__input" asp-for="TermsOfUseAccepted" type="checkbox">
@@ -73,10 +95,9 @@
                                 I accept the terms and conditions
                             </label>
                         </div>
-                    </div>
-                    <span asp-validation-for="TermsOfUseAccepted" class="govuk-error-message"></span>
+                    </div>                    
                 </div>
-                <button class="govuk-button" data-module="govuk-button">Agree and continue</button>
+                <button class="govuk-button" data-module="govuk-button">Continue</button>
             </form>
         }
     </div>
