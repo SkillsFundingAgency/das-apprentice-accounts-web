@@ -85,17 +85,19 @@
 
         @if (Model.PresentAgreement | !ModelState.IsValid)
         {
-            <form method="post" id="terms-of-use">                
+            <form method="post" id="terms-of-use">
                 <div class="govuk-form-group">
-                    <span asp-validation-for="TermsOfUseAccepted" class="govuk-error-message"></span>
-                    <div class="govuk-checkboxes govuk-checkboxes--medium" data-module="govuk-checkboxes">
-                        <div class="govuk-checkboxes__item">
-                            <input class="govuk-checkboxes__input" asp-for="TermsOfUseAccepted" type="checkbox">
-                            <label class="govuk-label govuk-checkboxes__label" for="TermsOfUseAccepted">
-                                I accept the terms and conditions
-                            </label>
+                    <div validation-row-status property-name="TermsOfUseAccepted">
+                        <span asp-validation-for="TermsOfUseAccepted" class="govuk-error-message"></span>
+                        <div class="govuk-checkboxes govuk-checkboxes--medium" data-module="govuk-checkboxes">
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" asp-for="TermsOfUseAccepted" type="checkbox">
+                                <label class="govuk-label govuk-checkboxes__label" for="TermsOfUseAccepted">
+                                    I accept the terms and conditions
+                                </label>
+                            </div>
                         </div>
-                    </div>                    
+                    </div>
                 </div>
                 <button class="govuk-button" data-module="govuk-button">Continue</button>
             </form>
