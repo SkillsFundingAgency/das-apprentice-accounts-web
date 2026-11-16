@@ -28,10 +28,8 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Startup
 
             services
                 .AddTelemetryRegistration(Configuration)
-                .AddApplicationInsightsTelemetry();
 
             services
-                .AddApplicationInsightsTelemetry()
                 .AddDataProtection(appConfig.ConnectionStrings, Environment)
                 .AddInnerApi(appConfig.ApprenticeAccountsApi, Environment)
                 .RegisterServices()
