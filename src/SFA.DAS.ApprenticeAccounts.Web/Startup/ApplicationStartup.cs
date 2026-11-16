@@ -27,7 +27,7 @@ namespace SFA.DAS.ApprenticeAccounts.Web.Startup
             var appConfig = Configuration.Get<ApplicationConfiguration>();
 
             services
-                .AddTelemetryRegistration(Configuration)
+                .AddTelemetryRegistration(Configuration);
 
             services
                 .AddDataProtection(appConfig.ConnectionStrings, Environment)
